@@ -74,3 +74,4 @@ debug_drag={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+lightmapping/lightmap_gi/use_bicubic_filter=false
