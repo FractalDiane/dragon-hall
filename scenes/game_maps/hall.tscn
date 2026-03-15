@@ -36,6 +36,9 @@ size = Vector3(13.5, 1, 32.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_phxr3"]
 size = Vector3(57.5, 1, 11)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5mxv"]
+size = Vector3(17.949585, 1.75531, 6.421631)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_thv7v"]
 radius = 11.0
 
@@ -86,7 +89,7 @@ func _on_body_entered(body: Node3D) -> void:
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7a6k"]
-size = Vector3(17, 3, 6.5)
+size = Vector3(17.678955, 3, 6.5)
 
 [node name="Hall" type="Node3D" unique_id=1393501626]
 
@@ -308,9 +311,12 @@ mesh = SubResource("ArrayMesh_ebsnk")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=254328616]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_8qqvp")
 metadata/_edit_lock_ = true
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="." unique_id=1937355054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1, 41.5)
+end_position = Vector3(2.405, 0.58, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=483975447 groups=["floor"]]
 
@@ -324,10 +330,15 @@ shape = SubResource("BoxShape3D_ebsnk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 37.5)
 shape = SubResource("BoxShape3D_phxr3")
 
+[node name="Floor3" type="StaticBody3D" parent="." unique_id=1004945732 groups=["floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3" unique_id=290112277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.506531, 0.37765503, 39.24646)
+shape = SubResource("BoxShape3D_s5mxv")
+
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=821284786]
 quality = 0
 bounces = 1
-bounce_indirect_energy = 0.5
 interior = true
 use_denoiser = false
 light_data = ExtResource("3_ebsnk")
@@ -709,7 +720,7 @@ collision_mask = 2048
 script = SubResource("GDScript_phxr3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DragonDeathArea" unique_id=461811501]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49816895, -1, 0.25)
 shape = SubResource("BoxShape3D_k7a6k")
 debug_color = Color(13.539555, 0, 0, 0.7176471)
 
