@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://gir2r15k7j14"]
+
+[ext_resource type="Texture2D" uid="uid://cfdkgrrfj3tec" path="res://textures/ui/textbox.png" id="1_a8adm"]
+[ext_resource type="Script" uid="uid://c51batoffne5w" path="res://scripts/events/text_box.gd" id="1_u3n75"]
+[ext_resource type="FontFile" uid="uid://50cemijr68df" path="res://fonts/PIXEARG_.TTF" id="3_thg3u"]
+[ext_resource type="FontFile" uid="uid://dwfpu1l1njhf2" path="res://fonts/PIXEAB__.TTF" id="4_hfe8x"]
+
+[sub_resource type="Animation" id="Animation_u3n75"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a8adm"]
+resource_name = "appear"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3n75"]
+_data = {
+&"RESET": SubResource("Animation_u3n75"),
+&"appear": SubResource("Animation_a8adm")
+}
+
+[node name="TextBox" type="Control" unique_id=1244503981]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u3n75")
+
+[node name="Box" type="NinePatchRect" parent="." unique_id=607680496]
+texture_filter = 1
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 136.0
+pivot_offset = Vector2(0, 68)
+texture = ExtResource("1_a8adm")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Text" type="RichTextLabel" parent="Box" unique_id=1490948]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.11800001
+anchor_right = 0.97300005
+anchor_bottom = 0.882
+offset_left = 0.2319994
+offset_top = -0.048000336
+offset_right = -0.23205566
+offset_bottom = 0.04799652
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_thg3u")
+theme_override_fonts/bold_font = ExtResource("4_hfe8x")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Text here"
+scroll_active = false
+shortcut_keys_enabled = false
+visible_characters_behavior = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=24704112]
+libraries/ = SubResource("AnimationLibrary_u3n75")
+autoplay = &"appear"
+speed_scale = 2.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

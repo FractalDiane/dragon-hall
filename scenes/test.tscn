@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://3miyfvp8pm1s"]
+
+[ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="1_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="2_bl13t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ij1v8"]
+points = PackedVector3Array(-5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, -0.5, 5, -5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ij1v8"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_errlg"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j5jx5"]
+points = PackedVector3Array(-0.5, -1.5, -0.5, -0.5, -1.5, 0.5, -0.5, 1.5, -0.5, 0.5, -1.5, -0.5, 0.5, -1.5, 0.5, -0.5, 1.5, 0.5, 0.5, 1.5, -0.5, 0.5, 1.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_74lek"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_bl13t"]
+vertices = PackedVector3Array(4.5, 1, -1.25, 3.25, 1, -1.25, 3, 1, -0.25, 4.5, 1, 4.5, 1, 1, -2.25, 1.5, 1, -2.5, 1.5, 1, -4.5, -4.5, 1, -4.5, 1.25, 1, -0.25, -4.5, 1, 4.5, 3, 1, -2.5, 4.5, 1, -4.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 8), PackedInt32Array(8, 2, 3), PackedInt32Array(3, 9, 8), PackedInt32Array(8, 9, 7), PackedInt32Array(0, 1, 10), PackedInt32Array(0, 10, 11), PackedInt32Array(11, 10, 6), PackedInt32Array(6, 10, 5)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 2
+geometry_source_group_name = &"nav"
+
+[node name="Test" type="Node3D" unique_id=312658659]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=30865756 groups=["nav"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1066591620]
+shape = SubResource("ConvexPolygonShape3D_ij1v8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=455747916]
+mesh = SubResource("BoxMesh_ij1v8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1838733892]
+transform = Transform3D(0.22166917, 0.57664627, -0.7863472, -0.15645732, 0.816994, 0.5550153, 0.96248835, 0, 0.2713229, -10.68778, 3.148493, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_iyx0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.258357, 0)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1952212749]
+transform = Transform3D(0.7558788, -0.3532008, 0.5512681, 0, 0.8420014, 0.5394754, -0.65471166, -0.40777797, 0.63645095, 4.127521, 4.4268293, 5.258481)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1097636497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2)
+mesh = SubResource("BoxMesh_errlg")
+
+[node name="InteractionComponent" parent="MeshInstance3D" unique_id=1309288216 instance=ExtResource("2_bl13t")]
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=686990857 groups=["nav"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4647698, 0.6641848, -1.3114095)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=1830250108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7466943, 0.54634976, -0.18439293)
+shape = SubResource("ConvexPolygonShape3D_j5jx5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall" unique_id=721498654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7466943, 0.54634976, -0.18439293)
+mesh = SubResource("BoxMesh_74lek")
+
+[node name="NavigationRegion" type="NavigationRegion3D" parent="." unique_id=1424623696]
+navigation_mesh = SubResource("NavigationMesh_bl13t")

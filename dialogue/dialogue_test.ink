@@ -1,0 +1,3 @@
+It's a cube.
+Incredibly, it's not terribly interesting.
+-> END

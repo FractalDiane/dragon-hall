@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c3toqchpsbn52"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_w0vim"]
+radial_segments = 8
+rings = 8
+
+[sub_resource type="Shader" id="Shader_w0vim"]
+code = "shader_type spatial;
+
+uniform vec3 color : source_color;
+uniform sampler2D noise;
+
+float random (vec2 uv) {
+	return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+void vertex() {
+	//VERTEX += sin(TIME) * NORMAL;
+	vec3 noise_sample = texture(noise, UV + (TIME * 0.5)).rgb; // REMOVE UV TO MAKE IT A SLIME
+	VERTEX += noise_sample * NORMAL * 0.1;
+}
+
+void fragment() {
+	ALBEDO = color;
+	EMISSION = color;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w0vim"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_natle"]
+render_priority = 0
+shader = SubResource("Shader_w0vim")
+shader_parameter/color = Color(1, 0.4453125, 0, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_w0vim")
+
+[node name="Fireball" type="MeshInstance3D" unique_id=1894584911]
+mesh = SubResource("SphereMesh_w0vim")
+surface_material_override/0 = SubResource("ShaderMaterial_natle")
