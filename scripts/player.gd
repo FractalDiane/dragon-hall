@@ -8,6 +8,7 @@ const EVENT_RESPONSES := preload("res://dialogue/global/misc_responses.res")
 
 @export var camera: Camera3D = null
 
+var current_camera_zone: CameraZone = null
 var interacts_in_range: Array[Array] = [[], [], [], []]
 
 @onready var nav_agent := $NavigationAgent as NavigationAgent3D
@@ -73,7 +74,7 @@ func _on_hud_prompt_run(prompt: String) -> void:
 		for level in range(len(interacts_in_range)):
 			for obj: InteractionComponent in interacts_in_range[level]:
 				if obj.aliases.has(target):
-					obj.interact_with(verb, level)
+					obj.interact_with(verb, level, current_camera_zone.default_text_box_size)
 					found = true
 					break
 			
@@ -81,7 +82,7 @@ func _on_hud_prompt_run(prompt: String) -> void:
 				break
 				
 		if not found:
-			EventPlaybackSubsystem.play_event(EVENT_RESPONSES, self, Rect2i(20, 180, 280, 40), "no_object")
+			EventPlaybackSubsystem.play_event(EVENT_RESPONSES, self, current_camera_zone.default_text_box_size, "no_object")
 	
 
 func _on_hud_prompt_opened() -> void:

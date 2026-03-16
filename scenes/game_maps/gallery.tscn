@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://8lujpnhmh472"]
+
+[ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="1_07tpo"]
+
+[sub_resource type="Environment" id="Environment_07tpo"]
+background_mode = 1
+background_color = Color(0.94140625, 0.86556053, 0.72076416, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5546875, 0.5546875, 0.5546875, 1)
+
+[node name="Gallery" type="Node3D" unique_id=1992246360]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1360650150]
+environment = SubResource("Environment_07tpo")
+
+[node name="LevelCsg" type="CSGCombiner3D" parent="." unique_id=1263531089]
+
+[node name="Floor" type="CSGBox3D" parent="LevelCsg" unique_id=1081599188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 5)
+size = Vector3(56, 1, 10)
+
+[node name="Floor2" type="CSGBox3D" parent="LevelCsg" unique_id=1787376378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5, 0, -11)
+size = Vector3(11, 1, 42)
+
+[node name="Floor3" type="CSGBox3D" parent="LevelCsg" unique_id=1122573051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, 0, -14.25)
+size = Vector3(11, 1, 8.5)
+
+[node name="Floor4" type="CSGBox3D" parent="LevelCsg" unique_id=1952880520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 0, -14.25)
+size = Vector3(11, 1, 8.5)
+
+[node name="Floor5" type="CSGBox3D" parent="LevelCsg" unique_id=1269868237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.25, 0, 5.25)
+size = Vector3(34.5, 1, 9.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="LevelCsg" unique_id=865202925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.75, 8, 5)
+size = Vector3(101.5, 1, 14)
+
+[node name="Ceiling2" type="CSGBox3D" parent="LevelCsg" unique_id=484515587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.25, 8, -17)
+size = Vector3(34.5, 1, 30)
+
+[node name="Wall" type="CSGBox3D" parent="LevelCsg" unique_id=944765569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.75, 3.5, 11)
+size = Vector3(101.5, 8, 2)
+
+[node name="Wall2" type="CSGBox3D" parent="LevelCsg" unique_id=1366070363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.5, -5)
+size = Vector3(56, 8, 10)
+
+[node name="Wall5" type="CSGBox3D" parent="LevelCsg" unique_id=52835316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, 3.5, -25.25)
+size = Vector3(11, 8, 13.5)
+
+[node name="Wall9" type="CSGBox3D" parent="LevelCsg" unique_id=1729087889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5, 3.5, -38.75)
+size = Vector3(11, 8, 13.5)
+
+[node name="Wall6" type="CSGBox3D" parent="LevelCsg" unique_id=1496799960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, 3.5, -19.25)
+size = Vector3(1, 8, 18.5)
+
+[node name="Wall7" type="CSGBox3D" parent="LevelCsg" unique_id=687152189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5, 3.5, -14.25)
+size = Vector3(1, 8, 8.5)
+
+[node name="Wall8" type="CSGBox3D" parent="LevelCsg" unique_id=1183021643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 3.5, -25.25)
+size = Vector3(12, 8, 13.5)
+
+[node name="Wall4" type="CSGBox3D" parent="LevelCsg" unique_id=1517056129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 3.5, -4.75)
+size = Vector3(56, 8, 10.5)
+
+[node name="Wall3" type="CSGBox3D" parent="LevelCsg" unique_id=491872861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, 5)
+size = Vector3(1, 9, 14)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelCsg" unique_id=1260168590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelCsg" unique_id=1968446748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelCsg" unique_id=784060081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelCsg" unique_id=418466513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelCsg" unique_id=49525654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelCsg" unique_id=2091026370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelCsg" unique_id=1257859290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="LevelCsg" unique_id=1085650356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="LevelCsg" unique_id=1534904737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="LevelCsg" unique_id=201960608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="LevelCsg" unique_id=256242356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="LevelCsg" unique_id=1868416806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="LevelCsg" unique_id=1068280404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="LevelCsg" unique_id=957798310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="LevelCsg" unique_id=404381536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="LevelCsg" unique_id=798381550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="LevelCsg" unique_id=80140547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="LevelCsg" unique_id=1800814947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="LevelCsg" unique_id=180102947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="LevelCsg" unique_id=1618244843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97, 4, 11)
+operation = 2
+size = Vector3(2, 5, 3)
+
+[node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_07tpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1309673122]
+transform = Transform3D(0.8660254, 0.25, -0.4330127, -0.12940952, 0.9485882, 0.28884864, 0.4829629, -0.19411427, 0.85385394, 2.5, 1, 17)
+visible = false
+light_color = Color(0.98046875, 0.89668846, 0.7659912, 1)
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1800122413]
+transform = Transform3D(0.9573794, 0.1953832, -0.21272105, -0.12940957, 0.9485884, 0.28884867, 0.25822085, -0.24900964, 0.93344337, 12, 1, 17)
+light_color = Color(0.98046875, 0.89668846, 0.7659912, 1)
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="CameraStart" type="Camera3D" parent="." unique_id=1235102156]
+transform = Transform3D(-0.37056723, 0.060747307, -0.926817, 0, 0.9978589, 0.065403685, 0.92880565, 0.02423646, -0.3697738, 0.39457512, 2.3199458, 1.9602242)

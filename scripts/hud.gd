@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 			if not prompt.text.is_empty():
 				prompt_run.emit(prompt.text.strip_edges())
 
+			prompt.release_focus()
 			hide_prompt()
 		elif Input.is_action_just_pressed(&"cancel"):
 			hide_prompt()
@@ -38,9 +39,9 @@ func _process(_delta: float) -> void:
 			debug_drag_box.size = get_tree().root.get_mouse_position() - debug_drag_start
 
 func show_prompt() -> void:
-	prompt.text = ""
+	prompt.clear()
 	anim_player.play(&"prompt")
-	prompt.grab_focus()
+	prompt.grab_focus.call_deferred()
 	prompt_opened.emit()
 	PlayerStateSubsystem.push_block_movement_source()
 

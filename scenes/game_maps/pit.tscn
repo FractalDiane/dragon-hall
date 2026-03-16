@@ -4,6 +4,7 @@
 [ext_resource type="LightmapGIData" uid="uid://dhm0n8e3c0xsq" path="res://scenes/game_maps/pit.lmbake" id="2_kc1p8"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="3_y87wd"]
 [ext_resource type="InkStoryCompiled" uid="uid://kydy8fdpnd7a" path="res://dialogue/interactibles/chest.res" id="4_88qgg"]
+[ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lk4or"]
 
 [sub_resource type="Environment" id="Environment_kc1p8"]
 background_mode = 4
@@ -38,8 +39,9 @@ agent_max_slope = 86.81
 top_radius = 0.0
 bottom_radius = 5.0
 height = 18.0
+radial_segments = 5
 
-[sub_resource type="Shader" id="Shader_88qgg"]
+[sub_resource type="Shader" id="Shader_lk4or"]
 code = "shader_type spatial;
 render_mode unshaded;
 
@@ -61,20 +63,46 @@ void fragment() {
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_88qgg"]
 seed = 132
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lk4or"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_12sfg"]
 noise = SubResource("FastNoiseLite_88qgg")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lk4or"]
 render_priority = 0
-shader = SubResource("Shader_88qgg")
+shader = SubResource("Shader_lk4or")
 shader_parameter/color = Color(0.88235295, 0.9843137, 1, 1)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_lk4or")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_12sfg")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lk4or"]
 top_radius = 0.0
 bottom_radius = 8.0
 height = 18.0
+
+[sub_resource type="Shader" id="Shader_88qgg"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 color : source_color;
+uniform sampler2D noise_texture;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 albedo = color * texture(noise_texture, UV + TIME * 0.04).rgb;
+	ALBEDO = albedo;
+	EMISSION = albedo * 0.1;
+	ALPHA = 0.02;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5u817"]
+seed = 132
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lk4or"]
+noise = SubResource("FastNoiseLite_5u817")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_12sfg"]
 render_priority = 0
@@ -84,6 +112,9 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_lk4or")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_88qgg"]
 radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12sfg"]
+size = Vector3(19.5, 11.5, 19.5)
 
 [node name="Pit" type="Node3D" unique_id=1064268908]
 
@@ -287,4 +318,13 @@ text_box_position = Rect2i(165, 182, 127, 44)
 [node name="CollisionShape3D" parent="Chest/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_88qgg")
 
+[node name="CameraZone" parent="." unique_id=1032360299 node_paths=PackedStringArray("camera") instance=ExtResource("5_lk4or")]
+camera = NodePath("../Camera")
+default_text_box_size = Rect2i(165, 182, 127, 44)
+
+[node name="CollisionShape3D" parent="CameraZone" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 5.75, -0.25)
+shape = SubResource("BoxShape3D_12sfg")
+
 [editable path="Chest/InteractionComponent"]
+[editable path="CameraZone"]

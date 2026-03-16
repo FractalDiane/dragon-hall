@@ -13,13 +13,14 @@ signal interaction_finished()
 func _ready() -> void:
 	pass
 
-func interact_with(action: String, proximity_level: int, item := "") -> void:
+func interact_with(action: String, proximity_level: int, box_position_: Rect2i, item := "") -> void:
 	var event_player: EventPlayer
+	var box_position := text_box_position if text_box_position != Rect2i() else box_position_
 	var level_required := proximity_levels_required[action] if proximity_levels_required.has(action) else 0
-	if proximity_level <= level_required:
-		event_player = EventPlaybackSubsystem.play_event(interact_event, self, text_box_position, action, item)
-	else:
-		event_player = EventPlaybackSubsystem.play_event(preload("res://dialogue/global/misc_responses.res"), self, text_box_position, "cant_reach", item)
+	#if proximity_level <= level_required:
+	event_player = EventPlaybackSubsystem.play_event(interact_event, self, box_position, action, item, {"range": proximity_level, "range_required": level_required})
+	#else:
+	#	event_player = EventPlaybackSubsystem.play_event(preload("res://dialogue/global/misc_responses.res"), self, box_position, "cant_reach", item)
 		
 	event_player.event_finished.connect(_on_interact_event_finished)
 	interaction_started.emit()

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dec1cfv443v87"]
+
+[ext_resource type="PackedScene" uid="uid://f1eyyqvrdo5m" path="res://models/props/torch.glb" id="1_tf0mo"]
+[ext_resource type="PackedScene" uid="uid://chmkxtad286ym" path="res://models/props/torch_flame.glb" id="2_3pqlk"]
+[ext_resource type="Script" uid="uid://sd7mdu3cl4rq" path="res://scripts/props/torch.gd" id="2_4kufo"]
+[ext_resource type="AudioStream" uid="uid://c6g2nmqutrq7c" path="res://audio/650574__soundofsong__fire-crackling-loop.wav" id="3_55iaq"]
+
+[sub_resource type="Shader" id="Shader_55iaq"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D tex;
+uniform vec3 offset;
+
+void vertex() {
+	float noise_value = texture(tex, VERTEX.xz / 2.0 + 0.5 * TIME * 3.0).x;
+	VERTEX += noise_value * offset.x;
+	VERTEX -= offset;
+}
+
+void fragment() {
+	ALBEDO = texture(tex, UV + TIME * 0.2).rgb;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_3pqlk"]
+offsets = PackedFloat32Array(0, 0.39408866, 0.71428573, 1)
+colors = PackedColorArray(0.921875, 0, 0, 1, 1, 0.421875, 0, 1, 1, 0.6796875, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3pqlk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4kufo"]
+noise = SubResource("FastNoiseLite_3pqlk")
+color_ramp = SubResource("Gradient_3pqlk")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55iaq"]
+render_priority = 0
+shader = SubResource("Shader_55iaq")
+shader_parameter/tex = SubResource("NoiseTexture2D_4kufo")
+shader_parameter/offset = Vector3(4, 4, 4)
+
+[node name="torch" unique_id=1692782894 instance=ExtResource("1_tf0mo")]
+script = ExtResource("2_4kufo")
+
+[node name="Cube" parent="." index="0" unique_id=2022071398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Light" type="OmniLight3D" parent="." index="1" unique_id=359900178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8405336, 1.6117382, 0)
+light_color = Color(1, 0.55842525, 0.20392156, 1)
+light_energy = 1.2
+light_size = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="torch_flame" parent="." index="2" unique_id=1151195090 instance=ExtResource("2_3pqlk")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0.8283541, 1.1818563, 0)
+
+[node name="Cube_001" parent="torch_flame" index="0" unique_id=1776409471]
+transform = Transform3D(0.43462026, 0, 0, 0, 0.43462026, 0, 0, 0, 0.43462026, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_55iaq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3" unique_id=1892734108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8467288, 1.9301724, 0)
+stream = ExtResource("3_55iaq")
+volume_db = -12.0
+autoplay = true
+
+[editable path="torch_flame"]

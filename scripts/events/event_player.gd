@@ -28,7 +28,7 @@ var ink_story: InkStory = null
 
 ###############################################################################
 
-func _init(event: InkStoryCompiled, caller_: Node, text_box_size: Rect2i, interact_verb: String, interact_item: String) -> void:
+func _init(event: InkStoryCompiled, caller_: Node, text_box_size: Rect2i, interact_verb: String, interact_item: String, set_variables := {}) -> void:
 	ink_story_file = event
 	caller = caller_
 	current_dialogue_size = text_box_size
@@ -38,6 +38,9 @@ func _init(event: InkStoryCompiled, caller_: Node, text_box_size: Rect2i, intera
 	
 	ink_story.set_variable(&"interact_verb", interact_verb)
 	ink_story.set_variable(&"interact_item", interact_item)
+	
+	for vari in set_variables:
+		ink_story.set_variable(vari, set_variables[vari])
 	
 	#Utils.bind_ink_externals(ink_story, true)
 	

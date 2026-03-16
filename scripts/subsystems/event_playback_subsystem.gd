@@ -2,9 +2,9 @@ extends Node
 
 signal event_finished(event: InkStoryCompiled)
 
-func play_event(event: InkStoryCompiled, caller: Node, text_box_size := Rect2i(), interact_verb := "", interact_item := "") -> EventPlayer:
+func play_event(event: InkStoryCompiled, caller: Node, text_box_size := Rect2i(), interact_verb := "", interact_item := "", set_variables := {}) -> EventPlayer:
 	if event != null:
-		var player := EventPlayer.new(event, caller, text_box_size, interact_verb, interact_item)
+		var player := EventPlayer.new(event, caller, text_box_size, interact_verb, interact_item, set_variables)
 		get_tree().current_scene.add_child(player)
 		
 		PlayerStateSubsystem.push_block_movement_source()
