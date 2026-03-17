@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED := 5.0
 
 const EVENT_INVENTORY := preload("res://dialogue/global/cmd_inventory.res")
+const EVENT_LOOKS := preload("res://dialogue/global/room_looks.res")
 const EVENT_RESPONSES := preload("res://dialogue/global/misc_responses.res")
 
 @export var camera: Camera3D = null
@@ -64,12 +65,14 @@ func _on_hud_prompt_run(prompt: String) -> void:
 	var verb := prompt_split[0]
 	if len(prompt_split) == 1:
 		match verb:
+			"look":
+				EventPlaybackSubsystem.play_event(EVENT_LOOKS, self, current_camera_zone.default_text_box_size, "", "",
+				{"room_name": (get_tree().current_scene as Room).room_name})
 			"inventory":
 				EventPlaybackSubsystem.play_event(EVENT_INVENTORY, self, Rect2i(20, 180, 280, 40))
 	else:
 		var target := prompt_split[1]
 		
-		#var objects := looks_in_range if verb == "look" else interacts_in_range
 		var found := false
 		for level in range(len(interacts_in_range)):
 			for obj: InteractionComponent in interacts_in_range[level]:

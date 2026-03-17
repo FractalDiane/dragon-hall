@@ -6,5 +6,8 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if PlayerStateSubsystem.can_player_move():
-		camera.current = true
-		(body as Player).current_camera_zone = self
+		change_camera(body as Player)
+
+func change_camera(player: Player) -> void:
+	camera.current = true
+	player.current_camera_zone = self

@@ -11,8 +11,9 @@ var debug_dragging := false
 var debug_drag_start := Vector2()
 var debug_drag_box: ColorRect = null
 
-@onready var anim_player := $AnimationPlayer as AnimationPlayer
+@onready var anim_player_prompt := $AnimationPlayerPrompt as AnimationPlayer
 @onready var prompt := %Text as LineEdit
+@onready var fade := $Fade as ColorRect
 
 func _process(_delta: float) -> void:
 	if prompt_open:
@@ -40,16 +41,25 @@ func _process(_delta: float) -> void:
 
 func show_prompt() -> void:
 	prompt.clear()
-	anim_player.play(&"prompt")
+	anim_player_prompt.play(&"prompt")
 	prompt.grab_focus.call_deferred()
 	prompt_opened.emit()
 	PlayerStateSubsystem.push_block_movement_source()
 
 func hide_prompt() -> void:
-	anim_player.play_backwards(&"prompt")
+	anim_player_prompt.play_backwards(&"prompt")
 	
 func is_prompt_open() -> bool:
 	return prompt_open
+	
+	
+func fade_out(time: float) -> void:
+	var tween := create_tween()
+	tween.tween_property(fade, ^"color:a", 1.0, time)
+	
+func fade_in(time: float) -> void:
+	var tween := create_tween()
+	tween.tween_property(fade, ^"color:a", 0.0, time)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"prompt":

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d4iql5nx6lq4m"]
+
+[sub_resource type="Shader" id="Shader_18gb3"]
+code = "shader_type spatial;
+
+void fragment() {
+	ALBEDO = COLOR.rgb;
+	EMISSION = COLOR.rgb * (1.0 - COLOR.a);
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_18gb3")

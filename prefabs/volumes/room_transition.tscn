@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dmhyg5hkfp8mw"]
+
+[ext_resource type="Script" uid="uid://bgwokiue135ng" path="res://scripts/room_transition.gd" id="1_xqrij"]
+
+[node name="RoomTransition" type="Area3D" unique_id=935631823]
+collision_layer = 0
+collision_mask = 2048
+script = ExtResource("1_xqrij")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
+debug_color = Color(0.31585485, 2.9242663, 0, 0.7372549)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

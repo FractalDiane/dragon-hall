@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://cr3e64dxqb6bx"]
 
 [ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="1_2hbdx"]
+[ext_resource type="Script" uid="uid://bf21yjijnja0o" path="res://scripts/scene.gd" id="1_12sfg"]
 [ext_resource type="LightmapGIData" uid="uid://dhm0n8e3c0xsq" path="res://scenes/game_maps/pit.lmbake" id="2_kc1p8"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="3_y87wd"]
 [ext_resource type="InkStoryCompiled" uid="uid://kydy8fdpnd7a" path="res://dialogue/interactibles/chest.res" id="4_88qgg"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lk4or"]
+[ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_75qxc"]
+[ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="7_iuluq"]
 
 [sub_resource type="Environment" id="Environment_kc1p8"]
 background_mode = 4
@@ -116,7 +119,12 @@ radius = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_12sfg"]
 size = Vector3(19.5, 11.5, 19.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuluq"]
+size = Vector3(5, 5.5, 1)
+
 [node name="Pit" type="Node3D" unique_id=1064268908]
+script = ExtResource("1_12sfg")
+room_name = "Pit"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=259940508]
 environment = SubResource("Environment_kc1p8")
@@ -229,7 +237,7 @@ shape = SubResource("ConcavePolygonShape3D_kc1p8")
 navigation_mesh = SubResource("NavigationMesh_kc1p8")
 
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_2hbdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1573985, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1573985, 6.912428)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player" unique_id=1335564130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46160054, -1.3307972)
@@ -326,5 +334,20 @@ default_text_box_size = Rect2i(165, 182, 127, 44)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 5.75, -0.25)
 shape = SubResource("BoxShape3D_12sfg")
 
+[node name="FromHall" type="Marker3D" parent="." unique_id=1998604578 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1573985, 6.912428)
+script = ExtResource("7_iuluq")
+camera_zone = NodePath("../CameraZone")
+
+[node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("7_75qxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8.5)
+target_scene = "uid://cge5ntq4v7xsr"
+target_marker = "FromPit"
+
+[node name="CollisionShape3D" parent="RoomTransition" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.25)
+shape = SubResource("BoxShape3D_iuluq")
+
 [editable path="Chest/InteractionComponent"]
 [editable path="CameraZone"]
+[editable path="RoomTransition"]
