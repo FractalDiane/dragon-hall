@@ -33,4 +33,5 @@ func change_scene(target_scene: String, target_marker: String) -> void:
 	
 	HUD.fade_in(FADE_TIME)
 	await get_tree().create_timer(FADE_TIME).timeout
+	HUD.show_location_name((get_tree().current_scene as Room).room_name)
 	pop_block_movement_source()

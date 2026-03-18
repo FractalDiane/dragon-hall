@@ -9,6 +9,8 @@
 - "Lake":
 	A nice little subterranean lake.
 	The edge looks slippery...
+- "Balcony":
+	The wind is howling.
 - else:
 	MESSAGE NOT FOUND
 }

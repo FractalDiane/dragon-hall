@@ -4,7 +4,7 @@
 
 [sub_resource type="Environment" id="Environment_07tpo"]
 background_mode = 1
-background_color = Color(0.94140625, 0.86556053, 0.72076416, 1)
+background_color = Color(0.9411765, 0.8666667, 0.72156864, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.5546875, 0.5546875, 0.5546875, 1)
 

@@ -11,6 +11,9 @@
 [ext_resource type="InkStoryCompiled" uid="uid://bsoxk5yvb17u7" path="res://dialogue/interactibles/corpse.res" id="7_w5u8w"]
 [ext_resource type="AudioStream" uid="uid://1t3348g4rgkb" path="res://audio/676380__sieuamthanh__vang-nuoc-lon-tieng-on-kenh(1).wav" id="9_4yh3n"]
 [ext_resource type="AudioStream" uid="uid://0a6jyds87usb" path="res://audio/cartoon_slip.wav" id="9_artrb"]
+[ext_resource type="AudioStream" uid="uid://c7fr2055ub0ol" path="res://audio/lake.wav" id="10_1bcvi"]
+[ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="13_pojwt"]
+[ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="14_ih7ps"]
 
 [sub_resource type="Environment" id="Environment_xahea"]
 background_mode = 1
@@ -211,6 +214,9 @@ size = Vector3(9.118652, 2.5, 0.6435547)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oow0u"]
 size = Vector3(5.5, 2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7io2l"]
+size = Vector3(2.100174, 3.5, 11.5)
 
 [node name="Lake" type="Node3D" unique_id=573668120]
 script = ExtResource("1_irspt")
@@ -590,6 +596,12 @@ transform = Transform3D(0.4517341, 0, -0.89215255, 0, 1, 0, 0.89215255, 0, 0.451
 shape = SubResource("BoxShape3D_oow0u")
 debug_color = Color(18.892157, 0, 0, 0.827451)
 
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=597466781]
+stream = ExtResource("10_1bcvi")
+volume_db = -6.0
+pitch_scale = 0.4
+autoplay = true
+
 [node name="SoundLakeSlip" type="AudioStreamPlayer3D" parent="." unique_id=668426749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, 2)
 stream = ExtResource("9_artrb")
@@ -601,6 +613,21 @@ stream = ExtResource("9_4yh3n")
 [node name="LakeCenter" type="Marker3D" parent="." unique_id=625599167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
 
+[node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("13_pojwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -4)
+target_scene = "uid://cr3e64dxqb6bx"
+target_marker = "FromLake"
+
+[node name="CollisionShape3D" parent="RoomTransition" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.550087, 1.75, 0.5)
+shape = SubResource("BoxShape3D_7io2l")
+
+[node name="FromPit" type="Marker3D" parent="." unique_id=2036698664 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.1573985, -3.5)
+script = ExtResource("14_ih7ps")
+camera_zone = NodePath("../CameraZoneMain")
+metadata/_custom_type_script = "uid://cdxujor4bqtd7"
+
 [connection signal="body_entered" from="LakeSlipArea" to="LakeSlipArea" method="_on_body_entered"]
 
 [editable path="cave_pillar_1"]
@@ -609,3 +636,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
 [editable path="CameraZoneMain"]
 [editable path="CameraZone2"]
 [editable path="Objects/Corpse/InteractionComponent"]
+[editable path="RoomTransition"]

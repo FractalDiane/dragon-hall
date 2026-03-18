@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c7f2c6uoggm02"]
+
+[sub_resource type="Shader" id="Shader_lft5i"]
+code = "shader_type spatial;
+
+uniform sampler2D lava_texture;
+instance uniform vec2 speed_factor = vec2(0.012);
+instance uniform vec2 uv_scale = vec2(1.0);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	ALBEDO = texture(lava_texture, (UV * uv_scale) + TIME * speed_factor).rgb;
+	EMISSION = ALBEDO;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_lft5i"]
+offsets = PackedFloat32Array(0.3432836, 0.66169155)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4453125, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lft5i"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lft5i"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_lft5i")
+color_ramp = SubResource("Gradient_lft5i")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_lft5i")
+shader_parameter/lava_texture = SubResource("NoiseTexture2D_lft5i")

@@ -122,6 +122,9 @@ size = Vector3(19.5, 11.5, 19.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuluq"]
 size = Vector3(5, 5.5, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_afa5n"]
+size = Vector3(1, 4, 6.5)
+
 [node name="Pit" type="Node3D" unique_id=1064268908]
 script = ExtResource("1_12sfg")
 room_name = "Pit"
@@ -339,6 +342,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1573985, 6.912428)
 script = ExtResource("7_iuluq")
 camera_zone = NodePath("../CameraZone")
 
+[node name="FromLake" type="Marker3D" parent="." unique_id=1572159442 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.1573985, -2.587572)
+script = ExtResource("7_iuluq")
+camera_zone = NodePath("../CameraZone")
+
 [node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("7_75qxc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8.5)
 target_scene = "uid://cge5ntq4v7xsr"
@@ -348,6 +356,16 @@ target_marker = "FromPit"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.25)
 shape = SubResource("BoxShape3D_iuluq")
 
+[node name="RoomTransition2" parent="." unique_id=1201124353 instance=ExtResource("7_75qxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
+target_scene = "uid://cplq65jd68wup"
+target_marker = "FromPit"
+
+[node name="CollisionShape3D" parent="RoomTransition2" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_afa5n")
+
 [editable path="Chest/InteractionComponent"]
 [editable path="CameraZone"]
 [editable path="RoomTransition"]
+[editable path="RoomTransition2"]

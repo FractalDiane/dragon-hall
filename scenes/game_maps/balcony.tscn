@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://besycpmrllwud"]
+
+[ext_resource type="Script" uid="uid://bf21yjijnja0o" path="res://scripts/scene.gd" id="1_met41"]
+[ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="2_0knp3"]
+[ext_resource type="PackedScene" uid="uid://dum4r3msmdn2w" path="res://models/geometry/balcony_rail.glb" id="4_lr32s"]
+[ext_resource type="PackedScene" uid="uid://df4pvr5deo0js" path="res://models/geometry/balcony_base.glb" id="4_lt78m"]
+[ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lr32s"]
+[ext_resource type="AudioStream" uid="uid://ubrhx7hcwyns" path="res://audio/817188__craigsmith__gusty-wind-on-ridge.wav" id="6_s7xcj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_met41"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0knp3"]
+noise = SubResource("FastNoiseLite_met41")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_met41"]
+sky_top_color = Color(0.39453125, 0.64523315, 1, 1)
+sky_horizon_color = Color(0.9411765, 0.8666667, 0.72156864, 1)
+sky_cover = SubResource("NoiseTexture2D_0knp3")
+sky_cover_modulate = Color(1, 1, 1, 0.54901963)
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_0knp3"]
+sky_material = SubResource("ProceduralSkyMaterial_met41")
+
+[sub_resource type="Environment" id="Environment_met41"]
+background_mode = 2
+sky = SubResource("Sky_0knp3")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.4
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ow5ft"]
+vertices = PackedVector3Array(7.9618015, 1.1217082, 0.16964865, 4.4618015, 1.1217082, -2.3303514, 1.2118015, 1.1217082, -3.0803514, -3.5381985, 1.1217082, -2.5803514, -8.038198, 1.1217082, 0.16964865, -8.038198, 1.1217082, 7.4196486, 7.9618015, 1.1217082, 7.4196486)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(5, 0, 6)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ow5ft"]
+size = Vector3(17, 1.1300049, 8.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lt78m"]
+size = Vector3(8, 1.1300049, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lr32s"]
+size = Vector3(2, 1.1300049, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7xcj"]
+size = Vector3(20.5, 12, 12.5)
+
+[node name="Balcony" type="Node3D" unique_id=1757946971]
+script = ExtResource("1_met41")
+room_name = "Balcony"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955849561]
+environment = SubResource("Environment_met41")
+
+[node name="Player" parent="." unique_id=378074253 instance=ExtResource("2_0knp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=768497464]
+transform = Transform3D(-0.18301272, -0.7071068, 0.6830127, -0.18301271, 0.70710677, 0.68301266, -0.96592593, 0, -0.2588191, 0, 5.5, 0)
+light_color = Color(0.98039216, 0.8980392, 0.7647059, 1)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1191077062]
+navigation_mesh = SubResource("NavigationMesh_ow5ft")
+
+[node name="CameraMain" type="Camera3D" parent="." unique_id=2061111047]
+transform = Transform3D(0.91425806, -0.02264542, 0.4044989, 0, 0.99843657, 0.055896364, -0.40513226, -0.0511037, 0.91282874, 6.2589884, 3.8265603, 9.047096)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1322401803 groups=["floor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1051913404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06500244, 3.75)
+shape = SubResource("BoxShape3D_ow5ft")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor" unique_id=291794813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06500244, -1.75)
+shape = SubResource("BoxShape3D_lt78m")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor" unique_id=1045387536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.06500244, -1.25)
+shape = SubResource("BoxShape3D_lr32s")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floor" unique_id=830183330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.06500244, -1.25)
+shape = SubResource("BoxShape3D_lr32s")
+
+[node name="balcony_base" parent="." unique_id=1548168739 groups=["nav"] instance=ExtResource("4_lt78m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Cube_029" parent="balcony_base" index="0" unique_id=773649958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="balcony_rail" parent="." unique_id=317398776 instance=ExtResource("4_lr32s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Cube_030" parent="balcony_rail" index="0" unique_id=2146665158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CameraZone" parent="." unique_id=1032360299 node_paths=PackedStringArray("camera") instance=ExtResource("5_lr32s")]
+camera = NodePath("../CameraMain")
+default_text_box_size = Rect2i(142, 175, 145, 48)
+
+[node name="CollisionShape3D" parent="CameraZone" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1, 4.25)
+shape = SubResource("BoxShape3D_s7xcj")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1015432861]
+stream = ExtResource("6_s7xcj")
+volume_db = -4.0
+autoplay = true
+
+[editable path="balcony_base"]
+[editable path="balcony_rail"]
+[editable path="CameraZone"]

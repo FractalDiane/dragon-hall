@@ -12,8 +12,10 @@ var debug_drag_start := Vector2()
 var debug_drag_box: ColorRect = null
 
 @onready var anim_player_prompt := $AnimationPlayerPrompt as AnimationPlayer
-@onready var prompt := %Text as LineEdit
-@onready var fade := $Fade as ColorRect
+@onready var anim_player_location := $AnimationPlayerLocation as AnimationPlayer
+@onready var prompt := %PromptText as LineEdit
+@onready var location_name := %LocationText as Label
+@onready var fade := $HUD/Fade as ColorRect
 
 func _process(_delta: float) -> void:
 	if prompt_open:
@@ -51,8 +53,12 @@ func hide_prompt() -> void:
 	
 func is_prompt_open() -> bool:
 	return prompt_open
-	
-	
+
+func show_location_name(location: String) -> void:
+	location_name.text = location
+	anim_player_location.seek(0.0)
+	anim_player_location.play(&"location_name")
+
 func fade_out(time: float) -> void:
 	var tween := create_tween()
 	tween.tween_property(fade, ^"color:a", 1.0, time)
