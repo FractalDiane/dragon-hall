@@ -1,4 +1,4 @@
-{ interact_verb:
+{ INTERACT_VERB:
 - "look":
 	{ range:
 	- 0:

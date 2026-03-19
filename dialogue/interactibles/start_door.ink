@@ -1,4 +1,4 @@
-{ interact_verb:
+{ INTERACT_VERB:
 - "look":
 	This is where you came in.
 - "open":

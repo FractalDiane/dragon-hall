@@ -36,13 +36,14 @@ func _init(event: InkStoryCompiled, caller_: Node, text_box_size: Rect2i, intera
 	ink_story = InkStory.new()
 	ink_story.load_compiled_file(event)
 	
-	ink_story.set_variable(&"interact_verb", interact_verb)
-	ink_story.set_variable(&"interact_item", interact_item)
+	ink_story.set_variable(&"INTERACT_VERB", interact_verb)
+	ink_story.set_variable(&"INTERACT_ITEM", interact_item)
+	ink_story.set_variable(&"CALLER_PATH", String(caller_.get_parent().get_path()))
 	
 	for vari in set_variables:
 		ink_story.set_variable(vari, set_variables[vari])
 	
-	#Utils.bind_ink_externals(ink_story, true)
+	Utils.bind_ink_externals(ink_story, true)
 	
 	#ink_story.bind_external_function(&"get_item_animation", got_item_animation)
 	

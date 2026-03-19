@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://d4iql5nx6lq4m" path="res://shaders/shader_vertex_colors.tres" id="11_nkxb8"]
 [ext_resource type="PackedScene" uid="uid://cyh8cuf0k4m2m" path="res://prefabs/props/brazier.tscn" id="12_k7a6k"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="16_rdae7"]
+[ext_resource type="PackedScene" uid="uid://bcs1w7r5fl5rg" path="res://prefabs/interactibles/statuette.tscn" id="17_fdsyn"]
 
 [sub_resource type="Environment" id="Environment_8qqvp"]
 background_mode = 4
@@ -787,6 +788,9 @@ light_bake_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.38478, 1.4226499, 35.665646)
 script = ExtResource("16_rdae7")
 camera_zone = NodePath("../CameraZones/CameraZoneRightEnd")
+
+[node name="Statuette" parent="." unique_id=672196301 instance=ExtResource("17_fdsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.9660841, 1.5)
 
 [connection signal="body_entered" from="CameraZones/CameraZoneBehindStart" to="CameraZones/CameraZoneBehindStart" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraZones/CameraZoneMiddle" to="CameraZones/CameraZoneMiddle" method="_on_body_entered"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dragon Hall"
-run/main_scene="uid://3miyfvp8pm1s"
+run/main_scene="uid://cge5ntq4v7xsr"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

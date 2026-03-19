@@ -1,6 +1,8 @@
 extends Node
 
 var block_movement_sources := 0
+var inventory: Dictionary[StringName, int] = {}
+var items_picked_up: Dictionary[NodePath, bool] = {}
 
 func push_block_movement_source() -> void:
 	block_movement_sources += 1
@@ -13,6 +15,42 @@ func pop_block_movement_source() -> void:
 
 func can_player_move() -> bool:
 	return block_movement_sources == 0
+
+
+func has_item(item: StringName) -> bool:
+	return inventory.has(item)
+	
+	
+func has_item_count(item: StringName, count: int) -> bool:
+	return inventory.get(item, 0) >= count
+	
+	
+func add_item(item: StringName) -> void:
+	if not inventory.has(item):
+		inventory[item] = 0
+	
+	inventory[item] += 1
+	
+	
+func get_inventory_string() -> String:
+	if inventory.is_empty():
+		return ""
+		
+	var result := ""
+	for item in inventory:
+		var count := inventory[item]
+		result += "%s%s, " % [item.capitalize(), ("x%d" % count) if count > 1 else ""]
+		
+	return result.substr(0, len(result) - 2)
+	
+	
+func pick_up_item(path: NodePath) -> void:
+	items_picked_up[path] = true
+	get_tree().current_scene.get_node(path).queue_free()
+	
+	
+func is_item_picked_up(path: NodePath) -> bool:
+	return items_picked_up.has(path)
 
 
 func change_scene(target_scene: String, target_marker: String) -> void:

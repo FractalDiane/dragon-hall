@@ -1,7 +1,7 @@
-{ interact_verb:
+{ INTERACT_VERB:
 - "look":
 	She looks angry.
-- "talk":
+- "talk to":
 	Humans can't understand dragons.
 - else:
 	Cannot do.

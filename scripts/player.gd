@@ -4,7 +4,6 @@ extends CharacterBody3D
 const SPEED := 5.0
 
 const EVENT_INVENTORY := preload("res://dialogue/global/cmd_inventory.res")
-const EVENT_LOOKS := preload("res://dialogue/global/room_looks.res")
 const EVENT_RESPONSES := preload("res://dialogue/global/misc_responses.res")
 
 @export var camera: Camera3D = null
@@ -53,6 +52,19 @@ func _on_floor_input_event(_camera: Node, event: InputEvent, event_position: Vec
 		nav_agent.target_position.z = event_position.z
 
 ####################################################################################################
+
+func coalesce_verbs(verb: String) -> String:
+	match verb:
+		"get", "pick up", "pickup":
+			return "take"
+		"attack", "hit":
+			return "kill"
+		"toss":
+			return "throw"
+		_:
+			return verb
+
+####################################################################################################
 	
 func _on_interact_area_entered(area: Area3D, level: int) -> void:
 	interacts_in_range[level].push_back(area.get_parent() as InteractionComponent)
@@ -61,18 +73,43 @@ func _on_interact_area_exited(area: Area3D, level: int) -> void:
 	interacts_in_range[level].erase(area.get_parent() as InteractionComponent)
 	
 func _on_hud_prompt_run(prompt: String) -> void:
-	var prompt_split := prompt.split(" ")
-	var verb := prompt_split[0]
-	if len(prompt_split) == 1:
-		match verb:
-			"look":
-				EventPlaybackSubsystem.play_event(EVENT_LOOKS, self, current_camera_zone.default_text_box_size, "", "",
-				{"room_name": (get_tree().current_scene as Room).room_name})
-			"inventory":
-				EventPlaybackSubsystem.play_event(EVENT_INVENTORY, self, Rect2i(20, 180, 280, 40))
-	else:
-		var target := prompt_split[1]
+	var prompt_split := prompt.to_lower().split(" ")
+	if prompt_split.has("the"):
+		EventPlaybackSubsystem.play_event(EVENT_RESPONSES, self, current_camera_zone.default_text_box_size, "the")
+		return
 		
+	if len(prompt_split) == 1:
+		match prompt_split[0]:
+			"look":
+				var look_string := ""
+				var in_range := interacts_in_range[3].filter(func (obj: InteractionComponent): return not obj.hidden)
+				for i in range(len(in_range)):
+					var obj: InteractionComponent = in_range[i]
+					look_string += "an " if obj.aliases[0][0] in "aeiou" else "a "
+					look_string += "[color=#ffff00]%s[/color]" % obj.aliases[0]
+					if i < len(in_range) - 1:
+						if len(in_range) > 2:
+							look_string += ", "
+							if i == len(in_range) - 2:
+								look_string += "and "
+						else:
+							look_string += " and "
+					
+				EventPlaybackSubsystem.play_event(EVENT_RESPONSES, self, current_camera_zone.default_text_box_size, "look", "",
+				{"look_string": look_string})
+			"inventory":
+				EventPlaybackSubsystem.play_event(EVENT_INVENTORY, self, Rect2i(20, 180, 280, 40), "", "", {"inventory_string": PlayerStateSubsystem.get_inventory_string()})
+	else:
+		var target: String
+		var verb: String
+		if len(prompt_split) == 4 and prompt_split[3] == "with":
+			target = prompt_split[1]
+			prompt_split.remove_at(1)
+			verb = " ".join(prompt_split)
+		else:
+			target = prompt_split[-1]
+			verb = " ".join(prompt_split.slice(0, len(prompt_split) - 1))
+
 		var found := false
 		for level in range(len(interacts_in_range)):
 			for obj: InteractionComponent in interacts_in_range[level]:

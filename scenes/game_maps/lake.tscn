@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://gsc5yquiyc8k" path="res://models/geometry/cave_wall_1.glb" id="1_bj20v"]
 [ext_resource type="Script" uid="uid://bf21yjijnja0o" path="res://scripts/scene.gd" id="1_irspt"]
 [ext_resource type="PackedScene" uid="uid://bgb2npe5ujrsm" path="res://models/geometry/cave_wall_2.glb" id="2_5u817"]
+[ext_resource type="InkStoryCompiled" uid="uid://kbaq02e03abe" path="res://dialogue/interactibles/lake.res" id="3_7io2l"]
+[ext_resource type="InkStoryCompiled" uid="uid://cpj53iftkx7xj" path="res://dialogue/interactibles/fish.res" id="4_1lmp1"]
 [ext_resource type="PackedScene" uid="uid://bkrqgjf5rfoet" path="res://models/geometry/cave_pillar_1.glb" id="4_3s6tm"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="4_d6t0l"]
 [ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="4_hm7tr"]
@@ -14,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c7fr2055ub0ol" path="res://audio/lake.wav" id="10_1bcvi"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="13_pojwt"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="14_ih7ps"]
+[ext_resource type="PackedScene" uid="uid://g0t6vantlr12" path="res://models/characters/fish.glb" id="15_oow0u"]
 
 [sub_resource type="Environment" id="Environment_xahea"]
 background_mode = 1
@@ -57,7 +60,7 @@ void vertex() {
 void fragment() {
 	ALBEDO = texture(tex, UV + TIME * 0.01).rgb * color;
 	EMISSION = ALBEDO * 0.03;
-	ALPHA = 0.75;
+	ALPHA = 0.2;
 }
 
 //void light() {
@@ -90,6 +93,9 @@ shader = SubResource("Shader_xahea")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tex = SubResource("NoiseTexture2D_bj20v")
 shader_parameter/noise = SubResource("NoiseTexture2D_5u817")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7io2l"]
+radius = 8.906241
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hm7tr"]
 vertices = PackedVector3Array(-1.0956669, 10, -14.085136, -0.095666885, 10, -14.585136, -1.0956669, 10, -14.835136, -6.095667, 10, -10.335136, -1.0956669, 10, -13.085136, 1.9043331, 10, -11.585136, -7.345667, 10, -7.5851364, -1.8456669, 10, -1.8351364, 0.6543331, 10, -1.8351364, 11.404333, 10, -10.835136, 14.154333, 10, -10.085136, 14.154333, 10, -14.085136, -0.095666885, 10, -14.335136, 2.404333, 10, -12.835136, 5.404333, 10, -12.335136, 7.904333, 10, -10.585136, -7.345667, 10, -11.335136, -4.845667, 10, -13.835136, -13.595667, 10, -14.085136, -13.595667, 10, -5.5851364, -8.845667, 10, -8.335136, -6.595667, 1, -11.585136, -4.095667, 1, -12.335136, -4.095667, 1, -12.835136, -12.345667, 1, -12.835136, -12.345667, 1, -6.3351364, -9.095667, 1, -8.835136, -2.095667, 1, -12.835136, -2.345667, 1, -12.335136, -2.095667, 1, -11.835136, 0.15433311, 1, -12.085136, -0.095666885, 1, -12.835136, 7.404333, 1, -11.585136, 12.904333, 1, -9.585136, 12.904333, 1, -12.835136, 5.404333, 1, -12.835136, 2.654333, 1, -11.835136, 1.6543331, 1, -11.835136, 1.1543331, 1, -10.585136, 5.654333, 1, -11.085136, 8.404333, 1, 6.4148636, 7.904333, 1, 8.414864, 8.904333, 1, 8.664864, 11.404333, 1, 5.1648636, 9.654333, 1, 5.6648636, 10.154333, 1, -0.8351364, 9.904333, 1, 1.1648636, 10.654333, 1, 1.6648636, 11.404333, 1, 1.6648636, 12.904333, 1, 0.4148636, 3.154333, 1, -5.0851364, 5.654333, 1, -3.0851364, 7.904333, 1, -3.3351364, 8.154333, 1, -9.585136, 12.904333, 1, -7.8351364, 10.654333, 1, -9.085136, 10.654333, 1, 2.9148636, 0.15433311, 1, -10.335136, 1.6543331, 1, -5.5851364, 7.154333, 10, -9.335136, 5.154333, 10, -10.835136, 1.4043331, 10, -0.8351364, 14.154333, 10, -8.335136, 11.154333, 10, -9.335136, 13.404333, 10, 1.4148636, 14.154333, 10, -0.08513641, 1.1543331, 10, 0.6648636, -0.8456669, 1, -5.5851364, 0.15433311, 1, -4.5851364, -2.095667, 1, -10.085136, -3.345667, 1, -10.835136, -4.845667, 1, -10.585136, -5.345667, 1, -5.0851364, -3.095667, 1, -4.3351364, -1.8456669, 1, -5.5851364, -6.345667, 1, -9.835136, -10.595667, 1, -5.5851364, -7.345667, 1, -3.3351364, -2.345667, 10, -0.3351364, -13.595667, 10, -3.8351364, -13.595667, 10, -0.3351364, -7.345667, 1, 5.9148636, -6.845667, 1, 4.4148636, -7.345667, 1, 4.1648636, -7.095667, 1, 1.9148636, -7.595667, 1, 1.6648636, -12.345667, 1, 5.9148636, -7.095667, 1, -0.8351364, -12.345667, 1, -4.0851364, -1.5956669, -1.5, -2.3351364, -0.5956669, -1.5, -2.5851364, -1.0956669, -1.5, -3.5851364, -1.8456669, -1.5, -3.3351364, 1.4043331, -1.5, -3.3351364, 1.4043331, -1.5, -2.3351364, 2.654333, -1.5, -2.5851364, 2.154333, -1.5, -3.5851364, -4.345667, -0.75, -1.8351364, -4.095667, -0.75, -2.3351364, -4.345667, -0.75, -3.0851364, -5.595667, -0.75, -2.8351364, -5.345667, -0.75, -1.8351364, 4.904333, -2, -0.8351364, 4.904333, -1.75, -1.3351364, 3.654333, -1.75, -1.8351364, 8.154333, -2, 3.1648636, 8.154333, -1.75, 2.1648636, 7.404333, -2, 1.6648636, 7.654333, -2, 3.9148636, 5.404333, -2, 1.6648636, 4.404333, -1.75, 2.1648636, 4.904333, -2, 3.9148636, 7.154333, -2, -0.8351364, 5.404333, -1.75, 0.9148636, 7.654333, -1.75, -0.3351364, 2.404333, -1.75, -0.8351364, 3.154333, -2, 0.9148636, -2.095667, -1.5, -0.5851364, -3.345667, -1.5, -0.5851364, -2.595667, -1.5, 0.6648636, -2.095667, -1.5, 0.6648636, -2.845667, -1.5, 1.9148636, -1.3456669, -1.25, 1.9148636, 9.154333, 10, 8.914864, 10.154333, 10, 7.9148636, 10.654333, 10, 4.9148636, 5.154333, 10, 15.164864, 7.904333, 10, 11.914864, 0.15433311, 10, 1.6648636, -2.095667, 10, 1.1648636, 4.404333, 10, 17.664864, -12.595667, 10, 11.414864, -12.595667, 10, 17.664864, -13.595667, 10, 11.164864, -0.5956669, -0.75, 0.4148636, 0.15433311, -0.5, 1.1648636, 0.6543331, -0.75, 0.4148636, 0.4043331, -0.75, -0.5851364, -0.5956669, -0.75, -0.5851364, -5.595667, -1.5, -0.08513641, -5.845667, -1.5, 0.4148636, -5.345667, -1.5, 1.1648636, -4.345667, -1.25, 0.9148636, -4.595667, -1.5, -0.08513641, 12.904333, 10, 2.6648636, 0.4043331, -0.75, 2.4148636, 1.6543331, -0.75, 2.4148636, 1.4043331, -0.75, 1.4148636, 0.4043331, -0.75, 1.1648636, 15.404333, 10, 1.9148636, 14.654333, 10, 1.9148636, 14.154333, 10, 3.4148636, 14.154333, 10, 5.4148636, 15.654333, 10, 4.9148636, 16.154333, 10, 3.6648636, 14.154333, 10, 11.164864, 11.904333, 10, 5.4148636, 11.404333, 10, 8.664864, 13.154333, 10, 11.414864, 13.154333, 10, 17.664864, 9.904333, 10, 11.664864, 5.904333, 10, 16.914864, 5.904333, 10, 17.664864, -5.345667, -1.5, 2.4148636, -5.595667, -1.5, 2.9148636, -5.095667, -1.5, 3.6648636, -4.345667, -1.5, 2.4148636, -5.345667, -1.5, 5.4148636, -3.845667, -1.25, 5.9148636, -1.8456669, -1.5, 4.6648636, -0.8456669, -1.5, 4.4148636, -1.0956669, -1.5, 3.4148636, -2.095667, -1.5, 3.4148636, 0.6543331, -0.75, 4.1648636, 1.1543331, -0.75, 5.4148636, 1.9043331, -0.75, 4.9148636, 1.6543331, -0.75, 3.9148636, 5.904333, -2.25, 7.4148636, 6.404333, -2.25, 5.9148636, 5.154333, -2.25, 4.9148636, 3.654333, -2, 5.6648636, 4.154333, -2.25, 7.4148636, -5.845667, 1, 8.164864, -5.845667, 1, 7.1648636, -0.5956669, 1, 10.914864, -1.8456669, 1, 9.414864, -3.595667, 1, 9.914864, -12.345667, 1, 10.914864, -4.345667, 1, 9.414864, -0.3456669, -0.75, 5.9148636, -1.3456669, -0.75, 6.1648636, -1.3456669, -0.75, 6.9148636, -0.3456669, -0.75, 7.4148636, 1.1543331, -1, 7.9148636, 2.654333, -1.5, 7.9148636, 2.404333, -1.5, 6.6648636, 1.4043331, -1.25, 6.9148636, 1.1543331, -1, 7.6648636, 0.15433311, -1, 7.6648636, -0.095666885, -1, 8.914864, 0.6543331, -0.75, 8.914864, 11.154333, 1, 9.914864, 11.154333, 1, 10.914864, 12.904333, 1, 10.914864, 10.404333, 1, 8.914864, 12.904333, 1, 5.9148636, -2.845667, -1.5, 6.4148636, -3.595667, -1.5, 6.4148636, -3.845667, -1.5, 6.9148636, -3.345667, -1.5, 7.9148636, -2.595667, -1.25, 7.6648636, 0.6543331, 1, 10.664864, 4.654333, 1, 10.914864, 1.6543331, 1, 10.164864)
@@ -217,6 +223,55 @@ size = Vector3(5.5, 2.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7io2l"]
 size = Vector3(2.100174, 3.5, 11.5)
+
+[sub_resource type="Curve3D" id="Curve3D_7io2l"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.938872, -0.49634075, -2.9262462, 0, 0, 0, 0, 0, 0, 4.2969294, -0.38342607, -0.357998, 0, 0, 0, 0, 0, 0, 5.7269616, -0.3149495, 0.5930581, 0, 0, 0, 0, 0, 0, 6.652215, -0.22868538, 2.8598876, 0, 0, 0, 0, 0, 0, 5.3331404, -0.31462765, 6.1453137, 0, 0, 0, 0, 0, 0, 3.3879757, -0.40875447, 8.247454, 0, 0, 0, 0, 0, 0, 0.62288845, -0.5135829, 7.161031, 0, 0, 0, 0, 0, 0, -2.8922853, -0.8526182, 5.0393505, 0, 0, 0, 0, 0, 0, -4.1213613, -0.3475833, 1.3387539, 0, 0, 0, 0, 0, 0, -3.920058, -0.30073202, -0.20834017, 0, 0, 0, 0, 0, 0, -2.5204966, -0.39332747, -3.0640256),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oow0u"]
+
+[sub_resource type="Animation" id="Animation_oow0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7io2l"]
+resource_name = "move"
+length = 8.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lmp1"]
+_data = {
+&"RESET": SubResource("Animation_oow0u"),
+&"move": SubResource("Animation_7io2l")
+}
 
 [node name="Lake" type="Node3D" unique_id=573668120]
 script = ExtResource("1_irspt")
@@ -410,6 +465,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.043627977, 2.6038468)
 mesh = SubResource("PlaneMesh_xahea")
 surface_material_override/0 = SubResource("ShaderMaterial_bj20v")
 
+[node name="InteractionComponentLake" parent="Water" unique_id=1309288216 instance=ExtResource("6_m1fqb")]
+aliases = Array[String](["lake", "water"])
+interact_event = ExtResource("3_7io2l")
+
+[node name="CollisionShape3D" parent="Water/InteractionComponentLake/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_7io2l")
+debug_color = Color(0.8196078, 0.38419116, 0, 1)
+
+[node name="InteractionComponentFish" parent="Water/InteractionComponentLake" unique_id=1071020559 instance=ExtResource("6_m1fqb")]
+aliases = Array[String](["fish"])
+interact_event = ExtResource("4_1lmp1")
+
+[node name="CollisionShape3D" parent="Water/InteractionComponentLake/InteractionComponentFish/InteractArea" parent_id_path=PackedInt32Array(1071020559, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_7io2l")
+debug_color = Color(0.8196078, 0.38419116, 0, 1)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1927354479]
 navigation_mesh = SubResource("NavigationMesh_hm7tr")
 
@@ -544,11 +615,11 @@ shape = SubResource("BoxShape3D_hm7tr")
 [node name="Corpse" type="Node3D" parent="Objects" unique_id=998980662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.0401182, 7.890441)
 
-[node name="InteractionComponent" parent="Objects/Corpse" unique_id=1309288216 instance=ExtResource("6_m1fqb")]
+[node name="InteractionComponent" parent="Objects/Corpse" unique_id=142697058 instance=ExtResource("6_m1fqb")]
 aliases = Array[String](["corpse", "body"])
 interact_event = ExtResource("7_w5u8w")
 
-[node name="CollisionShape3D" parent="Objects/Corpse/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+[node name="CollisionShape3D" parent="Objects/Corpse/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(142697058, 268703641) index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_m1fqb")
 
 [node name="LakeSlipArea" type="Area3D" parent="." unique_id=933840547]
@@ -628,8 +699,29 @@ script = ExtResource("14_ih7ps")
 camera_zone = NodePath("../CameraZoneMain")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"
 
+[node name="FishPath" type="Path3D" parent="." unique_id=369101039]
+curve = SubResource("Curve3D_7io2l")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="FishPath" unique_id=496944585]
+transform = Transform3D(0.7366022, -0.02189162, 0.675967, 0, 0.9994836, 0.032368425, -0.67631716, -0.02384298, 0.7362208, 1.938872, -0.49634075, -2.9262462)
+rotation_mode = 4
+use_model_front = true
+
+[node name="fish2" parent="FishPath/PathFollow3D" unique_id=862001129 instance=ExtResource("15_oow0u")]
+transform = Transform3D(-0.2946427, 2.2351763e-09, 0.27052853, -0.008756587, 0.39979064, -0.009537126, -0.27038687, -0.012947375, -0.2944884, 0, 0, 0)
+
+[node name="fish" parent="FishPath/PathFollow3D/fish2" index="0" unique_id=1137131250]
+transform = Transform3D(0.087155804, 0, 0.9961947, 0, 1, 0, -0.9961947, 0, 0.087155804, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_oow0u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FishPath" unique_id=1870412659]
+libraries/ = SubResource("AnimationLibrary_1lmp1")
+autoplay = &"move"
+
 [connection signal="body_entered" from="LakeSlipArea" to="LakeSlipArea" method="_on_body_entered"]
 
+[editable path="Water/InteractionComponentLake"]
+[editable path="Water/InteractionComponentLake/InteractionComponentFish"]
 [editable path="cave_pillar_1"]
 [editable path="cave_pillar_2"]
 [editable path="cave_pillar_3"]
@@ -637,3 +729,4 @@ metadata/_custom_type_script = "uid://cdxujor4bqtd7"
 [editable path="CameraZone2"]
 [editable path="Objects/Corpse/InteractionComponent"]
 [editable path="RoomTransition"]
+[editable path="FishPath/PathFollow3D/fish2"]

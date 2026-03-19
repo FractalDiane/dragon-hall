@@ -1,10 +1,10 @@
-{ interact_verb:
+{ INTERACT_VERB:
 - "look":
 	It's closed.
 - "open":
 	-> range_check ->
 	It's locked.
-- "pick up":
+- "take":
 	-> range_check ->
 	Too heavy.
 - "kick":
