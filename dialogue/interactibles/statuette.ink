@@ -2,7 +2,7 @@
 - "look":
 	A small idol shaped like a dragon.
 - "take":
-	~ add_item("idol")
+	~ add_item("Idol")
 	~ pick_up_item(CALLER_PATH)
 	Taken.
 - else:

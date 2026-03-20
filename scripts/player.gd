@@ -6,8 +6,6 @@ const SPEED := 5.0
 const EVENT_INVENTORY := preload("res://dialogue/global/cmd_inventory.res")
 const EVENT_RESPONSES := preload("res://dialogue/global/misc_responses.res")
 
-@export var camera: Camera3D = null
-
 var current_camera_zone: CameraZone = null
 var interacts_in_range: Array[Array] = [[], [], [], []]
 

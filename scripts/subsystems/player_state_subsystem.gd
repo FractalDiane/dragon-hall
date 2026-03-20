@@ -4,6 +4,10 @@ var block_movement_sources := 0
 var inventory: Dictionary[StringName, int] = {}
 var items_picked_up: Dictionary[NodePath, bool] = {}
 
+func _ready() -> void:
+	HUD.show_location_name((get_tree().current_scene as Room).room_name)
+
+
 func push_block_movement_source() -> void:
 	block_movement_sources += 1
 	
@@ -39,7 +43,7 @@ func get_inventory_string() -> String:
 	var result := ""
 	for item in inventory:
 		var count := inventory[item]
-		result += "%s%s, " % [item.capitalize(), ("x%d" % count) if count > 1 else ""]
+		result += "[color=#ffff00]%s[/color]%s, " % [item, ("x%d" % count) if count > 1 else ""]
 		
 	return result.substr(0, len(result) - 2)
 	

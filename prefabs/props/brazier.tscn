@@ -47,6 +47,7 @@ shader_parameter/offset = Vector3(4, 4, 4)
 
 [node name="brazier" unique_id=1395035308 instance=ExtResource("1_yfpgh")]
 script = ExtResource("2_dq00c")
+metadata/_edit_group_ = true
 
 [node name="Cube_028" parent="." index="0" unique_id=2002877036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

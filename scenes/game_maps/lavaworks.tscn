@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://do5of7ps1aq7b" path="res://models/props/lava_pipe_big.glb" id="8_csqpx"]
 [ext_resource type="PackedScene" uid="uid://c5u7ftj644qvl" path="res://models/props/lava_flow.glb" id="9_3doaq"]
 [ext_resource type="AudioStream" uid="uid://evka7ohx2v1n" path="res://audio/474851__fission9__lava-loop-3.wav" id="10_1q75i"]
+[ext_resource type="PackedScene" uid="uid://bcdqcqpunbjp4" path="res://models/props/lever.glb" id="11_0f21i"]
+[ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="12_ks0ot"]
+[ext_resource type="InkStoryCompiled" uid="uid://cmpebi3j6o7nq" path="res://dialogue/interactibles/lever.res" id="13_is7uh"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_urkd0"]
 lightmap_size_hint = Vector2i(1024, 1024)
@@ -82,6 +85,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_figjc")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ks0ot"]
+radius = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_is7uh"]
+size = Vector3(8.5, 17, 11)
+
 [node name="Lavaworks" type="Node3D" unique_id=313511328]
 script = ExtResource("1_urkd0")
 room_name = "Lavaworks"
@@ -97,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, -2.5, -0.25)
 size = Vector3(7, 6, 12.5)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="LevelCsg" unique_id=1072599945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5, -2.5, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, -2.5, -0.25)
 size = Vector3(7, 6, 8.5)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LevelCsg" unique_id=1276959868]
@@ -237,9 +246,29 @@ instance_shader_parameters/uv_scale = Vector2(0.39, 0.36)
 stream = ExtResource("10_1q75i")
 autoplay = true
 
+[node name="lever" parent="." unique_id=659446970 instance=ExtResource("11_0f21i")]
+transform = Transform3D(-0.35, 0, -3.059797e-08, 0, 0.35, 0, 3.059797e-08, 0, -0.35, 8.456765, 0.6781926, 8.7376795)
+
+[node name="Cube_039" parent="lever" index="0" unique_id=417110556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="InteractionComponent" parent="lever" unique_id=1309288216 instance=ExtResource("12_ks0ot")]
+aliases = Array[String](["lever", "switch"])
+interact_event = ExtResource("13_is7uh")
+
+[node name="CollisionShape3D" parent="lever/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4285713, 0)
+shape = SubResource("SphereShape3D_ks0ot")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="lever/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="1" unique_id=1979190248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.178574, -0.49999988, 5.8571434)
+shape = SubResource("BoxShape3D_is7uh")
+
 [editable path="CameraZoneStart"]
 [editable path="lava_pipe"]
 [editable path="lava_pipe2"]
 [editable path="lava_pipe3"]
 [editable path="lava_pipe_big"]
 [editable path="lava_flow"]
+[editable path="lever"]
+[editable path="lever/InteractionComponent"]
