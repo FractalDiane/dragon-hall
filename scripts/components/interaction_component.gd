@@ -23,7 +23,7 @@ func interact_with(action: String, proximity_level: int, box_position_: Rect2i, 
 	var event_player: EventPlayer
 	var box_position := text_box_position if text_box_position != Rect2i() else box_position_
 	var level_required := proximity_levels_required[action] if proximity_levels_required.has(action) else 0
-	event_player = EventPlaybackSubsystem.play_event(interact_event, self, box_position, action, item, {"range": proximity_level, "range_required": level_required})
+	event_player = EventPlaybackSubsystem.play_event(interact_event, self, box_position, action, aliases[0] if item.is_empty() else item, {"range": proximity_level, "range_required": level_required})
 		
 	event_player.event_finished.connect(_on_interact_event_finished)
 	interaction_started.emit()

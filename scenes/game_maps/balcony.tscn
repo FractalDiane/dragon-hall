@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://df4pvr5deo0js" path="res://models/geometry/balcony_base.glb" id="4_lt78m"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lr32s"]
 [ext_resource type="AudioStream" uid="uid://ubrhx7hcwyns" path="res://audio/817188__craigsmith__gusty-wind-on-ridge.wav" id="6_s7xcj"]
+[ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_cbp5m"]
+[ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="8_5emel"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_met41"]
 
@@ -47,6 +49,9 @@ size = Vector3(2, 1.1300049, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s7xcj"]
 size = Vector3(20.5, 12, 12.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5emel"]
+size = Vector3(19.5, 4, 1)
+
 [node name="Balcony" type="Node3D" unique_id=1757946971]
 script = ExtResource("1_met41")
 room_name = "Balcony"
@@ -58,7 +63,7 @@ environment = SubResource("Environment_met41")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=768497464]
-transform = Transform3D(-0.18301272, -0.7071068, 0.6830127, -0.18301271, 0.70710677, 0.68301266, -0.96592593, 0, -0.2588191, 0, 5.5, 0)
+transform = Transform3D(-0.98038, -0.18301266, -0.07322326, -0.18301268, 0.7071067, 0.6830127, -0.07322334, 0.68301266, -0.7267268, 0, 5.5, 0)
 light_color = Color(0.98039216, 0.8980392, 0.7647059, 1)
 shadow_enabled = true
 
@@ -67,6 +72,9 @@ navigation_mesh = SubResource("NavigationMesh_ow5ft")
 
 [node name="CameraMain" type="Camera3D" parent="." unique_id=2061111047]
 transform = Transform3D(0.91425806, -0.02264542, 0.4044989, 0, 0.99843657, 0.055896364, -0.40513226, -0.0511037, 0.91282874, 6.2589884, 3.8265603, 9.047096)
+
+[node name="CameraMainMaybe" type="Camera3D" parent="." unique_id=48118500]
+transform = Transform3D(0.901444, 0.12869884, 0.41332227, 0, 0.95478487, -0.29729757, -0.4328957, 0.26799712, 0.8606851, 4.9569793, 2.1112957, 7.756205)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1322401803 groups=["floor"]]
 
@@ -111,6 +119,22 @@ stream = ExtResource("6_s7xcj")
 volume_db = -4.0
 autoplay = true
 
+[node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("7_cbp5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+target_scene = "uid://c75vnthx0h5mb"
+target_marker = "FromBalcony"
+
+[node name="CollisionShape3D" parent="RoomTransition" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2, 0.25)
+shape = SubResource("BoxShape3D_5emel")
+
+[node name="FromStairway" type="Marker3D" parent="." unique_id=1863750082 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+script = ExtResource("8_5emel")
+camera_zone = NodePath("../CameraZone")
+metadata/_custom_type_script = "uid://cdxujor4bqtd7"
+
 [editable path="balcony_base"]
 [editable path="balcony_rail"]
 [editable path="CameraZone"]
+[editable path="RoomTransition"]

@@ -97,6 +97,8 @@ func _on_hud_prompt_run(prompt: String) -> void:
 				{"look_string": look_string})
 			"inventory":
 				EventPlaybackSubsystem.play_event(EVENT_INVENTORY, self, Rect2i(20, 180, 280, 40), "", "", {"inventory_string": PlayerStateSubsystem.get_inventory_string()})
+			_:
+				EventPlaybackSubsystem.play_event(EVENT_RESPONSES, self, current_camera_zone.default_text_box_size, "error", "")
 	else:
 		var target: String
 		var verb: String
