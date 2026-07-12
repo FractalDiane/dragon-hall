@@ -1,8 +1,16 @@
 extends Node
 
+enum {
+	FORM_HUMAN,
+	FORM_DRAGON,
+	FORM_DRAGONSMALL,
+}
+
 var block_movement_sources := 0
 var inventory: Dictionary[StringName, int] = {}
 var items_picked_up: Dictionary[NodePath, bool] = {}
+
+var current_form := FORM_HUMAN
 
 func _ready() -> void:
 	HUD.show_location_name((get_tree().current_scene as Room).room_name)
@@ -19,6 +27,10 @@ func pop_block_movement_source() -> void:
 
 func can_player_move() -> bool:
 	return block_movement_sources == 0
+	
+	
+func get_current_form() -> int:
+	return current_form
 
 
 func has_item(item: StringName) -> bool:

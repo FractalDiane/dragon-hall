@@ -170,10 +170,12 @@ size = Vector3(4, 5.5, 1)
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1677311195 groups=["nav"]]
 mesh = SubResource("ArrayMesh_fy85y")
+metadata/_edit_lock_ = true
 
 [node name="Platform" type="MeshInstance3D" parent="." unique_id=740675227 groups=["nav"]]
 transform = Transform3D(1.2010434, 0, 0.49748847, 0, 1.3, 0, -0.49748847, 0, 1.2010434, 13.234407, 0.68672884, 9.25)
 mesh = SubResource("CylinderMesh_fy85y")
+metadata/_edit_lock_ = true
 
 [node name="AlchemyCircle" type="Decal" parent="." unique_id=720526488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.25, 1.5, 9.25)

@@ -15,9 +15,11 @@
 	
 	It's labeled "Potion of Draconification."
 - "take":
+	-> dragon_check ->
 	It's attached to a security chain.
 	You can pick it up, but you can't take it away from the table.
 - "drink":
+	-> dragon_check ->
 	-> range_check ->
 	{ INTERACT_ITEM:
 	- "redpotion":
@@ -40,15 +42,19 @@
 		"We are no closer to getting it working."
 	}
 - "pour greenpotion into":
+	-> dragon_check ->
 	You thought of the resulting color and gasped in horror.
 	You decided not to.
 - "pour bluepotion into":
+	-> dragon_check ->
 	You thought of the resulting color and realized it was not meant for human eyes.
 	You decided not to.
 - "pour purplepotion into":
+	-> dragon_check ->
 	You thought of the resulting color and vowed never to imagine this color again.
 	You decided not to.
 - "pour redpotion into":
+	-> dragon_check ->
 	{ INTERACT_ITEM == "yellowpotion":
 		The yellowpotion changed color!
 		It is now an [color=\#ffff00]orangepotion.[/color]
@@ -57,6 +63,7 @@
 		You decided not to.
 	}
 - "pour yellowpotion into":
+	-> dragon_check ->
 	{ INTERACT_ITEM == "redpotion":
 		The redpotion changed color!
 		It is now an [color=\#ffff00]orangepotion.[/color]
@@ -67,5 +74,9 @@
 - else:
 	Cannot do.
 }
+
+=== dragon_check ===
+{is_dragon_small(): Well, you can't exactly reach it anymore, can you? -> END}
+->->
 
 INCLUDE dialogue/funcs.ink

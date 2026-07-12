@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cpgwkx2rjugv1" path="res://models/props/chandelier.glb" id="4_niafs"]
 [ext_resource type="PackedScene" uid="uid://dec1cfv443v87" path="res://prefabs/props/torch.tscn" id="5_h1du6"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="7_gwbxc"]
+[ext_resource type="PackedScene" uid="uid://dv07cr4s4gxg" path="res://models/props/button.glb" id="8_w3rgq"]
+[ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="9_fi73m"]
+[ext_resource type="InkStoryCompiled" uid="uid://criqye6ohlpxj" path="res://dialogue/interactibles/library_button.res" id="10_wf3is"]
+[ext_resource type="Script" uid="uid://tt2hm6qyc6wj" path="res://scripts/rooms/library_puzzle_handler.gd" id="11_dajjl"]
+[ext_resource type="AudioStream" uid="uid://c451c56j0yi1j" path="res://audio/515355__flor657__opening-garage-door-4.mp3" id="12_8rldl"]
 
 [sub_resource type="Environment" id="Environment_klvwg"]
 background_mode = 4
@@ -104,6 +109,78 @@ size = Vector3(33.5, 7, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wf3is"]
 size = Vector3(33, 7, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3rgq"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wf3is"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fi73m"]
+albedo_color = Color(0, 0.3203125, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dajjl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf3is"]
+albedo_color = Color(0, 1, 0.109375, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8rldl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dajjl"]
+albedo_color = Color(1, 0.9375, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6vgi2"]
+
+[sub_resource type="Animation" id="Animation_dajjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Props/bookshelf32:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(27, 2.6976726, 14)]
+}
+
+[sub_resource type="Animation" id="Animation_8rldl"]
+resource_name = "remove_bookcase"
+length = 3.1333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Props/bookshelf32:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(27, 2.6976726, 14), Vector3(27, -2, 14)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundBookshelf")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_8rldl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vgi2"]
+_data = {
+&"RESET": SubResource("Animation_dajjl"),
+&"remove_bookcase": SubResource("Animation_8rldl")
+}
 
 [node name="Library" type="Node3D" unique_id=1762646339 groups=["nav"]]
 script = ExtResource("1_mdvoh")
@@ -636,6 +713,75 @@ camera = NodePath("../CameraStairs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 3.5, -6)
 shape = SubResource("BoxShape3D_wf3is")
 
+[node name="buttonred" parent="." unique_id=655615532 instance=ExtResource("8_w3rgq")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 22.5, 3.5, 15)
+metadata/_edit_group_ = true
+
+[node name="button" parent="buttonred" index="0" unique_id=1105140403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_w3rgq")
+
+[node name="InteractionComponent" parent="buttonred" unique_id=1309288216 instance=ExtResource("9_fi73m")]
+aliases = Array[String](["redbutton"])
+interact_event = ExtResource("10_wf3is")
+
+[node name="CollisionShape3D" parent="buttonred/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_wf3is")
+
+[node name="buttonblue" parent="." unique_id=1988369325 instance=ExtResource("8_w3rgq")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 21, 3.5, 15)
+metadata/_edit_group_ = true
+
+[node name="button" parent="buttonblue" index="0" unique_id=1105140403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_fi73m")
+
+[node name="InteractionComponent" parent="buttonblue" unique_id=1162725108 instance=ExtResource("9_fi73m")]
+aliases = Array[String](["bluebutton"])
+interact_event = ExtResource("10_wf3is")
+
+[node name="CollisionShape3D" parent="buttonblue/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1162725108, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_dajjl")
+
+[node name="buttongreen" parent="." unique_id=1525082566 instance=ExtResource("8_w3rgq")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 19.5, 3.5, 15)
+metadata/_edit_group_ = true
+
+[node name="button" parent="buttongreen" index="0" unique_id=1105140403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_wf3is")
+
+[node name="InteractionComponent" parent="buttongreen" unique_id=1416960539 instance=ExtResource("9_fi73m")]
+aliases = Array[String](["greenbutton"])
+interact_event = ExtResource("10_wf3is")
+
+[node name="CollisionShape3D" parent="buttongreen/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1416960539, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_8rldl")
+
+[node name="buttonyellow" parent="." unique_id=864042223 instance=ExtResource("8_w3rgq")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 18, 3.5, 15)
+metadata/_edit_group_ = true
+
+[node name="button" parent="buttonyellow" index="0" unique_id=1105140403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_dajjl")
+
+[node name="InteractionComponent" parent="buttonyellow" unique_id=1006789425 instance=ExtResource("9_fi73m")]
+aliases = Array[String](["yellowbutton"])
+interact_event = ExtResource("10_wf3is")
+
+[node name="CollisionShape3D" parent="buttonyellow/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1006789425, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_6vgi2")
+
+[node name="PuzzleHandler" type="Node" parent="." unique_id=434667454]
+script = ExtResource("11_dajjl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015998539]
+libraries/ = SubResource("AnimationLibrary_6vgi2")
+
+[node name="SoundBookshelf" type="AudioStreamPlayer3D" parent="." unique_id=217763130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3.5, 13)
+
 [editable path="Props/bookshelf"]
 [editable path="Props/bookshelf3"]
 [editable path="Props/bookshelf4"]
@@ -675,3 +821,11 @@ shape = SubResource("BoxShape3D_wf3is")
 [editable path="CameraZoneBackRight"]
 [editable path="CameraZoneLeft"]
 [editable path="CameraZoneStairs"]
+[editable path="buttonred"]
+[editable path="buttonred/InteractionComponent"]
+[editable path="buttonblue"]
+[editable path="buttonblue/InteractionComponent"]
+[editable path="buttongreen"]
+[editable path="buttongreen/InteractionComponent"]
+[editable path="buttonyellow"]
+[editable path="buttonyellow/InteractionComponent"]

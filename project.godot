@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 HUD="*uid://d1pgr64nho6iq"
 PlayerStateSubsystem="*uid://haf5st11k8qt"
 EventPlaybackSubsystem="*uid://em12rlk5re5b"
+EventBridgeSubsystem="*uid://dwoyf7dyux67r"
 
 [debug]
 
