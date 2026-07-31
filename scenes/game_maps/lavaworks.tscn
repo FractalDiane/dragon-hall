@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://evka7ohx2v1n" path="res://audio/474851__fission9__lava-loop-3.wav" id="10_1q75i"]
 [ext_resource type="PackedScene" uid="uid://bcdqcqpunbjp4" path="res://models/props/lever.glb" id="11_0f21i"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="12_ks0ot"]
-[ext_resource type="InkStoryCompiled" uid="uid://cmpebi3j6o7nq" path="res://dialogue/interactibles/lever.res" id="13_is7uh"]
+[ext_resource type="Resource" uid="uid://cmpebi3j6o7nq" path="res://dialogue/interactibles/lever.res" id="13_is7uh"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_urkd0"]
 lightmap_size_hint = Vector2i(1024, 1024)

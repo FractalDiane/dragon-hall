@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b2wnnx42bvb76" path="res://models/items/potion_bottle.glb" id="6_us7qj"]
 [ext_resource type="PackedScene" uid="uid://bx3k7k2w7lqbe" path="res://models/items/potion_filling.glb" id="7_gcvph"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="8_eewix"]
-[ext_resource type="InkStoryCompiled" uid="uid://udf0r6cjs5um" path="res://dialogue/interactibles/potion.res" id="9_aua0i"]
+[ext_resource type="Resource" uid="uid://udf0r6cjs5um" path="res://dialogue/interactibles/potion.res" id="9_aua0i"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fy85y"]
 lightmap_size_hint = Vector2i(734, 786)

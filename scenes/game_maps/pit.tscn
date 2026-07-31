@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bf21yjijnja0o" path="res://scripts/scene.gd" id="1_12sfg"]
 [ext_resource type="LightmapGIData" uid="uid://dhm0n8e3c0xsq" path="res://scenes/game_maps/pit.lmbake" id="2_kc1p8"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="3_y87wd"]
-[ext_resource type="InkStoryCompiled" uid="uid://kydy8fdpnd7a" path="res://dialogue/interactibles/chest.res" id="4_88qgg"]
+[ext_resource type="Resource" uid="uid://kydy8fdpnd7a" path="res://dialogue/interactibles/chest.res" id="4_88qgg"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lk4or"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_75qxc"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="7_iuluq"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctvnwiw5cvccl" path="res://models/items/statuette.glb" id="1_11wnc"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="2_nfu0t"]
-[ext_resource type="InkStoryCompiled" uid="uid://cfhf3nnhsnrrx" path="res://dialogue/interactibles/statuette.res" id="3_bu556"]
+[ext_resource type="Resource" uid="uid://cfhf3nnhsnrrx" path="res://dialogue/interactibles/statuette.res" id="3_bu556"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nfu0t"]
 
