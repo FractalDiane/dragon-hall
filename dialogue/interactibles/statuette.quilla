@@ -1,0 +1,9 @@
+@switch INTERACT_VERB
+@case "look"
+	A small idol shaped like a dragon.
+@case "take"
+	@do add_item "Idol"
+	@do pick_up_item CALLER_PATH
+	Taken.
+@case else
+	Cannot do.

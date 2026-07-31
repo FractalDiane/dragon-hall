@@ -12,7 +12,9 @@ config_version=5
 
 config/name="Dragon Hall"
 run/main_scene="uid://cge5ntq4v7xsr"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -36,6 +38,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=960
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quilla/plugin.cfg")
 
 [global_group]
 

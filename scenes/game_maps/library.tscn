@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="7_gwbxc"]
 [ext_resource type="PackedScene" uid="uid://dv07cr4s4gxg" path="res://models/props/button.glb" id="8_w3rgq"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="9_fi73m"]
-[ext_resource type="InkStoryCompiled" uid="uid://criqye6ohlpxj" path="res://dialogue/interactibles/library_button.res" id="10_wf3is"]
+[ext_resource type="Resource" uid="uid://criqye6ohlpxj" path="res://dialogue/interactibles/library_button.res" id="10_wf3is"]
 [ext_resource type="Script" uid="uid://tt2hm6qyc6wj" path="res://scripts/rooms/library_puzzle_handler.gd" id="11_dajjl"]
 [ext_resource type="AudioStream" uid="uid://c451c56j0yi1j" path="res://audio/515355__flor657__opening-garage-door-4.mp3" id="12_8rldl"]
 

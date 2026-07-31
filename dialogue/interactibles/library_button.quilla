@@ -1,0 +1,20 @@
+@switch INTERACT_VERB
+@case "look"
+	A button on the wall.
+	If you slam your entire body into it, you might be able to press it.
+@case "push"
+	@switch INTERACT_ITEM
+	@case "redbutton"
+		You pressed the red button.
+		@do push_library_button "R"
+	@case "bluebutton"
+		You pressed the blue button.
+		@do push_library_button "B"
+	@case "greenbutton"
+		You pressed the green button.
+		@do push_library_button "G"
+	@case "yellowbutton"
+		You pressed the yellow button.
+		@do push_library_button "Y"
+@case else
+	Cannot do.

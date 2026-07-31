@@ -7,7 +7,7 @@ signal interaction_finished()
 @export var aliases: Array[String] = []
 @export var hidden := false
 @export var can_pick_up := false
-@export var interact_event: InkStoryCompiled = null
+@export var interact_event: QuillaStoryCompiled = null
 @export var proximity_levels_required: Dictionary[String, int] = {"look": 3}
 @export var text_box_position := Rect2i()
 
@@ -28,5 +28,5 @@ func interact_with(action: String, proximity_level: int, box_position_: Rect2i, 
 	event_player.event_finished.connect(_on_interact_event_finished)
 	interaction_started.emit()
 
-func _on_interact_event_finished(_event: InkStoryCompiled, _next_event: String) -> void:
+func _on_interact_event_finished(_event: QuillaStoryCompiled, _next_event: String) -> void:
 	interaction_finished.emit()

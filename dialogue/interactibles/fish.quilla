@@ -1,0 +1,10 @@
+@switch INTERACT_VERB:
+@case "look"
+	It's just a fish.
+	For some reason, your mouth is watering just looking at it.
+@case "catch"
+	Too fast to catch with your bare hands.
+@case "throw rock at"
+	You missed.
+@case else
+	Cannot do.

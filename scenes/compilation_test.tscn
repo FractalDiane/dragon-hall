@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b7f6ug77f5lyd"]
+
+[sub_resource type="GDScript" id="GDScript_d6rn8"]
+script/source = "extends Node2D
+
+@export_file(\"*.quilla\") var file := \"\"
+
+func _ready() -> void:
+	var compiler := QuillaCompiler.new()
+	compiler.compile_story(file, self)
+"
+
+[node name="CompilationTest" type="Node2D" unique_id=2081475385]
+script = SubResource("GDScript_d6rn8")
+file = "res://dialogue/global/misc_responses.quilla"

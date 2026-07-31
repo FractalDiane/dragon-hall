@@ -1,0 +1,9 @@
+@switch death_type
+@case "lake"
+	The edge of the lake ended up being more slippery than you thought.
+@case "dragon_approach"
+	Your attempt to sneak up on the dragon was ill-conceived. To an astonishing extent.
+@case "lava"
+	You attempted to swim in the forbidden snack.
+@case else
+	MESSAGE NOT FOUND

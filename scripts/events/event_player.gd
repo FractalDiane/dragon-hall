@@ -1,7 +1,7 @@
 class_name EventPlayer
 extends Node
 
-signal event_finished(event: InkStoryCompiled, next_event: String)
+signal event_finished(event: QuillaStoryCompiled, next_event: String)
 
 enum {
 	CONTENT_MODE_TEXT,
@@ -22,28 +22,28 @@ var current_dialogue_size := Rect2i()
 var caller: Node = null
 var event_to_play_after := String()
 
-@export var ink_story_file: InkStoryCompiled = null
+@export var quilla_story_file: QuillaStoryCompiled = null
 
-var ink_story: InkStory = null
+var quilla_story: QuillaStory = null
 
 ###############################################################################
 
-func _init(event: InkStoryCompiled, caller_: Node, text_box_size: Rect2i, interact_verb: String, interact_item: String, set_variables := {}) -> void:
-	ink_story_file = event
+func _init(event: QuillaStoryCompiled, caller_: Node, text_box_size: Rect2i, interact_verb: String, interact_item: String, set_variables := {}) -> void:
+	quilla_story_file = event
 	caller = caller_
 	current_dialogue_size = text_box_size
 	
-	ink_story = InkStory.new()
-	ink_story.load_compiled_file(event)
+	quilla_story = QuillaStory.new(event.data)
+	#ink_story.load_compiled_file(event)
 	
-	ink_story.set_variable(&"INTERACT_VERB", interact_verb)
-	ink_story.set_variable(&"INTERACT_ITEM", interact_item)
-	ink_story.set_variable(&"CALLER_PATH", String(caller_.get_parent().get_path()))
+	quilla_story.set_variable(&"INTERACT_VERB", interact_verb)
+	quilla_story.set_variable(&"INTERACT_ITEM", interact_item)
+	quilla_story.set_variable(&"CALLER_PATH", String(caller_.get_parent().get_path()))
 	
 	for vari in set_variables:
-		ink_story.set_variable(vari, set_variables[vari])
+		quilla_story.set_variable(vari, set_variables[vari])
 	
-	Utils.bind_ink_externals(ink_story, true)
+	Utils.bind_quilla_externals(quilla_story, true)
 	
 	#ink_story.bind_external_function(&"get_item_animation", got_item_animation)
 	
@@ -54,13 +54,13 @@ func _ready() -> void:
 	
 
 func fetch_next_story_content() -> void:
-	if ink_story.can_continue():
-		next_text = ink_story.continue_story()
-		next_tags = ink_story.get_current_tags()
+	if quilla_story.can_continue():
+		next_text = quilla_story.continue_story()
+		next_tags.assign(quilla_story.get_current_tags())
 		content_mode = CONTENT_MODE_TEXT
-	elif not ink_story.get_current_choices().is_empty():
-		next_choices = ink_story.get_current_choices()
-		next_tags = ink_story.get_current_tags()
+	elif not quilla_story.get_current_choices().is_empty():
+		next_choices.assign(quilla_story.get_current_choices())
+		next_tags.assign(quilla_story.get_current_tags())
 		content_mode = CONTENT_MODE_CHOICE
 	else:
 		content_mode = CONTENT_MODE_END
@@ -123,7 +123,7 @@ func end_story() -> void:
 	
 	
 func end_story_post_dialogue() -> void:
-	event_finished.emit(ink_story_file, event_to_play_after)
+	event_finished.emit(quilla_story_file, event_to_play_after)
 	queue_free()
 	
 	

@@ -1,0 +1,63 @@
+@switch INTERACT_VERB
+@case "look"
+	@switch INTERACT_ITEM
+	@case "redpotion"
+		A vivid-colored potion.
+	@case "greenpotion"
+		A pretty-colored potion.
+	@case "bluepotion"
+		A lovely-colored potion.
+	@case "yellowpotion"
+		A pale-colored potion.
+	@case "purplepotion"
+		An odd-colored potion.
+	
+	It's labeled "Potion of Draconification."
+@case "take"
+	It's attached to a security chain.
+	You can pick it up, but you can't take it away from the table.
+@case "drink"
+	@switch INTERACT_ITEM
+	@case "redpotion"
+		Nothing happened.
+		There's a note on the bottom of the bottle.
+		"This one didn't work."
+	@case "greenpotion"
+		Nothing happened.
+		There's a note on the bottom of the bottle.
+		"This one also didn't work."
+	@case "bluepotion"
+		A lovely-colored potion.
+	@case "yellowpotion"
+		Nothing happened.
+		There's a note on the bottom of the bottle.
+		"0/3 success rate so far. Not good."
+	@case "purplepotion"
+		Nothing happened.
+		There's a note on the bottom of the bottle.
+		"We are no closer to getting it working."
+@case "pour greenpotion into"
+	You thought of the resulting color and gasped in horror.
+	You decided not to.
+@case "pour bluepotion into"
+	You thought of the resulting color and realized it was not meant for human eyes.
+	You decided not to.
+@case "pour purplepotion into"
+	You thought of the resulting color and vowed never to imagine this color again.
+	You decided not to.
+@case "pour redpotion into"
+	@if INTERACT_ITEM == "yellowpotion"
+		The yellowpotion changed color!
+		It is now an [color=\#ffff00]orangepotion.[/color]
+	@else
+		You thought of the resulting color and grimaced.
+		You decided not to.
+@case "pour yellowpotion into"
+	@if INTERACT_ITEM == "redpotion"
+		The redpotion changed color!
+		It is now an [color=\#ffff00]orangepotion.[/color]
+	@else
+		You thought of the resulting color and immediately stopped thinking because you got scared.
+		You decided not to.
+@case else
+	Cannot do.

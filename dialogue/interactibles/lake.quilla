@@ -1,0 +1,9 @@
+@switch INTERACT_VERB
+@case "look"
+	The water is a deep blue.
+	A fish frolicks happily.
+@case "jump into"
+	Oops! The water is frigid.
+	Lethally frigid, in fact!
+@case else
+	Cannot do.

@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://fgkbaqualx45"]
+
+[ext_resource type="Texture2D" uid="uid://crpfrk36o8216" path="res://textures/ui/logo.png" id="1_4ignj"]
+[ext_resource type="Script" uid="uid://bdn46wjlanwdw" path="res://scripts/title.gd" id="1_4rr2b"]
+[ext_resource type="AudioStream" uid="uid://mdtbj0a5bfn0" path="res://audio/music/title.ogg" id="2_wosw1"]
+[ext_resource type="FontFile" uid="uid://cwlp5vrcrh12x" path="res://fonts/Candal-Regular.ttf" id="3_p6dhs"]
+[ext_resource type="AudioStream" uid="uid://d1mdcmipbyk6j" path="res://audio/ui/540269__zepurple__hover-over-a-button.wav" id="4_b3w7a"]
+[ext_resource type="AudioStream" uid="uid://dsnyiw6pnx65c" path="res://audio/ui/364531__christopherderp__swords-clash-high-quality-3.wav" id="4_pyl7j"]
+[ext_resource type="AudioStream" uid="uid://dtcdxenpwsnvb" path="res://audio/music/817076__securesubset__spooky-pulsing-ambience.wav" id="5_yql1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyl7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3w7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rr2b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6dhs"]
+
+[sub_resource type="Theme" id="Theme_p6dhs"]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/focus = SubResource("StyleBoxEmpty_b3w7a")
+Button/styles/hover = SubResource("StyleBoxEmpty_4rr2b")
+Button/styles/normal = SubResource("StyleBoxEmpty_p6dhs")
+
+[sub_resource type="Animation" id="Animation_4ignj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeButtons:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FadeButtons:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music2:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.0]
+}
+
+[sub_resource type="Animation" id="Animation_wosw1"]
+resource_name = "fadein"
+length = 12.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.7, 6.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeButtons:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FadeButtons:mouse_filter")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_4rr2b"]
+resource_name = "fadeout"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeButtons:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-4.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6dhs"]
+_data = {
+&"RESET": SubResource("Animation_4ignj"),
+&"fadein": SubResource("Animation_wosw1"),
+&"fadeout": SubResource("Animation_4rr2b")
+}
+
+[node name="Title" type="Control" unique_id=195630871]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4rr2b")
+metadata/_edit_vertical_guides_ = [160.0]
+
+[node name="Background" type="ColorRect" parent="." unique_id=964245183]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1765127514]
+position = Vector2(160, 104)
+texture = ExtResource("1_4ignj")
+
+[node name="ButtonStart" type="Button" parent="." unique_id=1953399889]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 79.0
+offset_bottom = 230.0
+theme = SubResource("Theme_p6dhs")
+theme_override_fonts/font = ExtResource("3_p6dhs")
+text = "BEGIN"
+
+[node name="ButtonSettings" type="Button" parent="." unique_id=1450184862]
+layout_mode = 0
+offset_left = 96.5
+offset_top = 200.0
+offset_right = 223.5
+offset_bottom = 230.0
+theme = SubResource("Theme_p6dhs")
+theme_override_fonts/font = ExtResource("3_p6dhs")
+text = "CONFIG"
+
+[node name="ButtonExit" type="Button" parent="." unique_id=928774190]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 200.0
+offset_right = 303.0
+offset_bottom = 230.0
+theme = SubResource("Theme_p6dhs")
+theme_override_fonts/font = ExtResource("3_p6dhs")
+text = "EXIT"
+
+[node name="FadeButtons" type="ColorRect" parent="." unique_id=1047140472]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Fade" type="ColorRect" parent="." unique_id=730411390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1816013801]
+stream = ExtResource("2_wosw1")
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer" parent="." unique_id=1761949622]
+stream = ExtResource("5_yql1r")
+volume_db = -4.0
+
+[node name="SoundHover" type="AudioStreamPlayer" parent="." unique_id=1905964403]
+stream = ExtResource("4_b3w7a")
+max_polyphony = 8
+
+[node name="SoundClick" type="AudioStreamPlayer" parent="." unique_id=1944599991]
+stream = ExtResource("4_pyl7j")
+volume_db = -8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=654547495]
+libraries/ = SubResource("AnimationLibrary_p6dhs")
+autoplay = &"fadein"
+
+[connection signal="focus_entered" from="ButtonStart" to="SoundHover" method="play"]
+[connection signal="mouse_entered" from="ButtonStart" to="ButtonStart" method="grab_focus"]
+[connection signal="mouse_exited" from="ButtonStart" to="ButtonStart" method="release_focus"]
+[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="ButtonStart" to="SoundClick" method="play"]
+[connection signal="focus_entered" from="ButtonSettings" to="SoundHover" method="play"]
+[connection signal="mouse_entered" from="ButtonSettings" to="ButtonSettings" method="grab_focus"]
+[connection signal="mouse_exited" from="ButtonSettings" to="ButtonSettings" method="release_focus"]
+[connection signal="pressed" from="ButtonSettings" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="ButtonSettings" to="SoundClick" method="play"]
+[connection signal="focus_entered" from="ButtonExit" to="SoundHover" method="play"]
+[connection signal="mouse_entered" from="ButtonExit" to="ButtonExit" method="grab_focus"]
+[connection signal="mouse_exited" from="ButtonExit" to="ButtonExit" method="release_focus"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="ButtonExit" to="SoundClick" method="play"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

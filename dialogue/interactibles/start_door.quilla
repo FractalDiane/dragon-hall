@@ -1,0 +1,7 @@
+@switch INTERACT_VERB
+@case "look"
+	This is where you came in.
+@case "open"
+	It won't open.
+@case else
+	Cannot do.

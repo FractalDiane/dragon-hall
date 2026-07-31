@@ -197,3 +197,9 @@ shadow_enabled = true
 
 [node name="CameraStart" type="Camera3D" parent="." unique_id=1235102156]
 transform = Transform3D(-0.37056723, 0.060747307, -0.926817, 0, 0.9978589, 0.065403685, 0.92880565, 0.02423646, -0.3697738, 0.39457512, 2.3199458, 1.9602242)
+
+[node name="JustSoWeCanSee" type="OmniLight3D" parent="." unique_id=685820711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 2, -5)
+light_energy = 2.925
+editor_only = true
+omni_range = 61.009

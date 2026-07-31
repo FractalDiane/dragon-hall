@@ -1,0 +1,8 @@
+@switch INTERACT_VERB
+@case "look"
+	Looks like the death was very recent.
+	A small gold-colored key is on the ground next to their pocket.
+@case "take"
+	You decided it was best not to.
+@case else
+	Cannot do.

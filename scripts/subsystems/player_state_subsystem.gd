@@ -13,7 +13,9 @@ var items_picked_up: Dictionary[NodePath, bool] = {}
 var current_form := FORM_HUMAN
 
 func _ready() -> void:
-	HUD.show_location_name((get_tree().current_scene as Room).room_name)
+	var current_room := get_tree().current_scene as Room
+	if current_room != null:
+		HUD.show_location_name(current_room.room_name)
 
 
 func push_block_movement_source() -> void:

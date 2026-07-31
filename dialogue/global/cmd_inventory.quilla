@@ -1,0 +1,4 @@
+@if inventory_string != ""
+	You are carrying: {inventory_string}
+@else
+	Your inventory is empty.

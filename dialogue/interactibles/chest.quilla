@@ -1,0 +1,12 @@
+@switch INTERACT_VERB
+@case "look"
+	It's closed.
+@case "open"
+	It's locked.
+@case "take"
+	Too heavy.
+@case "kick"
+	Ouch!
+	No effect.
+@case else
+	Cannot do.

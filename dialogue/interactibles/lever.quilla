@@ -1,0 +1,29 @@
+@switch INTERACT_VERB
+@case "look"
+	The lever is currently set to OFF.
+@case "pull"
+	You pushed the lever.
+@case "push"
+	You pushed the lever.
+@case "flip"
+	You pushed the lever.
+@case "activate"
+	You pushed the lever.
+@case "throw rock at"
+	DIRECT HIT!
+@case "throw tissue at"
+	It blew back at your face.
+@case "throw fishpole at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case "throw idol at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case "throw potion at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case "throw fish at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case "throw sword at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case "throw coin at"
+	You decided it would be highly, HIGHLY counterproductive to throw that.
+@case else
+	Cannot do.

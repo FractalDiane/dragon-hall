@@ -1,0 +1,14 @@
+@switch INTERACT_VERB
+@case "look"
+	@if look_string != ""
+		Nearby is {look_string}.
+	@else
+		There is nothing of interest nearby.
+@case "no_object"
+	There's nothing like that here.
+@case "cant_reach"
+	Can't reach.
+@case "the"
+	THE error - The word THE is prohibited.
+@case else
+	Cannot do.
