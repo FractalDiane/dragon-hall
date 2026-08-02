@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://8lujpnhmh472"]
 
+[ext_resource type="Script" uid="uid://bf21yjijnja0o" path="res://scripts/scene.gd" id="1_3f5ds"]
 [ext_resource type="PackedScene" uid="uid://h4n6rm0o3x0w" path="res://prefabs/player.tscn" id="1_07tpo"]
+[ext_resource type="AudioStream" uid="uid://4oo8kw6ulqo" path="res://audio/music/Waltz of Harm.ogg" id="2_whtgw"]
+[ext_resource type="Script" uid="uid://c2o76igd8xpth" path="res://scripts/music_manual_loop.gd" id="4_yihw1"]
 
 [sub_resource type="Environment" id="Environment_07tpo"]
 background_mode = 1
@@ -9,6 +12,8 @@ ambient_light_source = 2
 ambient_light_color = Color(0.5546875, 0.5546875, 0.5546875, 1)
 
 [node name="Gallery" type="Node3D" unique_id=1992246360]
+script = ExtResource("1_3f5ds")
+room_name = "Gallery"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1360650150]
 environment = SubResource("Environment_07tpo")
@@ -203,3 +208,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 2, -5)
 light_energy = 2.925
 editor_only = true
 omni_range = 61.009
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=174952768]
+stream = ExtResource("2_whtgw")
+volume_db = -8.0
+autoplay = true
+script = ExtResource("4_yihw1")
+loop_time = 50.8

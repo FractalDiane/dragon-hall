@@ -3,13 +3,16 @@ extends CharacterBody3D
 
 const SPEED := 5.0
 
+const EVENT_HELP := preload("res://dialogue/global/cmd_help_general.res")
 const EVENT_INVENTORY := preload("res://dialogue/global/cmd_inventory.res")
 const EVENT_RESPONSES := preload("res://dialogue/global/misc_responses.res")
 
 var current_camera_zone: CameraZone = null
+var current_camera: Camera3D = null
 var interacts_in_range: Array[Array] = [[], [], [], []]
 
 @onready var nav_agent := $NavigationAgent as NavigationAgent3D
+@onready var mouse_cursor := $MouseCursor as Decal
 
 func _ready() -> void:
 	nav_agent.path_desired_distance = 0.1
@@ -27,6 +30,18 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if PlayerStateSubsystem.can_player_move() and Input.is_action_just_pressed(&"prompt"):
 		HUD.show_prompt()
+		
+	if current_camera != null:
+		var mouse_pos := get_viewport().get_mouse_position()
+		var origin := current_camera.project_ray_origin(mouse_pos)
+		var destination := origin + current_camera.project_ray_normal(mouse_pos) * 10000
+		var query := PhysicsRayQueryParameters3D.create(origin, destination, 4294967295 - 2048)
+		var result := get_world_3d().direct_space_state.intersect_ray(query)
+		var pos = result.get("position")
+		if pos != null:
+			mouse_cursor.global_position.x = pos.x
+			mouse_cursor.global_position.z = pos.z
+			mouse_cursor.global_position.y = pos.y + 0.1
 	
 
 func _physics_process(_delta: float) -> void:
@@ -78,6 +93,8 @@ func _on_hud_prompt_run(prompt: String) -> void:
 		
 	if len(prompt_split) == 1:
 		match prompt_split[0]:
+			"help":
+				EventPlaybackSubsystem.play_event(EVENT_HELP, self, current_camera_zone.default_text_box_size)
 			"look":
 				var look_string := ""
 				var in_range := interacts_in_range[3].filter(func (obj: InteractionComponent): return not obj.hidden)

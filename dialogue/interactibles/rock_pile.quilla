@@ -1,0 +1,14 @@
+@switch INTERACT_VERB
+@case "look"
+	A pile of rocks.
+	There are only a few of them, but there are also many of them.
+@case "take"
+	Taken.
+	@do add_item "Rocks"
+	You are now carrying an arbitrarily large number of rocks.
+	The pile of rocks did not change size at all.
+@case "kick"
+	It made a satisfying sound.
+	The pile of rocks did not change size at all.
+@case else
+	Cannot do.

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://mivurs55luo"]
+
+[sub_resource type="Shader" id="Shader_1vmeu"]
+code = "shader_type spatial;
+
+void fragment() {
+	ALBEDO = vec3(0.0);
+	EMISSION = vec3(0.3, 0.0, 0.0);
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_1vmeu")

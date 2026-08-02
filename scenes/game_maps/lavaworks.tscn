@@ -96,6 +96,7 @@ script = ExtResource("1_urkd0")
 room_name = "Lavaworks"
 
 [node name="LevelCsg" type="CSGCombiner3D" parent="." unique_id=908639961]
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LevelCsg" unique_id=334896424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2.5, -0.25)
@@ -138,7 +139,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 10.5, 2.5)
 size = Vector3(70, 1, 45)
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1659985612]
-visible = false
 mesh = SubResource("ArrayMesh_urkd0")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1789871323]

@@ -1,5 +1,6 @@
 @switch INTERACT_VERB
 @case "look"
+	An ornate chest.
 	It's closed.
 @case "open"
 	It's locked.
@@ -7,6 +8,9 @@
 	Too heavy.
 @case "kick"
 	Ouch!
+	No effect.
+@case "throw rock at"
+	Direct hit on the lock!
 	No effect.
 @case else
 	Cannot do.

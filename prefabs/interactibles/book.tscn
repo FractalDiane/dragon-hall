@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bp66lht8gpv44"]
+
+[ext_resource type="PackedScene" uid="uid://db6pd8mnxqdx3" path="res://models/props/book.glb" id="1_6m8k8"]
+[ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="2_frnof"]
+[ext_resource type="Resource" uid="uid://bhbm7mwl7co2d" path="res://dialogue/interactibles/book.res" id="3_frnof"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fp3m4"]
+
+[node name="book" unique_id=1395409286 instance=ExtResource("1_6m8k8")]
+
+[node name="book" parent="." index="0" unique_id=1120672315]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="InteractionComponent" parent="." index="1" unique_id=1309288216 instance=ExtResource("2_frnof")]
+aliases = Array[String](["book"])
+interact_event = ExtResource("3_frnof")
+
+[node name="CollisionShape3D" parent="InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_fp3m4")
+
+[editable path="InteractionComponent"]

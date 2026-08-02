@@ -12,4 +12,4 @@ func _ready() -> void:
 
 [node name="CompilationTest" type="Node2D" unique_id=2081475385]
 script = SubResource("GDScript_d6rn8")
-file = "res://dialogue/global/misc_responses.quilla"
+file = "res://dialogue/interactibles/dragon.quilla"

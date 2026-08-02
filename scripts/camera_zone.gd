@@ -11,3 +11,4 @@ func _on_body_entered(body: Node3D) -> void:
 func change_camera(player: Player) -> void:
 	camera.current = true
 	player.current_camera_zone = self
+	player.current_camera = camera

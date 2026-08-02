@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c2br1hh05r1gg" path="res://scripts/player.gd" id="1_4dohe"]
 [ext_resource type="Texture2D" uid="uid://ddxlj6yajrhh5" path="res://icon.svg" id="2_r66lb"]
+[ext_resource type="Texture2D" uid="uid://coev86o834137" path="res://textures/alchemy_circle.png" id="3_ht1c8"]
+[ext_resource type="Texture2D" uid="uid://cxsd00rpc05hd" path="res://textures/alchemy_circle_em.png" id="4_g2jcq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dohe"]
 size = Vector3(0.4730835, 1.595581, 0.50653076)
@@ -115,13 +117,13 @@ debug_color = Color(0.8862745, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=528375551]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8104658, 0)
-layers = 16385
+layers = 16386
 mesh = SubResource("SphereMesh_ij1v8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ij1v8")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1855841761]
 transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0, 0, 0)
-layers = 16385
+layers = 16386
 mesh = SubResource("PrismMesh_ij1v8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ij1v8")
 
@@ -129,6 +131,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ij1v8")
 libraries/ = SubResource("AnimationLibrary_bl13t")
 autoplay = &"idle"
 speed_scale = 0.8
+
+[node name="MouseCursor" type="Decal" parent="." unique_id=289827092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947, 0)
+size = Vector3(0.5, 0.5, 0.5)
+texture_albedo = ExtResource("3_ht1c8")
+texture_emission = ExtResource("4_g2jcq")
+emission_energy = 5.0
+modulate = Color(0.3359375, 1, 0, 1)
+normal_fade = 0.5
+cull_mask = 1032189
 
 [node name="Decal" type="Decal" parent="." unique_id=1549977509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8716078, 0)

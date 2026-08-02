@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://criqye6ohlpxj" path="res://dialogue/interactibles/library_button.res" id="10_wf3is"]
 [ext_resource type="Script" uid="uid://tt2hm6qyc6wj" path="res://scripts/rooms/library_puzzle_handler.gd" id="11_dajjl"]
 [ext_resource type="AudioStream" uid="uid://c451c56j0yi1j" path="res://audio/515355__flor657__opening-garage-door-4.mp3" id="12_8rldl"]
+[ext_resource type="AudioStream" uid="uid://bppqsifoq0upp" path="res://audio/music/library_temp.ogg" id="13_6vgi2"]
+[ext_resource type="PackedScene" uid="uid://bp66lht8gpv44" path="res://prefabs/interactibles/book.tscn" id="14_42jos"]
 
 [sub_resource type="Environment" id="Environment_klvwg"]
 background_mode = 4
@@ -782,6 +784,19 @@ libraries/ = SubResource("AnimationLibrary_6vgi2")
 [node name="SoundBookshelf" type="AudioStreamPlayer3D" parent="." unique_id=217763130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3.5, 13)
 
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=908150510]
+stream = ExtResource("13_6vgi2")
+volume_db = -4.0
+autoplay = true
+
+[node name="book" parent="." unique_id=1395409286 instance=ExtResource("14_42jos")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 3.6822755, 1)
+
+[node name="InteractionComponent" parent="book" index="1" unique_id=1309288216]
+set_variables = Dictionary[StringName, Variant]({
+&"book_number": 4
+})
+
 [editable path="Props/bookshelf"]
 [editable path="Props/bookshelf3"]
 [editable path="Props/bookshelf4"]
@@ -829,3 +844,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3.5, 13)
 [editable path="buttongreen/InteractionComponent"]
 [editable path="buttonyellow"]
 [editable path="buttonyellow/InteractionComponent"]
+[editable path="book"]
+[editable path="book/InteractionComponent"]

@@ -1,0 +1,14 @@
+@switch INTERACT_VERB
+@case "look"
+	A pinball table.
+	It's titled "DRAGON HALL."
+@case "play"
+	[beep boop play pinball]
+@case "kick" | "punch" | "hit"
+	#sound SoundKick
+	#wait 0.5
+	SLAM TILT!
+	The game ended.
+	Or it would have, if you were actually playing instead of kicking it.
+@case else
+	Cannot do.

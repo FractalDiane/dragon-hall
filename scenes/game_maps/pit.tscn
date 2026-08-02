@@ -5,9 +5,13 @@
 [ext_resource type="LightmapGIData" uid="uid://dhm0n8e3c0xsq" path="res://scenes/game_maps/pit.lmbake" id="2_kc1p8"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="3_y87wd"]
 [ext_resource type="Resource" uid="uid://kydy8fdpnd7a" path="res://dialogue/interactibles/chest.res" id="4_88qgg"]
+[ext_resource type="PackedScene" uid="uid://dqu1pfdvkaxo5" path="res://models/props/rock_pile.glb" id="4_uis1m"]
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="5_lk4or"]
+[ext_resource type="PackedScene" uid="uid://cybxg7i3t2hhy" path="res://models/props/chest_closed.glb" id="6_3ih6c"]
+[ext_resource type="Resource" uid="uid://1q5rgrxwug7p" path="res://dialogue/interactibles/rock_pile.res" id="6_iqr8o"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_75qxc"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="7_iuluq"]
+[ext_resource type="AudioStream" uid="uid://cr4miy5m3vh8y" path="res://audio/162116__editor_adp__water-dripping-large-echo.ogg" id="9_afa5n"]
 
 [sub_resource type="Environment" id="Environment_kc1p8"]
 background_mode = 4
@@ -113,8 +117,16 @@ shader = SubResource("Shader_88qgg")
 shader_parameter/color = Color(1, 0.972549, 0.88235295, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_lk4or")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikom2"]
+size = Vector3(0.60935974, 0.6567383, 0.72839355)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uis1m"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_88qgg"]
-radius = 1.0
+radius = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8u1lp"]
+size = Vector3(1.2902832, 1.8213501, 2.0753174)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_12sfg"]
 size = Vector3(19.5, 11.5, 19.5)
@@ -318,16 +330,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 editor_only = true
 omni_range = 227.351
 
-[node name="Chest" type="Node3D" parent="." unique_id=57861533]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+[node name="RockPile" type="StaticBody3D" parent="." unique_id=40401270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.7412876, -6.9978957)
+metadata/_edit_group_ = true
 
-[node name="InteractionComponent" parent="Chest" unique_id=1309288216 instance=ExtResource("3_y87wd")]
+[node name="rock_pile" parent="RockPile" unique_id=748401460 instance=ExtResource("4_uis1m")]
+
+[node name="rock-pile" parent="RockPile/rock_pile" index="0" unique_id=357554652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockPile" unique_id=1812310284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027397156, -0.17163086, -0.13580322)
+shape = SubResource("BoxShape3D_ikom2")
+
+[node name="InteractionComponent" parent="RockPile" unique_id=1309288216 instance=ExtResource("3_y87wd")]
+aliases = Array[String](["rockpile", "rocks", "rock"])
+interact_event = ExtResource("6_iqr8o")
+
+[node name="CollisionShape3D" parent="RockPile/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_uis1m")
+
+[node name="Chest" type="StaticBody3D" parent="." unique_id=1810102636]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, -3.5561066, 0)
+metadata/_edit_group_ = true
+
+[node name="InteractionComponent" parent="Chest" unique_id=1754982059 instance=ExtResource("3_y87wd")]
 aliases = Array[String](["chest"])
 interact_event = ExtResource("4_88qgg")
 text_box_position = Rect2i(165, 182, 127, 44)
 
-[node name="CollisionShape3D" parent="Chest/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+[node name="InteractArea" parent="Chest/InteractionComponent" index="0" unique_id=268703641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3937054, 0, -0.3776285)
+
+[node name="CollisionShape3D" parent="Chest/InteractionComponent/InteractArea" index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_88qgg")
+
+[node name="chest_closed" parent="Chest" unique_id=1082502896 instance=ExtResource("6_3ih6c")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="chest" parent="Chest/chest_closed" index="0" unique_id=2002890722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest" unique_id=301754957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005737302, 0.3296814, -0.5586548)
+shape = SubResource("BoxShape3D_8u1lp")
 
 [node name="CameraZone" parent="." unique_id=1032360299 node_paths=PackedStringArray("camera") instance=ExtResource("5_lk4or")]
 camera = NodePath("../Camera")
@@ -365,7 +411,14 @@ target_marker = "FromPit"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_afa5n")
 
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1119263970]
+stream = ExtResource("9_afa5n")
+autoplay = true
+
+[editable path="RockPile/rock_pile"]
+[editable path="RockPile/InteractionComponent"]
 [editable path="Chest/InteractionComponent"]
+[editable path="Chest/chest_closed"]
 [editable path="CameraZone"]
 [editable path="RoomTransition"]
 [editable path="RoomTransition2"]

@@ -107,6 +107,9 @@ func execute_tag(tag: String) -> bool:
 			var timer := get_tree().create_timer(float(split[1]))
 			timer.timeout.connect(continue_story)
 			return true
+		"sound":
+			var sound := caller.get_node(split[1]) as AudioStreamPlayer3D
+			sound.play()
 		"box":
 			current_dialogue_size = Rect2i(int(split[1]), int(split[2]), int(split[3]), int(split[4]))
 			

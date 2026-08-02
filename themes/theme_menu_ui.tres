@@ -1,0 +1,37 @@
+[gd_resource type="Theme" format=3 uid="uid://bluo6vjrmfaa"]
+
+[ext_resource type="FontFile" uid="uid://cwlp5vrcrh12x" path="res://fonts/Candal-Regular.ttf" id="1_e2i3t"]
+[ext_resource type="FontFile" uid="uid://50cemijr68df" path="res://fonts/PIXEARG_.TTF" id="2_5uepp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyl7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3w7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rr2b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6dhs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2i3t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8u1lp"]
+
+[resource]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/fonts/font = ExtResource("1_e2i3t")
+Button/styles/disabled = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/focus = SubResource("StyleBoxEmpty_b3w7a")
+Button/styles/hover = SubResource("StyleBoxEmpty_4rr2b")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/normal = SubResource("StyleBoxEmpty_p6dhs")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/pressed = SubResource("StyleBoxEmpty_pyl7j")
+Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_pyl7j")
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_e2i3t")
+Label/colors/font_color = Color(1, 0, 0, 1)
+Label/fonts/font = ExtResource("1_e2i3t")
+LineEdit/font_sizes/font_size = 8
+LineEdit/fonts/font = ExtResource("2_5uepp")
+VSeparator/styles/separator = SubResource("StyleBoxEmpty_8u1lp")

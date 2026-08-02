@@ -71,7 +71,7 @@ func is_item_picked_up(path: NodePath) -> bool:
 	return items_picked_up.has(path)
 
 
-func change_scene(target_scene: String, target_marker: String) -> void:
+func change_scene(target_scene: String, target_marker: NodePath) -> void:
 	const FADE_TIME := 0.8
 	
 	push_block_movement_source()
@@ -79,7 +79,7 @@ func change_scene(target_scene: String, target_marker: String) -> void:
 	await get_tree().create_timer(FADE_TIME).timeout
 	
 	get_tree().change_scene_to_file(target_scene)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	
 	var player := get_tree().current_scene.get_node(^"Player") as Player
 	var marker := get_tree().current_scene.get_node(target_marker) as TransitionMarker

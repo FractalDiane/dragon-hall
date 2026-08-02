@@ -3,5 +3,9 @@
 	She looks angry.
 @case "talk to"
 	Humans can't understand dragons.
+@case "kill"
+	You're going to need to be more specific than that.
+@case "throw rock at"
+	[placeholder you are so fucking dead]
 @case else
 	Cannot do.

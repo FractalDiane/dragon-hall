@@ -493,7 +493,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7.5, 42)
 [node name="InteractionComponent" parent="Objects/Dragon" unique_id=1309288216 instance=ExtResource("4_phxr3")]
 aliases = Array[String](["dragon"])
 interact_event = ExtResource("5_phxr3")
-text_box_position = Rect2i(185, 34, 130, 38)
+text_box_position = Rect2i(185, 34, 130, 46)
 
 [node name="CollisionShape3D" parent="Objects/Dragon/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_thv7v")
@@ -554,7 +554,7 @@ collision_mask = 2048
 input_ray_pickable = false
 script = ExtResource("4_8qqvp")
 camera = NodePath("../../CameraDragon")
-default_text_box_size = Rect2i(185, 34, 130, 38)
+default_text_box_size = Rect2i(185, 34, 130, 46)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraZones/CameraZoneDragon" unique_id=1873386083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6.5, 8)
@@ -783,6 +783,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.848316, 1.4766548, 39.5)
 
 [node name="Light" parent="brazier3" index="1" unique_id=1220210681]
 light_bake_mode = 2
+
+[node name="MarkerStart" type="Marker3D" parent="." unique_id=1868475251 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 4.1504316)
+script = ExtResource("16_rdae7")
+camera_zone = NodePath("../CameraZones/CameraZoneStart")
+metadata/_custom_type_script = "uid://cdxujor4bqtd7"
 
 [node name="FromPit" type="Marker3D" parent="." unique_id=1584336392 node_paths=PackedStringArray("camera_zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.38478, 1.4226499, 35.665646)

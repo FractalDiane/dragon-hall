@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dbsl5f0o1gedm"]
+
+[sub_resource type="Shader" id="Shader_tmxga"]
+code = "shader_type spatial;
+
+void fragment() {
+	ALBEDO = vec3(0.0);
+	EMISSION = vec3(1.0, 0.0, 0.0);
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_tmxga")
