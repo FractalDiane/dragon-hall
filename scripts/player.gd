@@ -25,7 +25,9 @@ func _ready() -> void:
 	var floors := get_tree().get_nodes_in_group(&"floor")
 	for node: StaticBody3D in floors:
 		node.input_event.connect(_on_floor_input_event)
-	
+		
+	mouse_cursor.visible = SettingsSubsystem.cursor
+
 
 func _process(_delta: float) -> void:
 	if PlayerStateSubsystem.can_player_move() and Input.is_action_just_pressed(&"prompt"):

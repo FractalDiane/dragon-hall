@@ -1,1 +1,4 @@
-These actions are available: {HELP_STRING}.
+@if help_enabled()
+	These actions are available: {HELP_STRING}.
+@else
+	Object help is turned off.

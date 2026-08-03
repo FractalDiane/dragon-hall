@@ -1,18 +1,10 @@
 extends Control
 
 @onready var anim_player := $AnimationPlayer as AnimationPlayer
-@onready var settings_menu := $ConfigMenu as Control
+@onready var settings_menu := $ConfigMenu as ConfigMenu
 
 const CHEAT_CODE := "DRAGON"
 var cheat_code_progress := ""
-
-const CONFIG_DESCRIPTIONS: Array[String] = [
-	"The volume of the sound effects.",
-	"The volume of the music.",
-	"If ON, a cursor appears in the world to show where you'll move.",
-	'If ON, you can use the "help" command on an object to see what actions you can take with it.',
-	'If ON, some info about assist mode here lkaj;hnsdf',
-]
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_echo() and not event.is_released():
@@ -46,5 +38,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		($Music2 as AudioStreamPlayer).play()
 
 
-func _on_button_back_pressed() -> void:
+func _on_config_menu_back_pressed() -> void:
 	settings_menu.hide()

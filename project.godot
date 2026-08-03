@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Dragon Hall"
 run/main_scene="uid://cge5ntq4v7xsr"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -23,6 +24,7 @@ HUD="*uid://d1pgr64nho6iq"
 PlayerStateSubsystem="*uid://haf5st11k8qt"
 EventPlaybackSubsystem="*uid://em12rlk5re5b"
 EventBridgeSubsystem="*uid://dwoyf7dyux67r"
+SettingsSubsystem="*uid://cwlk6xs6y1six"
 
 [debug]
 

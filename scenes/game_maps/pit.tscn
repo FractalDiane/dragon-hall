@@ -139,7 +139,7 @@ size = Vector3(1, 4, 6.5)
 
 [node name="Pit" type="Node3D" unique_id=1064268908]
 script = ExtResource("1_12sfg")
-room_name = "Pit"
+room_name = "Cave"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=259940508]
 environment = SubResource("Environment_kc1p8")

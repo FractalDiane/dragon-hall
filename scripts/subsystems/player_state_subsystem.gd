@@ -6,6 +6,8 @@ enum {
 	FORM_DRAGONSMALL,
 }
 
+const SAVE_FILE := "user://save.dat"
+
 var block_movement_sources := 0
 var inventory: Dictionary[StringName, int] = {}
 var items_picked_up: Dictionary[NodePath, bool] = {}
@@ -71,7 +73,7 @@ func is_item_picked_up(path: NodePath) -> bool:
 	return items_picked_up.has(path)
 
 
-func change_scene(target_scene: String, target_marker: NodePath) -> void:
+func change_scene(target_scene: String, target_marker: NodePath, position_override := Vector3.ZERO) -> void:
 	const FADE_TIME := 0.8
 	
 	push_block_movement_source()
@@ -87,7 +89,32 @@ func change_scene(target_scene: String, target_marker: NodePath) -> void:
 	if marker.camera_zone != null:
 		marker.camera_zone.change_camera(player)
 	
+	save_game(position_override if position_override != Vector3.ZERO else marker.global_position)
+	
 	HUD.fade_in(FADE_TIME)
 	await get_tree().create_timer(FADE_TIME).timeout
 	HUD.show_location_name((get_tree().current_scene as Room).room_name)
 	pop_block_movement_source()
+	
+	
+func save_game(player_position: Vector3) -> void:
+	var file := FileAccess.open(SAVE_FILE, FileAccess.WRITE)
+	
+	file.store_pascal_string(get_tree().current_scene.get_path().get_name(1))
+	file.store_var(player_position, false)
+	file.store_var(inventory, false)
+	file.store_var(items_picked_up, false)
+	
+	file.close()
+
+func load_game() -> void:
+	var file := FileAccess.open(SAVE_FILE, FileAccess.READ)
+	
+	var current_scene := file.get_pascal_string()
+	var current_position: Vector3 = file.get_var(false)
+	inventory = file.get_var(false)
+	items_picked_up = file.get_var(false)
+	
+	change_scene("res://scenes/game_maps/%s.tscn" % current_scene.to_lower(), "", current_position)
+	
+	file.close()
