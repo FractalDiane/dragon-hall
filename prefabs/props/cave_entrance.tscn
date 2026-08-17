@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3ubxwa5gsba"]
+
+[ext_resource type="PackedScene" uid="uid://nv87ibmemyg1" path="res://models/props/cave-entrance.glb" id="1_uu1cr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu1cr"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="cave-entrance2" unique_id=630640784 instance=ExtResource("1_uu1cr")]
+
+[node name="cave-entrance" parent="." index="0" unique_id=231996960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.5, -9.5)
+surface_material_override/0 = SubResource("StandardMaterial3D_uu1cr")

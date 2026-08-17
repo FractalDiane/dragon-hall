@@ -7,3 +7,5 @@
 	You attempted to swim in the forbidden snack.
 @case else
 	MESSAGE NOT FOUND
+
+@do game_over

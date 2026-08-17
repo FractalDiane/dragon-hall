@@ -1,0 +1,16 @@
+@switch INTERACT_VERB:
+@case "look"
+	A dusty journal.
+	It's hard to tell how long it's been here.
+@case "take"
+	Doesn't seem important enough to take.
+@case "read"
+	"Almost got this whole place cleaned out."
+	"Of the important stuff, anyway. Which isn't a lot of it."
+	"The idiot dragon doesn't even know we're here."
+	"It's too busy loitering in that hall pretending it's important."
+	"Is it any wonder the age of dragons ended, with morons like that one at the helm?"
+	"Actiones secundum fidei. More later."
+	The rest of the journal is blank.
+@case else
+	Cannot do.

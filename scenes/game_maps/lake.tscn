@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="13_pojwt"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="14_ih7ps"]
 [ext_resource type="PackedScene" uid="uid://g0t6vantlr12" path="res://models/characters/fish.glb" id="15_oow0u"]
+[ext_resource type="PackedScene" uid="uid://d3ubxwa5gsba" path="res://prefabs/props/cave_entrance.tscn" id="18_ncu11"]
 
 [sub_resource type="Environment" id="Environment_xahea"]
 background_mode = 1
@@ -180,8 +181,9 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	var event := EventPlaybackSubsystem.play_event(preload(\"res://dialogue/global/deaths.res\"), self, (body as Player).current_camera_zone.default_text_box_size, \"\", \"\", {&\"death_type\": \"lake\"})
 	await event.event_finished
+	PlayerStateSubsystem.pop_block_movement_source()
 	
-	print(\"TEST\")
+	#print(\"TEST\")
 	
 	#await get_tree().create_timer(1.0).timeout
 	
@@ -717,6 +719,9 @@ material_override = SubResource("ShaderMaterial_oow0u")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FishPath" unique_id=1870412659]
 libraries/ = SubResource("AnimationLibrary_1lmp1")
 autoplay = &"move"
+
+[node name="cave-entrance2" parent="." unique_id=630640784 instance=ExtResource("18_ncu11")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.690308, 0.317823, -3.4626462)
 
 [connection signal="body_entered" from="LakeSlipArea" to="LakeSlipArea" method="_on_body_entered"]
 

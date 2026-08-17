@@ -6,9 +6,11 @@ code = "shader_type spatial;
 uniform sampler2D lava_texture;
 instance uniform vec2 speed_factor = vec2(0.012);
 instance uniform vec2 uv_scale = vec2(1.0);
+uniform sampler2D noise;
 
 void vertex() {
-	// Called for every vertex the material is visible on.
+	float noise_value = texture(noise, VERTEX.xz / 2.0 + 0.5 * TIME * 0.05).x;
+	VERTEX.y += noise_value * 0.5;
 }
 
 void fragment() {
@@ -30,7 +32,13 @@ noise = SubResource("FastNoiseLite_lft5i")
 color_ramp = SubResource("Gradient_lft5i")
 seamless = true
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vfiph"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_exklu"]
+noise = SubResource("FastNoiseLite_vfiph")
+
 [resource]
 render_priority = 0
 shader = SubResource("Shader_lft5i")
 shader_parameter/lava_texture = SubResource("NoiseTexture2D_lft5i")
+shader_parameter/noise = SubResource("NoiseTexture2D_exklu")

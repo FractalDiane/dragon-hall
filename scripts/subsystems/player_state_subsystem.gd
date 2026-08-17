@@ -7,6 +7,7 @@ enum {
 }
 
 const SAVE_FILE := "user://save.dat"
+const GAME_OVER_UI := preload("res://prefabs/ui/game_over.tscn")
 
 var block_movement_sources := 0
 var inventory: Dictionary[StringName, int] = {}
@@ -73,7 +74,7 @@ func is_item_picked_up(path: NodePath) -> bool:
 	return items_picked_up.has(path)
 
 
-func change_scene(target_scene: String, target_marker: NodePath, position_override := Vector3.ZERO) -> void:
+func change_scene(target_scene: String, target_marker: NodePath) -> void:
 	const FADE_TIME := 0.8
 	
 	push_block_movement_source()
@@ -89,7 +90,7 @@ func change_scene(target_scene: String, target_marker: NodePath, position_overri
 	if marker.camera_zone != null:
 		marker.camera_zone.change_camera(player)
 	
-	save_game(position_override if position_override != Vector3.ZERO else marker.global_position)
+	save_game(target_marker)
 	
 	HUD.fade_in(FADE_TIME)
 	await get_tree().create_timer(FADE_TIME).timeout
@@ -97,11 +98,11 @@ func change_scene(target_scene: String, target_marker: NodePath, position_overri
 	pop_block_movement_source()
 	
 	
-func save_game(player_position: Vector3) -> void:
+func save_game(marker: NodePath) -> void:
 	var file := FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	
 	file.store_pascal_string(get_tree().current_scene.get_path().get_name(1))
-	file.store_var(player_position, false)
+	file.store_var(marker)
 	file.store_var(inventory, false)
 	file.store_var(items_picked_up, false)
 	
@@ -111,10 +112,20 @@ func load_game() -> void:
 	var file := FileAccess.open(SAVE_FILE, FileAccess.READ)
 	
 	var current_scene := file.get_pascal_string()
-	var current_position: Vector3 = file.get_var(false)
+	var marker: NodePath = file.get_var(false)
 	inventory = file.get_var(false)
 	items_picked_up = file.get_var(false)
 	
-	change_scene("res://scenes/game_maps/%s.tscn" % current_scene.to_lower(), "", current_position)
+	change_scene("res://scenes/game_maps/%s.tscn" % current_scene.to_lower(), marker)
 	
 	file.close()
+
+func save_exists() -> bool:
+	return FileAccess.file_exists(SAVE_FILE)
+	
+	
+func game_over() -> void:
+	push_block_movement_source()
+	var ui := GAME_OVER_UI.instantiate() as Control
+	get_tree().get_root().add_child(ui)
+	

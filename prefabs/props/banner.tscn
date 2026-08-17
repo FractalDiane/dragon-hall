@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qboo0wkxcl7t"]
+
+[ext_resource type="PackedScene" uid="uid://cxbmpx7oe6t63" path="res://models/props/banner.glb" id="1_wrvas"]
+
+[node name="banner" unique_id=291628983 instance=ExtResource("1_wrvas")]
+
+[node name="Cube_040" parent="." index="0" unique_id=621412855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

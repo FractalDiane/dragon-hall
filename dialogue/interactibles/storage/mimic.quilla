@@ -1,0 +1,22 @@
+@switch INTERACT_VERB
+@case "look"
+	An ornate chest.
+	It's closed.
+@case "open"
+	It's a mimic!
+@case "take"
+	It's a mimic!
+@case "kick"
+	It was a mimic.
+	It really didn't appreciate that.
+	@do game_over
+@case "throw rock at"
+	It was a mimic.
+	It really didn't appreciate that.
+	@do game_over
+@case "pet"
+	It doesn't trust you.
+@case "talk to"
+	If humans can't understand dragons, what could possibly make you think they can understand mimics?
+@case else
+	Cannot do.

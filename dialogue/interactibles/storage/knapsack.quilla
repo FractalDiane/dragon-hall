@@ -1,0 +1,10 @@
+@switch INTERACT_VERB:
+@case "look"
+	A bulging sack filled with who-knows-what.
+@case "take"
+	It's way too heavy to take.
+@case "open"
+	You open the knapsack.
+	Its contents spill out.
+@case else
+	Cannot do.

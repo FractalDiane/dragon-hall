@@ -19,7 +19,10 @@ func _on_button_start_pressed() -> void:
 	anim_player.play(&"fadeout")
 	await anim_player.animation_finished
 	await get_tree().create_timer(3.0).timeout
-	PlayerStateSubsystem.change_scene("res://scenes/game_maps/hall.tscn", ^"MarkerStart")
+	if PlayerStateSubsystem.save_exists():
+		PlayerStateSubsystem.load_game()
+	else:
+		PlayerStateSubsystem.change_scene("res://scenes/game_maps/hall.tscn", ^"MarkerStart")
 
 
 func _on_button_continue_pressed() -> void:

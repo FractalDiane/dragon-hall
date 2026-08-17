@@ -93,7 +93,8 @@ func continue_story() -> void:
 				#HUD.add_dialogue_child(current_dialogue)
 				current_dialogue.text_finished.connect(_on_dialogue_finished.bind(false))
 
-			current_dialogue.start(next_text, current_dialogue_size)
+			#current_dialogue.start(next_text, current_dialogue_size)
+			current_dialogue.start(next_text, Rect2i(20, 180, 280, 40))
 		CONTENT_MODE_CHOICE:
 			pass
 		CONTENT_MODE_END:
