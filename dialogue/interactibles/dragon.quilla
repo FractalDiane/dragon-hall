@@ -1,8 +1,25 @@
 @switch INTERACT_VERB
 @case "look"
-	She looks angry.
+	@if not is_dragon()
+		She looks angry.
+	@else
+		She towers over you and regards you with disdain.
 @case "talk to"
-	Humans can't understand dragons.
+	@if not is_dragon()
+		Humans can't understand dragons.
+	@else
+		@switch flag_count("dragon_talk")
+		@case 0
+			"This is not how you expected this to go, is it?"
+			"Such a fate was inevitable for someone like you."
+			"You are ruled by your pride, and you saw yourself above consequences."
+			She glares in disgust.
+			"Do you wish to know how to undo this curse?"
+			"I will tell you no such thing."
+			"Live with the path you have set yourself upon."
+			@do give_flag "dragon_talk"
+		@case 1
+			"I have nothing more to say to you."
 @case "kill"
 	You're going to need to be more specific than that.
 @case "throw rock at"

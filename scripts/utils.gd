@@ -7,6 +7,8 @@ static func bind_quilla_externals(story: QuillaStory, bind_impure_funcs: bool) -
 	story.bind_pure_function(&"is_dragon", func(): return PlayerStateSubsystem.get_current_form() == PlayerStateSubsystem.FORM_DRAGON)
 	story.bind_pure_function(&"is_dragon_small", func(): return PlayerStateSubsystem.get_current_form() == PlayerStateSubsystem.FORM_DRAGONSMALL)
 	
+	story.bind_pure_function(&"is_library_puzzle_solved", EventBridgeSubsystem.is_library_puzzle_solved)
+	
 	story.bind_pure_function(&"help_enabled", func(): return SettingsSubsystem.object_help)
 	
 	if bind_impure_funcs:

@@ -16,5 +16,8 @@
 	@case "yellowbutton"
 		You pressed the yellow button.
 		@do push_library_button "Y"
+
+	@if is_library_puzzle_solved()
+		YOU SOLVED IT GOOD JOB BUDDY
 @case else
 	Cannot do.

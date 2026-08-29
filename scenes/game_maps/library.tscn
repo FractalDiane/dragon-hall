@@ -724,7 +724,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_w3rgq")
 
 [node name="InteractionComponent" parent="buttonred" unique_id=1309288216 instance=ExtResource("9_fi73m")]
-aliases = Array[String](["redbutton"])
+aliases = Array[String](["redbutton", "red", "r"])
 interact_event = ExtResource("10_wf3is")
 
 [node name="CollisionShape3D" parent="buttonred/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
@@ -739,7 +739,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_fi73m")
 
 [node name="InteractionComponent" parent="buttonblue" unique_id=1162725108 instance=ExtResource("9_fi73m")]
-aliases = Array[String](["bluebutton"])
+aliases = Array[String](["bluebutton", "blue", "b"])
 interact_event = ExtResource("10_wf3is")
 
 [node name="CollisionShape3D" parent="buttonblue/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1162725108, 268703641) index="0" unique_id=780690474]
@@ -754,7 +754,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_wf3is")
 
 [node name="InteractionComponent" parent="buttongreen" unique_id=1416960539 instance=ExtResource("9_fi73m")]
-aliases = Array[String](["greenbutton"])
+aliases = Array[String](["greenbutton", "green", "g"])
 interact_event = ExtResource("10_wf3is")
 
 [node name="CollisionShape3D" parent="buttongreen/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1416960539, 268703641) index="0" unique_id=780690474]
@@ -769,7 +769,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_dajjl")
 
 [node name="InteractionComponent" parent="buttonyellow" unique_id=1006789425 instance=ExtResource("9_fi73m")]
-aliases = Array[String](["yellowbutton"])
+aliases = Array[String](["yellowbutton", "yellow", "y"])
 interact_event = ExtResource("10_wf3is")
 
 [node name="CollisionShape3D" parent="buttonyellow/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1006789425, 268703641) index="0" unique_id=780690474]

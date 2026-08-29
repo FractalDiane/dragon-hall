@@ -5,6 +5,7 @@ signal prompt_closed()
 signal prompt_run(prompt: String)
 
 var prompt_open := false
+var prompt_closing := false
 
 var in_editor := OS.has_feature("editor")
 var debug_dragging := false
@@ -18,7 +19,7 @@ var debug_drag_box: ColorRect = null
 @onready var fade := $HUD/Fade as ColorRect
 
 func _process(_delta: float) -> void:
-	if prompt_open:
+	if prompt_open and not prompt_closing:
 		if Input.is_action_just_pressed(&"prompt"):
 			if not prompt.text.is_empty():
 				prompt_run.emit(prompt.text.strip_edges())
@@ -42,6 +43,7 @@ func _process(_delta: float) -> void:
 			debug_drag_box.size = get_tree().root.get_mouse_position() - debug_drag_start
 
 func show_prompt() -> void:
+	prompt_closing = false
 	prompt.clear()
 	anim_player_prompt.play(&"prompt")
 	prompt.grab_focus.call_deferred()
@@ -50,6 +52,7 @@ func show_prompt() -> void:
 
 func hide_prompt() -> void:
 	anim_player_prompt.play_backwards(&"prompt")
+	prompt_closing = true
 	
 func is_prompt_open() -> bool:
 	return prompt_open
