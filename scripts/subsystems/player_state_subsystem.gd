@@ -13,6 +13,8 @@ var block_movement_sources := 0
 var inventory: Dictionary[StringName, int] = {}
 var items_picked_up: Dictionary[NodePath, bool] = {}
 
+var flags := {}
+
 var current_form := FORM_HUMAN
 
 func _ready() -> void:
@@ -32,6 +34,22 @@ func pop_block_movement_source() -> void:
 
 func can_player_move() -> bool:
 	return block_movement_sources == 0
+	
+	
+func give_flag(flag: StringName) -> void:
+	flags[flag] = true
+	
+	
+func take_flag(flag: StringName) -> void:
+	flags.erase(flag)
+	
+	
+func has_flag(flag: StringName) -> bool:
+	return flags.has(flag)
+	
+
+func flag_count(flag: StringName) -> int:
+	return flags.get(flag, 0)
 	
 	
 func get_current_form() -> int:

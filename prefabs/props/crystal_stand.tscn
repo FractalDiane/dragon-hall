@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cish04tnqs45b"]
+
+[ext_resource type="PackedScene" uid="uid://c36bximgqw16r" path="res://models/props/crystal_stand.glb" id="1_f4lu8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4lu8"]
+albedo_color = Color(0, 1, 0.15625, 1)
+emission_enabled = true
+emission = Color(0.044647217, 0.81640625, 0, 1)
+
+[node name="crystal_stand" unique_id=60447595 instance=ExtResource("1_f4lu8")]
+metadata/_edit_group_ = true
+
+[node name="crystal-stand" parent="." index="0" unique_id=1976791340]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_f4lu8")
+
+[node name="Light" type="OmniLight3D" parent="." index="1" unique_id=847140342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00014767051, 1.2616076, 0)
+light_color = Color(0.20392156, 1, 0.29099262, 1)
+light_size = 1.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.3
+omni_attenuation = -1.388

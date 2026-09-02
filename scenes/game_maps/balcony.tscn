@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://ubrhx7hcwyns" path="res://audio/817188__craigsmith__gusty-wind-on-ridge.wav" id="6_s7xcj"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_cbp5m"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="8_5emel"]
+[ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="9_l121b"]
+[ext_resource type="Resource" uid="uid://dxs2cjwrk5vtk" path="res://dialogue/interactibles/balcony.res" id="10_gnvqt"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_met41"]
 
@@ -52,6 +54,9 @@ size = Vector3(20.5, 12, 12.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5emel"]
 size = Vector3(19.5, 4, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gnvqt"]
+radius = 6.0
+
 [node name="Balcony" type="Node3D" unique_id=1757946971]
 script = ExtResource("1_met41")
 room_name = "Balcony"
@@ -60,7 +65,7 @@ room_name = "Balcony"
 environment = SubResource("Environment_met41")
 
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("2_0knp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.64019465, 5.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=768497464]
 transform = Transform3D(-0.98038, -0.18301266, -0.07322326, -0.18301268, 0.7071067, 0.6830127, -0.07322334, 0.68301266, -0.7267268, 0, 5.5, 0)
@@ -77,6 +82,8 @@ transform = Transform3D(0.91425806, -0.02264542, 0.4044989, 0, 0.99843657, 0.055
 transform = Transform3D(0.901444, 0.12869884, 0.41332227, 0, 0.95478487, -0.29729757, -0.4328957, 0.26799712, 0.8606851, 4.9569793, 2.1112957, 7.756205)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1322401803 groups=["floor"]]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1051913404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06500244, 3.75)
@@ -134,7 +141,18 @@ script = ExtResource("8_5emel")
 camera_zone = NodePath("../CameraZone")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"
 
+[node name="Balcony" type="Node3D" parent="." unique_id=1735129579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
+
+[node name="InteractionComponent" parent="Balcony" unique_id=1309288216 instance=ExtResource("9_l121b")]
+aliases = Array[String](["balcony", "gap"])
+interact_event = ExtResource("10_gnvqt")
+
+[node name="CollisionShape3D" parent="Balcony/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_gnvqt")
+
 [editable path="balcony_base"]
 [editable path="balcony_rail"]
 [editable path="CameraZone"]
 [editable path="RoomTransition"]
+[editable path="Balcony/InteractionComponent"]

@@ -169,7 +169,7 @@ func _on_body_entered(body: Node3D) -> void:
 	sound_slip.play()
 	
 	var tween := create_tween()
-	tween.tween_property(body, ^\"rotation_degrees:z\", 920.0, 1.0)
+	tween.tween_property(body.get_node(\"player2\"), ^\"rotation_degrees:z\", 920.0, 1.0)
 	
 	var tween2 := create_tween()
 	tween2.tween_property(body, ^\"global_position\", ((body.global_position + lake_center.global_position) / 2) + Vector3(0, 1, 0), 0.5)
@@ -488,7 +488,6 @@ navigation_mesh = SubResource("NavigationMesh_hm7tr")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1859820440]
 transform = Transform3D(-0.788994, -0.6143968, -0.0022723924, -0.3255825, 0.41496316, 0.84958917, -0.52104187, 0.67106056, -0.52744025, -0.040409327, 8, 1.2369828)
-visible = false
 light_color = Color(0.8828125, 0.9835205, 1, 1)
 light_energy = 3.0
 light_bake_mode = 1
@@ -497,7 +496,6 @@ spot_angle = 22.76
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1029499410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
-visible = false
 light_color = Color(0.88235295, 0.9843137, 1, 1)
 light_energy = 2.0
 light_indirect_energy = 2.0
@@ -574,39 +572,46 @@ transform = Transform3D(0.549453, 0.048028957, 0.83414304, 0, 0.99834645, -0.057
 transform = Transform3D(-0.92512906, 0.15716657, -0.34559366, 0, 0.9102885, 0.4139744, 0.3796529, 0.38297972, -0.84213436, -5.1442795, 6.557657, -12.316379)
 
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("4_hm7tr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.1573985, -3.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0.5022477, -3.5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player" unique_id=15870828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46160054, -1.3307972)
+visible = false
 light_energy = 0.1
 light_bake_mode = 0
 light_cull_mask = 4293935104
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Player" unique_id=930692445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46160054, 1.1692028)
+visible = false
 light_energy = 0.1
 light_bake_mode = 0
 light_cull_mask = 4293935104
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Player" unique_id=1123253061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.46160054, 0.1692028)
+visible = false
 light_energy = 0.1
 light_bake_mode = 0
 light_cull_mask = 4293935104
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Player" unique_id=1654596967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.46160054, 0.1692028)
+visible = false
 light_energy = 0.1
 light_bake_mode = 0
 light_cull_mask = 4293935104
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Player" unique_id=1277020062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9616005, 0.1692028)
+visible = false
 light_energy = 0.1
 light_bake_mode = 0
 light_cull_mask = 4293935104
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=781479244 groups=["floor"]]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1335490641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, -0.75)
@@ -684,7 +689,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 2.5)
 stream = ExtResource("9_4yh3n")
 
 [node name="LakeCenter" type="Marker3D" parent="." unique_id=625599167]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.5, 2.5)
 
 [node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("13_pojwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -4)
@@ -721,7 +726,8 @@ libraries/ = SubResource("AnimationLibrary_1lmp1")
 autoplay = &"move"
 
 [node name="cave-entrance2" parent="." unique_id=630640784 instance=ExtResource("18_ncu11")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.690308, 0.317823, -3.4626462)
+transform = Transform3D(-1.5, 0, 2.2649371e-07, 0, 1.5, 0, -2.2649371e-07, 0, -1.5, 13.690308, 0.317823, -3.4626462)
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="LakeSlipArea" to="LakeSlipArea" method="_on_body_entered"]
 

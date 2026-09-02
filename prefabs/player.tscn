@@ -4,9 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ddxlj6yajrhh5" path="res://icon.svg" id="2_r66lb"]
 [ext_resource type="Texture2D" uid="uid://coev86o834137" path="res://textures/alchemy_circle.png" id="3_ht1c8"]
 [ext_resource type="Texture2D" uid="uid://cxsd00rpc05hd" path="res://textures/alchemy_circle_em.png" id="4_g2jcq"]
+[ext_resource type="PackedScene" uid="uid://c5yru2e24vc8q" path="res://models/characters/player_model.tscn" id="5_ht1c8"]
+[ext_resource type="Texture2D" uid="uid://dk4ou5tvphxmv" path="res://textures/shadow.png" id="6_g2jcq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dohe"]
 size = Vector3(0.4730835, 1.595581, 0.50653076)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ht1c8"]
+size = Vector3(0.6310959, 2.8529968, 0.9741726)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iyx0m"]
 radius = 2.5
@@ -67,19 +72,55 @@ _data = {
 &"idle": SubResource("Animation_errlg")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2jcq"]
+animation = &"idle"
+use_custom_timeline = true
+timeline_length = 6.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u51tk"]
+animation = &"walk"
+use_custom_timeline = true
+timeline_length = 0.9
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_kbsxf"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_yrce0"]
+graph_offset = Vector2(-103.245285, 185.66039)
+nodes/output/position = Vector2(1104.9056, 144.90567)
+nodes/idle/node = SubResource("AnimationNodeAnimation_g2jcq")
+nodes/idle/position = Vector2(452.8302, 54.339626)
+nodes/walk/node = SubResource("AnimationNodeAnimation_u51tk")
+nodes/walk/position = Vector2(452.8302, 217.3585)
+nodes/walk_blend/node = SubResource("AnimationNodeBlend2_kbsxf")
+nodes/walk_blend/position = Vector2(724.5283, 90.56604)
+node_connections = [&"output", 0, &"walk_blend", &"walk_blend", 0, &"idle", &"walk_blend", 1, &"walk"]
+
 [node name="Player" type="CharacterBody3D" unique_id=378074253]
 collision_layer = 2048
-collision_mask = 0
+collision_mask = 2048
 script = ExtResource("1_4dohe")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=383788154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010101318, 0.29779053, 3.0517578e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16336632, 1.7244273, 3.0517578e-05)
 shape = SubResource("BoxShape3D_4dohe")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1924917102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0066890717, 1.4224101, 0.009757042)
+shape = SubResource("BoxShape3D_ht1c8")
 
 [node name="NavigationAgent" type="NavigationAgent3D" parent="." unique_id=1287825824]
+path_height_offset = 0.5
 
 [node name="CloseArea" type="Area3D" parent="." unique_id=111858175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 1.4266368, 0)
 collision_layer = 0
 collision_mask = 32768
 input_ray_pickable = false
@@ -89,6 +130,7 @@ shape = SubResource("SphereShape3D_iyx0m")
 debug_color = Color(0.088664204, 0.99607843, 0.0117647005, 1)
 
 [node name="MidArea" type="Area3D" parent="." unique_id=1180145857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 1.4266368, 0)
 collision_layer = 0
 collision_mask = 32768
 input_ray_pickable = false
@@ -98,6 +140,7 @@ shape = SubResource("SphereShape3D_4dohe")
 debug_color = Color(0.99607843, 0.84227943, 0.0117647005, 1)
 
 [node name="FarArea" type="Area3D" parent="." unique_id=561669809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 1.4266368, 0)
 collision_layer = 0
 collision_mask = 32768
 input_ray_pickable = false
@@ -107,6 +150,7 @@ shape = SubResource("SphereShape3D_r66lb")
 debug_color = Color(0.8862745, 0.2492647, 0, 1)
 
 [node name="VeryFarArea" type="Area3D" parent="." unique_id=70895137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 1.4266368, 0)
 collision_layer = 0
 collision_mask = 32768
 input_ray_pickable = false
@@ -116,13 +160,15 @@ shape = SubResource("SphereShape3D_bl13t")
 debug_color = Color(0.8862745, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=528375551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8104658, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2371025, 0)
+visible = false
 layers = 16386
 mesh = SubResource("SphereMesh_ij1v8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ij1v8")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1855841761]
-transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0, 1.4266368, 0)
+visible = false
 layers = 16386
 mesh = SubResource("PrismMesh_ij1v8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ij1v8")
@@ -133,7 +179,7 @@ autoplay = &"idle"
 speed_scale = 0.8
 
 [node name="MouseCursor" type="Decal" parent="." unique_id=289827092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 2.3736367, 0)
 size = Vector3(0.5, 0.5, 0.5)
 texture_albedo = ExtResource("3_ht1c8")
 texture_emission = ExtResource("4_g2jcq")
@@ -143,9 +189,51 @@ normal_fade = 0.5
 cull_mask = 1032189
 
 [node name="Decal" type="Decal" parent="." unique_id=1549977509]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8716078, 0)
-size = Vector3(0.5, 1.0083008, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009646952, -0.6823826, 0)
+visible = false
+size = Vector3(0.5, 2.3747559, 0.5)
 texture_albedo = ExtResource("2_r66lb")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1794200070]
+root_node = NodePath("../player2")
+tree_root = SubResource("AnimationNodeBlendTree_yrce0")
+anim_player = NodePath("../player2/AnimationPlayer")
+parameters/walk_blend/blend_amount = 0.0
+
+[node name="player2" parent="." unique_id=1992337903 instance=ExtResource("5_ht1c8")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, -0.0021123588, 1.4266368, 0.14971972)
+
+[node name="Skeleton3D" parent="player2/playerm" parent_id_path=PackedInt32Array(1992337903, 1327768068) index="0" unique_id=1937748793]
+bones/0/position = Vector3(-0.3441012, 0.08781013, 1.4430953e-08)
+bones/0/rotation = Quaternion(-0.00730702, 0.007696314, -0.021663358, 0.99970907)
+bones/1/rotation = Quaternion(-0.015444752, 0.0017298426, -0.06802868, 0.9975623)
+bones/2/rotation = Quaternion(0.03270891, 0.008484146, 0.07149674, 0.9968683)
+bones/3/rotation = Quaternion(-0.04527966, -0.01137405, -0.09750112, 0.99413985)
+bones/4/position = Vector3(-0.27652612, 0.9728329, -0.26733866)
+bones/5/rotation = Quaternion(-0.28568697, -0.04044671, -0.028661732, 0.9570401)
+bones/8/position = Vector3(3.6464627e-08, 0.32791907, 1.9356072e-07)
+bones/9/position = Vector3(-0.37357527, -0.8768607, -0.30279312)
+bones/9/rotation = Quaternion(0.7069849, 0.013136149, -0.7069847, 0.013136119)
+bones/10/rotation = Quaternion(0.04433212, -1.4133624e-07, 9.969226e-08, 0.9990169)
+bones/11/position = Vector3(1.9825725e-06, 0.68351823, -1.8693879e-07)
+bones/11/rotation = Quaternion(-0.55826026, 1.0315182e-07, -3.7660083e-08, 0.8296659)
+bones/12/position = Vector3(-0.27229682, 0.9728431, 0.3059231)
+bones/13/rotation = Quaternion(0.23197033, 0.7186861, 0.17324199, 0.6321924)
+bones/15/position = Vector3(2.1076175e-07, 0.15478857, -1.0685712e-06)
+bones/17/position = Vector3(-0.37190378, -0.8771024, 0.29998514)
+bones/17/rotation = Quaternion(-0.70698726, -0.012997815, 0.70698744, -0.0129979225)
+bones/18/rotation = Quaternion(0.04460828, 1.7720697e-07, -1.0615124e-07, 0.99900454)
+bones/19/rotation = Quaternion(-0.5584173, -3.0536373e-08, 3.3192e-08, 0.8295603)
+
+[node name="AnimationPlayer" parent="player2" index="1" unique_id=300033819]
+autoplay = &""
+
+[node name="Shadow" type="Decal" parent="." unique_id=903453183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0057991147, 0)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("6_g2jcq")
+modulate = Color(1, 1, 1, 0.5019608)
+cull_mask = 1032189
 
 [connection signal="area_entered" from="CloseArea" to="." method="_on_interact_area_entered" binds= [0]]
 [connection signal="area_exited" from="CloseArea" to="." method="_on_interact_area_exited" binds= [0]]
@@ -155,3 +243,5 @@ texture_albedo = ExtResource("2_r66lb")
 [connection signal="area_exited" from="FarArea" to="." method="_on_interact_area_exited" binds= [2]]
 [connection signal="area_entered" from="VeryFarArea" to="." method="_on_interact_area_entered" binds= [3]]
 [connection signal="area_exited" from="VeryFarArea" to="." method="_on_interact_area_exited" binds= [3]]
+
+[editable path="player2"]

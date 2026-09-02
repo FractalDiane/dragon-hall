@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c5yru2e24vc8q"]
+
+[ext_resource type="PackedScene" uid="uid://bl5ealvmmvvaf" path="res://models/characters/player.glb" id="1_d5r0k"]
+[ext_resource type="Material" uid="uid://d4iql5nx6lq4m" path="res://shaders/shader_vertex_colors.tres" id="2_2jini"]
+
+[node name="player2" unique_id=1992337903 instance=ExtResource("1_d5r0k")]
+
+[node name="playerm" parent="." index="0" unique_id=1327768068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="playerm" index="0" unique_id=1937748793]
+bones/0/position = Vector3(-0.34410095, 0.06385362, 0)
+bones/1/rotation = Quaternion(2.596163e-09, 5.4069893e-08, -0.047959704, 0.9988493)
+bones/2/rotation = Quaternion(6.9249806e-10, -2.0759299e-07, 0.006971435, 0.9999758)
+bones/3/rotation = Quaternion(-8.858029e-08, 6.5017325e-08, -0.09798571, 0.9951878)
+bones/4/position = Vector3(-0.27652612, 1.025117, -0.26733866)
+bones/4/rotation = Quaternion(-0.9293828, 0.0036179489, 0.0014842348, 0.36909658)
+bones/5/rotation = Quaternion(-0.2802353, -0.009187808, 0.040987212, 0.959012)
+bones/8/position = Vector3(-0.369977, -0.8755124, -0.30279312)
+bones/8/rotation = Quaternion(1.8626454e-09, -1.0955787e-09, 2.7939682e-09, 1)
+bones/9/position = Vector3(-0.369977, -0.8755124, -0.30279312)
+bones/9/rotation = Quaternion(0.7070635, 0.007826524, -0.70706344, 0.007826513)
+bones/10/rotation = Quaternion(0.032694295, -6.624383e-08, 6.697115e-08, 0.9994654)
+bones/11/position = Vector3(-0.27229676, 1.0251272, 0.3059231)
+bones/12/position = Vector3(-0.27229676, 1.0251272, 0.3059231)
+bones/12/rotation = Quaternion(0.9290595, -0.01978655, -0.010541179, 0.3692505)
+bones/13/rotation = Quaternion(0.19831939, 0.7113515, 0.2000441, 0.6439183)
+bones/15/position = Vector3(-0.36997694, -0.8755124, 0.29998514)
+bones/16/rotation = Quaternion(-3.4924548e-09, 1.219736e-07, -1.1642394e-10, 1)
+bones/17/position = Vector3(-0.36997694, -0.8755124, 0.29998514)
+bones/19/rotation = Quaternion(-0.5540888, -3.2913455e-08, 2.6137863e-08, 0.8324577)
+
+[node name="player" parent="playerm/Skeleton3D" index="0" unique_id=1429762692]
+layers = 16386
+gi_mode = 0
+surface_material_override/0 = ExtResource("2_2jini")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=300033819]
+autoplay = &"idle"
+speed_scale = 0.5

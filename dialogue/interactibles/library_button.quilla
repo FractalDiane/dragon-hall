@@ -2,7 +2,7 @@
 @case "look"
 	A button on the wall.
 	If you slam your entire body into it, you might be able to press it.
-@case "push"
+@case "push" | "press"
 	@switch INTERACT_ITEM
 	@case "redbutton"
 		You pressed the red button.
@@ -16,8 +16,5 @@
 	@case "yellowbutton"
 		You pressed the yellow button.
 		@do push_library_button "Y"
-
-	@if is_library_puzzle_solved()
-		YOU SOLVED IT GOOD JOB BUDDY
 @case else
 	Cannot do.

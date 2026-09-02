@@ -1,0 +1,196 @@
+[gd_scene format=4 uid="uid://cmmumeuv0gpeh"]
+
+[ext_resource type="PackedScene" uid="uid://c5yru2e24vc8q" path="res://models/characters/player_model.tscn" id="1_luoa5"]
+[ext_resource type="Script" uid="uid://c2br1hh05r1gg" path="res://scripts/player.gd" id="2_mm3rf"]
+[ext_resource type="Texture2D" uid="uid://coev86o834137" path="res://textures/alchemy_circle.png" id="3_dqjsi"]
+[ext_resource type="Texture2D" uid="uid://cxsd00rpc05hd" path="res://textures/alchemy_circle_em.png" id="4_lbghw"]
+[ext_resource type="Texture2D" uid="uid://dk4ou5tvphxmv" path="res://textures/shadow.png" id="5_cpgs3"]
+
+[sub_resource type="GDScript" id="GDScript_luoa5"]
+script/source = "extends Node3D
+
+@onready var chr := $CharacterBody3D as CharacterBody3D
+@onready var nav_agent := $CharacterBody3D/NavigationAgent3D as NavigationAgent3D
+@onready var camera := $Camera3D as Camera3D
+
+var target_pos := Vector3()
+var has_target := false
+
+func _ready() -> void:
+	#chr.velocity = Vector3(1, 0, 0)
+	#nav_agent.target_position = $Marker3D.global_position
+	#nav_agent.target_position.y = chr.global_position.y
+	pass
+	
+func _physics_process(_delta: float) -> void:
+	#var current_pos := chr.global_position
+	#var next_path_pos := nav_agent.get_next_path_position()
+	#print(next_path_pos)
+	#chr.velocity = (current_pos.direction_to(next_path_pos) * 1.0)
+	##print(chr.velocity)
+	#chr.move_and_slide()
+	##chr.apply_floor_snap()
+	
+	if has_target:
+		nav_agent.target_position = target_pos
+		var next_path_pos := nav_agent.get_next_path_position()
+		var dir := chr.global_position.direction_to(next_path_pos)
+		chr.velocity = dir * 5.0
+		
+		if nav_agent.is_navigation_finished():
+			has_target = false
+			target_pos = Vector3()
+	else:
+		chr.velocity = Vector3.ZERO
+			
+	chr.move_and_slide()
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&\"click\"):
+		var ray := mouse_screen_to_world(camera, 1)
+		if ray:
+			target_pos = ray[\"position\"]
+			has_target = true
+
+func mouse_screen_to_world(cam: Camera3D, mask: int) -> Dictionary:
+	var mouse_position := cam.get_viewport().get_mouse_position()
+	var ray_origin := cam.project_ray_origin(mouse_position)
+	var ray_end := ray_origin + cam.project_ray_normal(mouse_position) * 1000
+	
+	var space_state := cam.get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.new()
+	query.from = ray_origin
+	query.to = ray_end
+	query.collision_mask = mask
+	var raycast := space_state.intersect_ray(query)
+	return raycast
+	
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_8u1lp"]
+size = Vector3(25.436523, 1, 26.273376)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_luoa5"]
+points = PackedVector3Array(12.718262, 0.5, 13.136688, 12.718262, -0.5, 13.136688, 12.718262, 0.5, -13.136688, -12.718262, 0.5, 13.136688, -12.718262, -0.5, 13.136688, 12.718262, -0.5, -13.136688, -12.718262, 0.5, -13.136688, -12.718262, -0.5, -13.136688)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8u1lp"]
+vertices = PackedVector3Array(-12.584961, 1, -1.0986938, -11.334961, 1, -0.59869385, -11.334961, 1, -2.3486938, -10.584961, 1, -3.3486938, -12.584961, 1, -12.598694, -6.334961, 1, -3.5986938, -6.334961, 1, -12.598694, -4.334961, 1, -3.5986938, -3.584961, 1, -3.0986938, 9.915039, 1, -2.0986938, 9.915039, 1, -12.598694, -3.334961, 1, -2.0986938, -4.334961, 1.25, -0.59869385, -8.334961, 2.75, -0.59869385, -8.334961, 2.75, 0.65130615, -4.334961, 1.25, 0.65130615, -3.584961, 1, 1.1513062, 9.915039, 1, 1.1513062, -3.584961, 1, -1.0986938, -11.334961, 1, 2.4013062, -12.584961, 1, 10.651306, -6.334961, 1, 10.651306, -6.334961, 1, 3.6513062, -10.584961, 1, 3.4013062, -3.834961, 1, 3.4013062, -3.334961, 1, 2.6513062, 9.915039, 1, 10.651306)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 4), PackedInt32Array(7, 5, 6), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(8, 9, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 11, 16), PackedInt32Array(16, 11, 9), PackedInt32Array(16, 9, 17), PackedInt32Array(12, 18, 15), PackedInt32Array(15, 18, 16), PackedInt32Array(1, 19, 0), PackedInt32Array(0, 19, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 20), PackedInt32Array(20, 19, 23), PackedInt32Array(21, 22, 24), PackedInt32Array(24, 25, 21), PackedInt32Array(21, 25, 26), PackedInt32Array(26, 25, 17), PackedInt32Array(25, 16, 17)]
+geometry_parsed_geometry_type = 0
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"the_floor"
+agent_height = 2.5
+agent_radius = 1.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_8u1lp"]
+left_to_right = 0.0
+size = Vector3(1, 0.495, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_luoa5"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.2475, -0.5, 1, 0.495, 1),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AAAAP6uqKj8AAAA/q6qqPgAAAD+rqqo+AACAPwAAAAAAAIA/q6oqPwAAAD8AAIA/AAAAP6uqKj8AAIA/AAAAAAAAAACrqqo+AAAAPwAAAAAAAAA/AAAAAAAAAD+rqqo+AAAAPwAAAAAAAIA/q6qqPgAAAACrqio/AAAAAKuqqj4AAAA/AACAPwAAAD8AAIA/AACAP6uqKj8AAIA/q6oqPwAAAACrqio/AAAAP6uqqj4AAAA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAv6RwfT4AAAC/AAAAv6Rwfb4AAAC/AAAAP6Rwfb4AAAC/AAAAv6RwfT4AAAA/AAAAv6Rwfb4AAAA/AAAAv6Rwfb4AAAC/AAAAv6Rwfb4AAAA/AAAAP6Rwfb4AAAA/AAAAv6Rwfb4AAAC/AAAAv6RwfT4AAAA/AAAAP6Rwfb4AAAA/AAAAv6Rwfb4AAAA/AAAAv6RwfT4AAAC/AAAAv6RwfT4AAAA/AAAAv6Rwfb4AAAC/AAAAv6RwfT4AAAA/AAAAv6RwfT4AAAC/AAAAP6Rwfb4AAAA/AAAAP6Rwfb4AAAA/AAAAP6Rwfb4AAAC/AAAAv6Rwfb4AAAC/AAAAv6RwfT4AAAC/AAAAP6Rwfb4AAAC/AAAAP6Rwfb4AAAA//////wAA/7//////AAD/v/////8AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+//38AAP///7//fwAA////v/9/AAD///+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/YKqd1f////9gqp3V/////2CqndX//////38AAP///7//fwAA////v/9/AAD///+/YKqd1f////9gqp3V/////2CqndX/////")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tvd2u"]
+points = PackedVector3Array(-0.5, -0.2475, -0.5, -0.5, 0.2475, -0.5, 0.5, -0.2475, -0.5, -0.5, -0.2475, 0.5, -0.5, 0.2475, 0.5, 0.5, -0.2475, 0.5)
+
+[node name="NavTest" type="Node3D" unique_id=961047643]
+script = SubResource("GDScript_luoa5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=902308116 groups=["the_floor"]]
+collision_layer = 32769
+collision_mask = 32769
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1591219101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3666992, 0, -0.9620056)
+mesh = SubResource("BoxMesh_8u1lp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1276638415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3666992, 0, -0.9620056)
+shape = SubResource("ConvexPolygonShape3D_luoa5")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1661307073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1805158, 0)
+collision_layer = 2048
+collision_mask = 2048
+floor_snap_length = 2.0
+metadata/_edit_group_ = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=1988154449]
+target_desired_distance = 0.2
+path_height_offset = 1.5
+debug_enabled = true
+
+[node name="player2" parent="CharacterBody3D" unique_id=1992337903 instance=ExtResource("1_luoa5")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.4222584, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=842791174]
+transform = Transform3D(0.7546941, 0.32804042, -0.568178, 0, 0.8660236, 0.5000031, 0.6560768, -0.37734938, 0.65358293, -11.206377, 7.9304585, 9.761774)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1153302744]
+transform = Transform3D(1, 0, 0, 0, 0.34483713, 0.9386625, 0, -0.9386625, 0.34483713, 0, 8.555405, 0)
+shadow_enabled = true
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=341305615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.764295, 1.6681252, -9.629221)
+gizmo_extents = 1.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2075454225]
+navigation_mesh = SubResource("NavigationMesh_8u1lp")
+metadata/_edit_lock_ = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=392262467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.624707, 2.765315, 0)
+visible = false
+mesh = SubResource("PrismMesh_8u1lp")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1917688216]
+collision_layer = 32769
+collision_mask = 32769
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1825986454 groups=["the_floor"]]
+transform = Transform3D(6.493914, 0, 0, 0, 4.6552205, 0, 0, 0, 4.180114, -6.3703756, 1.5642285, 0)
+mesh = SubResource("ArrayMesh_luoa5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1883945299]
+transform = Transform3D(6.493914, 0, 0, 0, 4.6552205, 0, 0, 0, 4.180114, -6.3703756, 1.5642285, 0)
+shape = SubResource("ConvexPolygonShape3D_tvd2u")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=378074253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.197815, 3.9161718)
+collision_layer = 2048
+collision_mask = 2048
+script = ExtResource("2_mm3rf")
+metadata/_edit_group_ = true
+
+[node name="NavigationAgent" type="NavigationAgent3D" parent="Player" unique_id=1287825824]
+target_desired_distance = 0.2
+path_height_offset = 1.5
+debug_enabled = true
+
+[node name="MouseCursor" type="Decal" parent="Player" unique_id=289827092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17346764, 2.3736367, 0)
+size = Vector3(0.5, 0.5, 0.5)
+texture_albedo = ExtResource("3_dqjsi")
+texture_emission = ExtResource("4_lbghw")
+emission_energy = 5.0
+modulate = Color(0.3359375, 1, 0, 1)
+normal_fade = 0.5
+cull_mask = 1032189
+
+[node name="player2" parent="Player" unique_id=505848259 instance=ExtResource("1_luoa5")]
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, -0.0021123588, 1.4266368, 0.14971972)
+
+[node name="Shadow" type="Decal" parent="Player" unique_id=903453183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0057991147, 0)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("5_cpgs3")
+modulate = Color(1, 1, 1, 0.5019608)
+cull_mask = 1032189

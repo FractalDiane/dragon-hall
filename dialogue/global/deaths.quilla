@@ -5,6 +5,9 @@
 	Your attempt to sneak up on the dragon was ill-conceived. To an astonishing extent.
 @case "lava"
 	You attempted to swim in the forbidden snack.
+@case "lab_ward"
+	A lethal-strength anti-dragon ward was placed on the door.
+	Perhaps drinking that potion was a mistake.
 @case else
 	MESSAGE NOT FOUND
 

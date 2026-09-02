@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://c451c56j0yi1j" path="res://audio/515355__flor657__opening-garage-door-4.mp3" id="12_8rldl"]
 [ext_resource type="AudioStream" uid="uid://bppqsifoq0upp" path="res://audio/music/library_temp.ogg" id="13_6vgi2"]
 [ext_resource type="PackedScene" uid="uid://bp66lht8gpv44" path="res://prefabs/interactibles/book.tscn" id="14_42jos"]
+[ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="15_3mwsm"]
+[ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="16_15qx3"]
 
 [sub_resource type="Environment" id="Environment_klvwg"]
 background_mode = 4
@@ -34,14 +36,17 @@ _surfaces = [{
 }]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_klvwg"]
-vertices = PackedVector3Array(37, 1, -9.5, 37.25, 1, -7.5, 39, 1, -7.75, 39, 1, -12.5, -44, 1, -12.5, -44, 1, -9.5, -43.5, 14.5, 31.25, -43.5, 14, 32, -16.5, 14, 32, -44, 14.5, 31, -15.75, 14.5, 31, -15.75, 14.5, -8.5, -44, 14.5, -8.5, 39.5, 14.5, 31, 39.5, 14.5, -8.5, -43.25, 1, -8.25, -43.25, 1, 8, -18, 1, 8, -18, 1, -8.25, 18.5, 1, -8.25, 18.5, 1, 8, 36, 1, 8, 36, 1, -8.25, 37.25, 1, 8, 38.25, 1, 8.25, 37.25, 1, 15.75, 37.25, 1, 31.5, 39, 1, 31.5, 38.25, 1, 15.25, -16.75, 5.25, -7.25, -16.75, 5.25, 8.25, -16.25, 5.25, 8.25, -16.25, 5.25, -7.25, -2.25, 1, -4.25, -2.25, 1, -7.25, -15.25, 1, -7.25, -15.25, 1, -4, -1.75, 1, -4, 1.75, 1, -2.75, 2, 1, -4.25, -1.75, 1, -2.75, 14.25, 1, -4.25, 14.25, 1, -7.25, 16.75, 5.25, -7.25, 16.75, 5.25, 8.25, 17.25, 5.25, 8.25, 17.25, 5.25, -7.25, -14.25, 5.25, -3.25, -14.25, 5.25, -2.5, -11.75, 5.25, -2.5, -11.75, 5.25, -3.25, -9.75, 5.25, -3.25, -9.75, 5.25, -2.5, -7.25, 5.25, -2.5, -7.25, 5.25, -3.25, -5.25, 5.25, -3.25, -5.25, 5.25, -2.5, -2.75, 5.25, -2.5, -2.75, 5.25, -3.25, 2.75, 5.25, -3.25, 2.75, 5.25, -2.5, 5.25, 5.25, -2.5, 5.25, 5.25, -3.25, 7.25, 5.25, -3.25, 7.25, 5.25, -2.5, 9.75, 5.25, -2.5, 9.75, 5.25, -3.25, 11.75, 5.25, -3.25, 11.75, 5.25, -2.5, 14.25, 5.25, -2.5, 14.25, 5.25, -3.25, 2, 1, -1.5, -2, 1, -1.5, -2, 1, 0.25, 2, 1, 0.25, 14.25, 1, 0.25, 14.25, 1, -1.5, -1.75, 1, 1.75, 1.75, 1, 1.75, -15.25, 1, -1.75, -15.25, 1, 0.5, -14.25, 5.25, 1.25, -14.25, 5.25, 2, -11.75, 5.25, 2, -11.75, 5.25, 1.25, -9.75, 5.25, 1.25, -9.75, 5.25, 2, -7.25, 5.25, 2, -7.25, 5.25, 1.25, -5.25, 5.25, 1.25, -5.25, 5.25, 2, -2.75, 5.25, 2, -2.75, 5.25, 1.25, 2.75, 5.25, 1.25, 2.75, 5.25, 2, 5.25, 5.25, 2, 5.25, 5.25, 1.25, 7.25, 5.25, 1.25, 7.25, 5.25, 2, 9.75, 5.25, 2, 9.75, 5.25, 1.25, 11.75, 5.25, 1.25, 11.75, 5.25, 2, 14.25, 5.25, 2, 14.25, 5.25, 1.25, -2, 1, 13.75, -1.75, 1, 15, 1.75, 1, 15, 2, 1, 3, -2, 1, 3, 2, 1, 13.75, 3.75, 1, 13.75, 3.75, 1, 3, -3.75, 1, 3, -3.75, 1, 13.75, -15.25, 1, 2.75, -15.25, 1, 8.75, -14.5, 1, 13.75, 14.75, 1, 13.75, 15.75, 1, 9, 15.75, 1, 3, -32.5, 1, 10.75, -35, 1, 10.75, -34.75, 1, 14.5, -15.5, 1, 9.25, -15.25, 1, 14, -32.25, 1, 9.25, -15.25, 1, 14.75, 23.5, 1, 12.75, 25.5, 1, 12.75, 25.5, 1, 9.25, 16.25, 1, 14.5, 23.25, 1, 14.5, -42.75, 5.25, 9.25, -42.75, 5.25, 9.75, -33.25, 5.25, 9.75, -33.25, 5.25, 9.25, 34.5, 1, 12.75, 34.75, 1, 14.5, 36, 1, 14.5, 36, 1, 9.25, -36.5, 1, 14.75, -42.75, 1, 10.75, -42.75, 8.5, 30.5, -36.5, 8.5, 30.5, -42.75, 1, 14.982143, -42.75, 2, 16.392857, -42.75, 8, 22.035713, -42.75, 8.5, 23.446426, -36.5, 8.5, 23.340908, -39.999817, 7.5, 21.489807, -41.49994, 3, 16.979935, -38.51481, 7.5, 21.500793, 24.25, 5.25, 13.75, 24.25, 5.25, 14.5, 25.25, 5.25, 14.5, 25.5, 5.25, 14, 26.5, 5.25, 14, 31.5, 5.25, 14, 33.75, 5.25, 13.75, 33.75, 5.25, 14.5, 26.75, 5.25, 14.5, 31.25, 5.25, 14.5, -14.25, 5.25, 14.75, -14.25, 5.25, 15.5, -11.75, 5.25, 15.5, -11.75, 5.25, 14.75, -9.75, 5.25, 14.75, -9.75, 5.25, 15.5, -7.25, 5.25, 15.5, -7.25, 5.25, 14.75, -5.25, 5.25, 14.75, -5.25, 5.25, 15.5, -2.75, 5.25, 15.5, -2.75, 5.25, 14.75, 2.75, 5.25, 14.75, 2.75, 5.25, 15.5, 5.25, 5.25, 15.5, 5.25, 5.25, 14.75, 7.25, 5.25, 14.75, 7.25, 5.25, 15.5, 9.75, 5.25, 15.5, 9.75, 5.25, 14.75, 11.75, 5.25, 14.75, 11.75, 5.25, 15.5, 14.25, 5.25, 15.5, 14.25, 5.25, 14.75, -2.25, 1, 23.5, 2.25, 1, 23.5, 2.25, 1, 21, 1.75, 1, 20.75, -1.75, 1, 20.75, -2.25, 1, 21, -2, 1, 16.5, -15.25, 1, 16.25, -15.25, 1, 18.5, -2, 1, 18.25, 2, 1, 16.5, 2, 1, 18.25, 14.25, 1, 18.25, 14.25, 1, 16.5, 25, 1, 15.5, 25, 1, 17, 26.25, 1, 17, 26.25, 1, 15.5, -16.5, 1, 31.5, -16.25, 1, 24.75, -16.5, 1, 15.75, -35.25, 1, 15.75, -35.25, 1, 31.5, 23.75, 1, 18, 23.75, 1, 15.75, 17.25, 1, 15.75, 17, 1, 24.75, 25.5, 1, 18.25, 17.25, 1, 31.5, 25.75, 1, 31.5, 36, 1, 15.75, 27.5, 1, 15.75, 27.5, 1, 17.75, 27, 1, 18.25, 36, 1, 31.5, -42.75, 1, 18.75, -42.75, 1, 31, -36.5, 1, 31, -36.5, 1, 18.75, -14.25, 5.25, 19.25, -14.25, 5.25, 20, -11.75, 5.25, 20, -11.75, 5.25, 19.25, -9.75, 5.25, 19.25, -9.75, 5.25, 20, -7.25, 5.25, 20, -7.25, 5.25, 19.25, -5.25, 5.25, 19.25, -5.25, 5.25, 20, -2.75, 5.25, 20, -2.75, 5.25, 19.25, 2.75, 5.25, 19.25, 2.75, 5.25, 20, 5.25, 5.25, 20, 5.25, 5.25, 19.25, 7.25, 5.25, 19.25, 7.25, 5.25, 20, 9.75, 5.25, 20, 9.75, 5.25, 19.25, 11.75, 5.25, 19.25, 11.75, 5.25, 20, 14.25, 5.25, 20, 14.25, 5.25, 19.25, -15.25, 1, 20.75, -15.25, 1, 23.5, 14.25, 1, 23.5, 14.25, 1, 21, -15.25, 1, 25.75, -15.25, 1, 31.5, 16, 1, 31.5, 16, 1, 25.75)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 9, 8), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(11, 14, 10), PackedInt32Array(10, 14, 13), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(22, 21, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(23, 1, 24), PackedInt32Array(24, 1, 2), PackedInt32Array(25, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(24, 2, 28), PackedInt32Array(28, 2, 27), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(33, 34, 37), PackedInt32Array(37, 34, 39), PackedInt32Array(37, 39, 38), PackedInt32Array(38, 40, 37), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 39, 34), PackedInt32Array(46, 45, 43), PackedInt32Array(43, 45, 44), PackedInt32Array(50, 49, 47), PackedInt32Array(47, 49, 48), PackedInt32Array(54, 53, 51), PackedInt32Array(51, 53, 52), PackedInt32Array(58, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(62, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(66, 65, 63), PackedInt32Array(63, 65, 64), PackedInt32Array(70, 69, 67), PackedInt32Array(67, 69, 68), PackedInt32Array(71, 74, 38), PackedInt32Array(38, 74, 40), PackedInt32Array(40, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(71, 76, 74), PackedInt32Array(74, 76, 75), PackedInt32Array(77, 73, 78), PackedInt32Array(78, 73, 74), PackedInt32Array(73, 80, 72), PackedInt32Array(72, 80, 79), PackedInt32Array(84, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(88, 87, 85), PackedInt32Array(85, 87, 86), PackedInt32Array(92, 91, 89), PackedInt32Array(89, 91, 90), PackedInt32Array(96, 95, 93), PackedInt32Array(93, 95, 94), PackedInt32Array(100, 99, 97), PackedInt32Array(97, 99, 98), PackedInt32Array(104, 103, 101), PackedInt32Array(101, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(77, 78, 108), PackedInt32Array(77, 108, 109), PackedInt32Array(109, 108, 110), PackedInt32Array(109, 110, 107), PackedInt32Array(109, 107, 105), PackedInt32Array(108, 112, 110), PackedInt32Array(110, 112, 111), PackedInt32Array(109, 105, 113), PackedInt32Array(113, 105, 114), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 114), PackedInt32Array(114, 115, 113), PackedInt32Array(119, 118, 120), PackedInt32Array(120, 118, 111), PackedInt32Array(120, 111, 112), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 117), PackedInt32Array(117, 124, 116), PackedInt32Array(121, 126, 124), PackedInt32Array(125, 127, 124), PackedInt32Array(124, 127, 121), PackedInt32Array(121, 127, 123), PackedInt32Array(130, 129, 128), PackedInt32Array(118, 119, 131), PackedInt32Array(131, 119, 128), PackedInt32Array(128, 119, 130), PackedInt32Array(128, 132, 131), PackedInt32Array(136, 135, 133), PackedInt32Array(133, 135, 134), PackedInt32Array(138, 137, 139), PackedInt32Array(139, 137, 140), PackedInt32Array(129, 130, 137), PackedInt32Array(137, 130, 140), PackedInt32Array(123, 141, 122), PackedInt32Array(122, 141, 142), PackedInt32Array(141, 145, 142), PackedInt32Array(145, 151, 146), PackedInt32Array(146, 151, 147), PackedInt32Array(147, 150, 148), PackedInt32Array(148, 144, 143), PackedInt32Array(144, 148, 149), PackedInt32Array(149, 152, 141), PackedInt32Array(141, 151, 145), PackedInt32Array(151, 150, 147), PackedInt32Array(150, 149, 148), PackedInt32Array(152, 151, 141), PackedInt32Array(149, 150, 152), PackedInt32Array(151, 152, 150), PackedInt32Array(155, 154, 156), PackedInt32Array(156, 154, 153), PackedInt32Array(157, 153, 158), PackedInt32Array(158, 153, 159), PackedInt32Array(157, 156, 153), PackedInt32Array(159, 160, 158), PackedInt32Array(161, 157, 162), PackedInt32Array(162, 157, 158), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 169, 167), PackedInt32Array(167, 169, 168), PackedInt32Array(174, 173, 171), PackedInt32Array(171, 173, 172), PackedInt32Array(178, 177, 175), PackedInt32Array(175, 177, 176), PackedInt32Array(182, 181, 179), PackedInt32Array(179, 181, 180), PackedInt32Array(186, 185, 183), PackedInt32Array(183, 185, 184), PackedInt32Array(192, 191, 187), PackedInt32Array(187, 191, 190), PackedInt32Array(187, 190, 189), PackedInt32Array(187, 189, 188), PackedInt32Array(196, 195, 193), PackedInt32Array(193, 195, 194), PackedInt32Array(197, 198, 107), PackedInt32Array(107, 198, 106), PackedInt32Array(106, 198, 193), PackedInt32Array(193, 198, 196), PackedInt32Array(197, 200, 198), PackedInt32Array(198, 200, 199), PackedInt32Array(191, 196, 190), PackedInt32Array(190, 196, 198), PackedInt32Array(204, 203, 201), PackedInt32Array(201, 203, 202), PackedInt32Array(206, 205, 207), PackedInt32Array(207, 205, 209), PackedInt32Array(207, 209, 208), PackedInt32Array(211, 210, 212), PackedInt32Array(212, 210, 213), PackedInt32Array(210, 214, 213), PackedInt32Array(213, 214, 215), PackedInt32Array(215, 214, 216), PackedInt32Array(219, 218, 217), PackedInt32Array(219, 217, 220), PackedInt32Array(220, 217, 221), PackedInt32Array(220, 221, 216), PackedInt32Array(216, 214, 220), PackedInt32Array(225, 224, 222), PackedInt32Array(222, 224, 223), PackedInt32Array(229, 228, 226), PackedInt32Array(226, 228, 227), PackedInt32Array(233, 232, 230), PackedInt32Array(230, 232, 231), PackedInt32Array(237, 236, 234), PackedInt32Array(234, 236, 235), PackedInt32Array(241, 240, 238), PackedInt32Array(238, 240, 239), PackedInt32Array(245, 244, 242), PackedInt32Array(242, 244, 243), PackedInt32Array(249, 248, 246), PackedInt32Array(246, 248, 247), PackedInt32Array(187, 251, 192), PackedInt32Array(192, 251, 250), PackedInt32Array(253, 252, 189), PackedInt32Array(189, 252, 188), PackedInt32Array(257, 256, 254), PackedInt32Array(254, 256, 255)]
-geometry_source_geometry_mode = 1
+vertices = PackedVector3Array(-43.5, 14.5, 31.25, -43.5, 14, 32, -16.5, 14, 32, -16.5, 14.5, 31.25, -44, 14.5, 31, -16, 14.5, 31, -16, 14.5, -8.5, -44, 14.5, -8.5, 39.5, 14.5, 31, 39.5, 14.5, -8.5, -16.75, 5.25, -7.25, -16.75, 5.25, 8.25, -16.25, 5.25, 8.25, -16.25, 5.25, -7.25, -2.25, 1, -4.25, -2.25, 1, -7.25, -15.25, 1, -7.25, -15.25, 1, -4, -1.75, 1, -4, 1.75, 1, -2.75, 2, 1, -4.25, -1.75, 1, -2.75, 14.25, 1, -4.25, 14.25, 1, -7.25, 16.75, 5.25, -7.25, 16.75, 5.25, 8.25, 17.25, 5.25, 8.25, 17.25, 5.25, -7.25, -14.25, 5.25, -3.25, -14.25, 5.25, -2.5, -11.75, 5.25, -2.5, -11.75, 5.25, -3.25, -9.75, 5.25, -3.25, -9.75, 5.25, -2.5, -7.25, 5.25, -2.5, -7.25, 5.25, -3.25, -5.25, 5.25, -3.25, -5.25, 5.25, -2.5, -2.75, 5.25, -2.5, -2.75, 5.25, -3.25, 2.75, 5.25, -3.25, 2.75, 5.25, -2.5, 5.25, 5.25, -2.5, 5.25, 5.25, -3.25, 7.25, 5.25, -3.25, 7.25, 5.25, -2.5, 9.75, 5.25, -2.5, 9.75, 5.25, -3.25, 11.75, 5.25, -3.25, 11.75, 5.25, -2.5, 14.25, 5.25, -2.5, 14.25, 5.25, -3.25, 2, 1, -1.5, -2, 1, -1.5, -2, 1, 0.25, 2, 1, 0.25, 14.25, 1, 0.25, 14.25, 1, -1.5, -1.75, 1, 1.75, 1.75, 1, 1.75, -15.25, 1, -1.75, -15.25, 1, 0.5, -14.25, 5.25, 1.25, -14.25, 5.25, 2, -11.75, 5.25, 2, -11.75, 5.25, 1.25, -9.75, 5.25, 1.25, -9.75, 5.25, 2, -7.25, 5.25, 2, -7.25, 5.25, 1.25, -5.25, 5.25, 1.25, -5.25, 5.25, 2, -2.75, 5.25, 2, -2.75, 5.25, 1.25, 2.75, 5.25, 1.25, 2.75, 5.25, 2, 5.25, 5.25, 2, 5.25, 5.25, 1.25, 7.25, 5.25, 1.25, 7.25, 5.25, 2, 9.75, 5.25, 2, 9.75, 5.25, 1.25, 11.75, 5.25, 1.25, 11.75, 5.25, 2, 14.25, 5.25, 2, 14.25, 5.25, 1.25, -2, 1, 13.75, -1.75, 1, 15, 1.75, 1, 15, 2, 1, 3, -2, 1, 3, 2, 1, 13.75, 3.75, 1, 13.75, 3.75, 1, 3, -3.75, 1, 3, -3.75, 1, 13.75, -15.25, 1, 2.75, -15.25, 1, 8.75, -14.5, 1, 13.75, 14.75, 1, 13.75, 15.75, 1, 9, 15.75, 1, 3, -32.5, 1, 10.75, -35, 1, 10.75, -34.75, 1, 14.5, -15.5, 1, 9.25, -15.25, 1, 14, -32.25, 1, 9.25, -15.25, 1, 14.75, 24.75, 1, 14.5, 25, 1, 17, 26.25, 1, 17, 26.75, 1, 13, 16.25, 1, 14.5, 29, 1, 9.25, 29, 1, 12.75, -42.75, 5.25, 9.25, -42.75, 5.25, 9.75, -33.25, 5.25, 9.75, -33.25, 5.25, 9.25, 34.5, 1, 12.75, 34.75, 1, 14.5, 36, 1, 14.5, 36, 1, 9.25, -36.5, 1, 14.75, -42.75, 1, 10.75, -42.75, 8.5, 30.5, -36.5, 8.5, 30.5, -42.75, 1, 14.982143, -42.75, 2, 16.392857, -42.75, 8, 22.035715, -42.75, 8.5, 23.446426, -36.5, 8.5, 23.340908, -41.51481, 8.5, 22.500793, -38.49478, 8.5, 22.522768, -41.479916, 4, 18.00191, 27.75, 5.25, 13.75, 27.75, 5.25, 14.5, 33.75, 5.25, 14.5, 33.75, 5.25, 13.75, -14.25, 5.25, 14.75, -14.25, 5.25, 15.5, -11.75, 5.25, 15.5, -11.75, 5.25, 14.75, -9.75, 5.25, 14.75, -9.75, 5.25, 15.5, -7.25, 5.25, 15.5, -7.25, 5.25, 14.75, -5.25, 5.25, 14.75, -5.25, 5.25, 15.5, -2.75, 5.25, 15.5, -2.75, 5.25, 14.75, 2.75, 5.25, 14.75, 2.75, 5.25, 15.5, 5.25, 5.25, 15.5, 5.25, 5.25, 14.75, 7.25, 5.25, 14.75, 7.25, 5.25, 15.5, 9.75, 5.25, 15.5, 9.75, 5.25, 14.75, 11.75, 5.25, 14.75, 11.75, 5.25, 15.5, 14.25, 5.25, 15.5, 14.25, 5.25, 14.75, -2.25, 1, 23.5, 2.25, 1, 23.5, 2.25, 1, 21, 1.75, 1, 20.75, -1.75, 1, 20.75, -2.25, 1, 21, -2, 1, 16.5, -15.25, 1, 16.25, -15.25, 1, 18.5, -2, 1, 18.25, 2, 1, 16.5, 2, 1, 18.25, 14.25, 1, 18.25, 14.25, 1, 16.5, -14.25, 5.25, 19.25, -14.25, 5.25, 20, -11.75, 5.25, 20, -11.75, 5.25, 19.25, -9.75, 5.25, 19.25, -9.75, 5.25, 20, -7.25, 5.25, 20, -7.25, 5.25, 19.25, -5.25, 5.25, 19.25, -5.25, 5.25, 20, -2.75, 5.25, 20, -2.75, 5.25, 19.25, 2.75, 5.25, 19.25, 2.75, 5.25, 20, 5.25, 5.25, 20, 5.25, 5.25, 19.25, 7.25, 5.25, 19.25, 7.25, 5.25, 20, 9.75, 5.25, 20, 9.75, 5.25, 19.25, 11.75, 5.25, 19.25, 11.75, 5.25, 20, 14.25, 5.25, 20, 14.25, 5.25, 19.25, -15.25, 1, 20.75, -15.25, 1, 23.5, 14.25, 1, 23.5, 14.25, 1, 21)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(0, 4, 3), PackedInt32Array(3, 4, 5), PackedInt32Array(5, 4, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(6, 9, 5), PackedInt32Array(5, 9, 8), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(14, 15, 18), PackedInt32Array(18, 15, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(19, 21, 18), PackedInt32Array(22, 20, 23), PackedInt32Array(23, 20, 15), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(52, 55, 19), PackedInt32Array(19, 55, 21), PackedInt32Array(21, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(52, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(58, 54, 59), PackedInt32Array(59, 54, 55), PackedInt32Array(54, 61, 53), PackedInt32Array(53, 61, 60), PackedInt32Array(65, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71), PackedInt32Array(77, 76, 74), PackedInt32Array(74, 76, 75), PackedInt32Array(81, 80, 78), PackedInt32Array(78, 80, 79), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(88, 87, 86), PackedInt32Array(58, 59, 89), PackedInt32Array(58, 89, 90), PackedInt32Array(90, 89, 91), PackedInt32Array(90, 91, 88), PackedInt32Array(90, 88, 86), PackedInt32Array(89, 93, 91), PackedInt32Array(91, 93, 92), PackedInt32Array(90, 86, 94), PackedInt32Array(94, 86, 95), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 95), PackedInt32Array(95, 96, 94), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 92), PackedInt32Array(101, 92, 93), PackedInt32Array(104, 103, 102), PackedInt32Array(106, 105, 98), PackedInt32Array(98, 105, 97), PackedInt32Array(102, 107, 105), PackedInt32Array(106, 108, 105), PackedInt32Array(105, 108, 102), PackedInt32Array(102, 108, 104), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 112), PackedInt32Array(99, 100, 113), PackedInt32Array(113, 100, 109), PackedInt32Array(109, 100, 112), PackedInt32Array(112, 100, 114), PackedInt32Array(114, 115, 112), PackedInt32Array(119, 118, 116), PackedInt32Array(116, 118, 117), PackedInt32Array(121, 120, 122), PackedInt32Array(122, 120, 123), PackedInt32Array(115, 114, 120), PackedInt32Array(120, 114, 123), PackedInt32Array(104, 124, 103), PackedInt32Array(103, 124, 125), PackedInt32Array(124, 128, 125), PackedInt32Array(128, 135, 129), PackedInt32Array(129, 135, 130), PackedInt32Array(130, 133, 131), PackedInt32Array(131, 134, 126), PackedInt32Array(126, 134, 127), PackedInt32Array(127, 134, 132), PackedInt32Array(132, 134, 124), PackedInt32Array(124, 135, 128), PackedInt32Array(135, 133, 130), PackedInt32Array(133, 134, 131), PackedInt32Array(134, 135, 124), PackedInt32Array(135, 134, 133), PackedInt32Array(139, 138, 136), PackedInt32Array(136, 138, 137), PackedInt32Array(143, 142, 140), PackedInt32Array(140, 142, 141), PackedInt32Array(147, 146, 144), PackedInt32Array(144, 146, 145), PackedInt32Array(151, 150, 148), PackedInt32Array(148, 150, 149), PackedInt32Array(155, 154, 152), PackedInt32Array(152, 154, 153), PackedInt32Array(159, 158, 156), PackedInt32Array(156, 158, 157), PackedInt32Array(163, 162, 160), PackedInt32Array(160, 162, 161), PackedInt32Array(169, 168, 164), PackedInt32Array(164, 168, 167), PackedInt32Array(164, 167, 166), PackedInt32Array(164, 166, 165), PackedInt32Array(173, 172, 170), PackedInt32Array(170, 172, 171), PackedInt32Array(174, 175, 88), PackedInt32Array(88, 175, 87), PackedInt32Array(87, 175, 170), PackedInt32Array(170, 175, 173), PackedInt32Array(174, 177, 175), PackedInt32Array(175, 177, 176), PackedInt32Array(168, 173, 167), PackedInt32Array(167, 173, 175), PackedInt32Array(181, 180, 178), PackedInt32Array(178, 180, 179), PackedInt32Array(185, 184, 182), PackedInt32Array(182, 184, 183), PackedInt32Array(189, 188, 186), PackedInt32Array(186, 188, 187), PackedInt32Array(193, 192, 190), PackedInt32Array(190, 192, 191), PackedInt32Array(197, 196, 194), PackedInt32Array(194, 196, 195), PackedInt32Array(201, 200, 198), PackedInt32Array(198, 200, 199), PackedInt32Array(164, 203, 169), PackedInt32Array(169, 203, 202), PackedInt32Array(205, 204, 166), PackedInt32Array(166, 204, 165)]
+geometry_source_geometry_mode = 2
 geometry_source_group_name = &"nav"
 agent_max_climb = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_klvwg"]
 size = Vector3(84, 1, 45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8u1lp"]
+size = Vector3(3.4568481, 4.394043, 1.7888184)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihe2j"]
 
@@ -78,6 +83,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1m514")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_15qx3"]
+_surfaces = [{
+"aabb": AABB(-1.450028, -4.3919425, -0.14369313, 3.2257075, 8.765279, 6.528491),
+"format": 34359742465,
+"index_count": 924,
+"index_data": PackedByteArray("TwBQAAIAUAADAAIAUAABAAMAUQABAFAACwADAAEAUQALAAEAUgBRAFAATwBSAFAABAALAFEACwAKAAMABAAKAAsAUgBTAFEAUwAEAFEAVABSAE8AVQBTAFIAVABVAFIAVgADAAoAVgAKAAkACQAKAAQABgADAFYABgACAAMACQAHAFYABgBWAAcACQANAAcAVwAHAA0ABgAHAFcAWAANAAkAVwANAFgAWAAJAAUACQAEAAUABQACAAYABQAEAAIAWQACAAQAUwBZAAQAWQBPAAIAWgBZAFMAWwBPAFkAWgBbAFkAWwBUAE8AVQBaAFMAWwAAAFQAAABVAFQAWgBKAFsAWwBKAAAAVQBcAFoAWgBcAEoAVQBdAFwAAABdAFUAXgBcAF0ASQBdAAAASQBeAF0AAABMAEkAAABOAEwASgBOAAAASQBMAE0ATQBMAE4ASgBLAE4ATQBOAEsASABNAEsASABLAEoASQBNAEgAXwBKAFwAXwBIAEoAXgBfAFwASABCAEkAQgBeAEkAXwBHAEgASABHAEIAXgBgAF8AXwBgAEcAXgBhAGAAQgBhAF4AYgBgAGEAQQBhAEIAQQBiAGEAQgBDAEEAQgBGAEMARwBGAEIAQQBDAEQARABDAEYARwBFAEYARABGAEUAQABEAEUAQABFAEcAQQBEAEAAYwBHAGAAYwBAAEcAYgBjAGAAQAA/AEEAPwBiAEEAYwA6AEAAQAA6AD8AYgBkAGMAYwBkADoAYgBlAGQAPwBlAGIAZgBkAGUAOQBlAD8AOQBmAGUAPwA9ADkAPwA+AD0AOgA+AD8AOQA9ADsAOwA9AD4AOgA8AD4AOwA+ADwAOAA7ADwAOAA8ADoAOQA7ADgAZwA6AGQAZwA4ADoAZgBnAGQAOAA3ADkANwBmADkAZwA1ADgAOAA1ADcAZgBoAGcAZwBoADUAZgBpAGgANwBpAGYAagBoAGkAKQBpADcAKQBqAGkAagBrAGgAawA1AGgAbABrAGoANQA2ADcANwA2ADQANwA0ACkANQAzADYAMgA0ADYAMgA2ADMAKQA0ADIAMQAzADUAMQAyADMAawAxADUAKQAyADEALgAxAGsAbAAuAGsAJgApADEALgAmADEAbQBqACkAbQBsAGoAJgBtACkAbQAqAGwAbQAoACoAJgAoAG0AbAAqAG4AbABuAC4AKgAoAG8AKgBvAG4AJgBvACgAbwArAG4AbgBwAC4AbgArAHAAbwAnACsAcAArACcAJgAnAG8AcAAnAHEAJgBxACcAcQAsAHAALgAwACYAJgAtAHEAcQAtACwAJgAwAC0AcAAsAC8AcAAvAC4ALwAsAC0ALgAvADAALwAtADAAcgAGAFcAcgAIAAYACAAFAAYAcwByAFcAcwBXAFgADgBYAAUADgBzAFgACAAOAAUAdAByAHMAEgBzAA4AEgB0AHMAdAB1AHIAdQAIAHIAdAB2AHUAdQAUAAgAdgAUAHUACAAPAA4ADgAPABAADgAQABIACAARAA8AFAARAAgAEwAQAA8AEwAPABEAEgAQABMAFAATABEAEgATABQAEgAMAHQAdAAMAHYAFAAVABIAEgAVAAwAFAB3ABUAdgB3ABQAFgAVAHcAeAB3AHYAeAAWAHcAeQB2AAwAeQB4AHYAegAMABUAegB5AAwAFgB6ABUAeQB7AHgAewAWAHgAegB8AHkAeQB8AHsAFgB9AHoAegB9AHwAFgB+AH0AewB+ABYAfwB9AH4AgAB+AHsAgAB/AH4AgQB7AHwAgQCAAHsAggB8AH0AggCBAHwAfwCCAH0AgQCDAIAAgwB/AIAAggCEAIEAgQCEAIMAfwCFAIIAggCFAIQAfwCGAIUAgwCGAH8AGQCFAIYAhwCGAIMAhwAZAIYAiACDAIQAiACHAIMAiQCEAIUAiQCIAIQAGQCJAIUAiAAaAIcAGgAZAIcAiQCKAIgAiACKABoAGQCLAIkAiQCLAIoAGQCMAIsAGgCMABkAjQCKAIsAjgAaAIoAjQCOAIoAjgCPABoAjwCMABoAkACLAIwAjwCQAIwAkACNAIsAGACPAI4AFwCOAI0AFwAYAI4AGwCNAJAAGwAXAI0AkQCQAI8AkQAbAJAAGACRAI8AGwAcABcAGAAdAJEAkQCSABsAkQAdAJIAkgAeABsAGwAeABwAkgAfAB4AkgAdAJMAGACTAB0AlAAfAJIAkgCTAJQAHgAfAJUAlACVAB8AHgCVABwAkwCWAJQAlAAgAJUAlACWACAAkwAhAJYAGAAhAJMAlwAgAJYAlwCWACEAlQAgAJgAlQCYABwAlwCYACAAGACZACEAlwAhAJkAlwAiAJgAmAAlABwAmAAiACUAlwCaACIAmQCaAJcAJQAiAJoAGAAjAJkAmQAjAJoAGAAkACMAFwAkABgAmwCaACMAJQCaAJsAmwAjACQAFwCbACQAHAAlAJsAHACbABcA"),
+"lods": [0.0021978717, PackedByteArray("AAABAAIAAQADAAIABAAAAAIABQAEAAIABgACAAMABQACAAYABgADAAcACAAFAAYABwAIAAYACQAEAAUACQAHAAMACQAKAAQAAwAKAAkACwAKAAMABAAKAAsACwADAAEADAAJAAUACQANAAcADAANAAkABwANAAwADgAMAAUACAAOAAUACAAPAA4ADgAPABAACAARAA8ADgAQABIAEgAMAA4AEwAQAA8AEgAQABMAEwAPABEAFAARAAgAFAATABEAEgATABQABwAUAAgAEgAVAAwAFAAVABIAFgAVABQABwAWABQAFwAMABUAFgAXABUAGAAHAAwAFwAYAAwABwAZABYAGQAXABYAGgAZAAcAGAAaAAcAGwAXABkAGgAbABkAGwAcABcAGgAdABsAGAAdABoAHQAeABsAGwAeABwAHQAfAB4AHgAfACAAHgAgABwAIQAfAB0AIQAgAB8AGAAhAB0AIAAiABwAIQAiACAAGAAjACEAIwAiACEAGAAkACMAJAAiACMAFwAkABgAHAAkABcAJQAiACQAIgAlABwAHAAlACQAJgAnACgAJgAoACkAKgAoACcAKAAqACkAKgAnACsALAArACcALAAnAC0AJgAtACcAKwAsAC4AKgArAC4ALwAsAC0ALAAvAC4ALwAtADAAJgAwAC0ALgAvADAALgAwACYALgAmADEAJgApADEAKQAyADEAMQAyADMAKQA0ADIAMQAzADUALgAxADUAMgA2ADMAMgA0ADYANQAzADYANwA0ACkANwA2ADQANQA2ADcAKQAqADcALgA1ADgAOAA1ADcANwAqADkAOAA3ADkALgA4ADoAOQA7ADgAOAA7ADwAOAA8ADoAOQA9ADsAOwA+ADwAOwA9AD4AOgA8AD4APwA9ADkAPwA+AD0AOgA+AD8AOQAqAD8ALgA6AAsAKgAuAAsAQAA6AD8ACwA6AEAAPwAqAEEAQAA/AEEAAQAqAAsAQgAqAAEAQQAqAEIAQgBDAEEAQQBEAEAAQQBDAEQAQABEAEUARABDAEYARABGAEUAQgBGAEMAQABFAEcARwBFAEYARwBGAEIACwBAAEcASABHAEIACwBHAEgAQgABAEkASABCAEkASQABAAAACwBIAEoACwBKAAQABABKAAAASABLAEoAAABMAEkASQBNAEgASABNAEsASQBMAE0ASgBLAE4ASgBOAAAATQBOAEsAAABOAEwATQBMAE4A")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 156,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_gwbxc"]
 resource_name = "bookshelf_Cube_044"
 lightmap_size_hint = Vector2i(512, 512)
@@ -95,7 +114,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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hJq5v4eKsz//HcNAhJq5P3RdjMBLJBM+hJq5P3RdjMBLJBO+hJq5v8uKjMD/HcNAhJq5P8uKjMBEUMxAhJq5P8uKjMD/HcNAhJq5P8uKjMDdIxM+eEnjP8uKjMD/HcNAhJq5P8uKjMDdIxM+eEnjP95agsDdIxM+hJq5v17yi0D/HcNAeEnjP95agsBLJBO+eEnjP95agsBLJBM+eEnjP95agsD/HcNAeEnjP95agsBEUMxAeEnjP8uKjMD/HcNAeEnjP95agsDdIxM+eEnjP1/yi0D/HcNAhJq5P1/yi0D/HcNAhJq5P1/yi0D/HcNAeEnjP1/yi0D/HcNAAAD/f/9///8AAP9/////vwAA/3//f///AAD/f////78AAP9/////vwAA/3////+/AAD/f/9///8AAP9//3///wAA/3////+/AAD/f////78AAP9/////vwAA/3//f///AAD/f/9///8AAP9/////vwAA/3////+/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f////78AAP9/////vwAA/3////+//3//f/9/////f/9//3/+//9//3//f////3//f/9//v//f/9//3////9//3////8//3//f////z//f/9/////P/9//3////8//3//f/9/////f/9//3///wAA/3////+/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f////78AAP9/////v///////f/////////9//////////3//////////f///////f/9///////9//3///////3//f///////f/9///////9/////v////3////+/////f////7////9/////vwAA/3//f///AAD/f////78AAP9//3///wAA/3//f///AAD/f////78AAP9/////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/////f/9///////9//3///////3//f///////f////7////9/////v////3//f///////f/9///////9//3///////3////+/////f////7////9/////v////3//f///////f////7////9/////v////3//f///////f/9//v////9/////v////3////+/////f/9//v////9//3///////3////+/AAD/f/9///8AAP9/////vwAA/3//f///AAD/f////7///////3/+////////f/7///////9//////////3//////////f/7///////9//////////3///////3//f///////f/9///////9//3///////3//f///////f/9/////f/9//3////9//3//f////3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3//f/7//3//f////z//////////v///////f////////////7//////////v/////////+//////////7//////////v/9//3//f////3//f/9/////f/9//3////9//3//f////38AAP///7//fwAA////v/9/AAD///+//38AAP///7//f/9//3/+//9//3//f/7//3//f/9/////f/9//3/+//9///////+//3///////7//f///////v/9///////+//3//f/9/////f/9//3////9//3//f////3//f/9/////fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9//3//f////3//f/9/////f/9//3////9//3//f////3///////7//f///////v/9///////+//3///////7//f/9//3////9//3//f////3//f/9/////f/9//3////9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//3//f/9//v//f/9//3/+//9//3//f/7//3//f/9/////f///////v/9///////+//3///////7//f///////v/9//3//f/7//3//f/9//v//f/9//3/+//9//3//f////3///////7//f///////v/9///////+//3///////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v///////f/////////9//////////3//////////f////38AAP///7//fwAA////v/9/AAD///+//38AAP///7//f///////v/9///////+//3///////7//f///////v////3//f///////f////7////9//3///////3////+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//////////v/////////+//////////7//////////v/////////+//////////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9///////+//3///////7//f///////v/9///////+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///////7//f///AAD/v/9///////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f////////////7//////////v////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f////3//f/9/////f/9//3////9//3//f/7//3//f/9/////f/9//3////9//3////8//3//f////z8AAP9//3///wAA/3//f///AAD/f////78AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///////f/9///////9//3///////3//f////3//f/9/////f/9//3////9//3//f////3//f/9/////f/9//3/+//9//3//f////3//f/9/////f/9//3/+//9//3//f////3//f/9/////f/9//3/+//9//3//f/7//3//f/9/////f/9//3////9//3//f/7//3//f/9/////f/9//3////9//3//f////3//f/9/////f/9//3////9//3//f////3//f////z//f/9/////PwAA/3//f///AAD/f////78AAP9//3///wAA/3//f///AAD/f/9///////9//3///////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f///////f/9///////9//3///////3//f/7///////9//v///////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9//////////3//////////f/7///////9/////fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/////////+//////////7//f///AAD/v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/AAD/f////7//f///////v/9///////+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_1m514")
+shadow_mesh = SubResource("ArrayMesh_15qx3")
 
 [sub_resource type="BoxMesh" id="BoxMesh_h1du6"]
 size = Vector3(0.06, 3, 0.06)
@@ -137,7 +156,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Props/bookshelf32:position")
+tracks/0/path = NodePath("FakeBookshelf/bookshelf32:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,7 +172,7 @@ length = 3.1333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Props/bookshelf32:position")
+tracks/0/path = NodePath("FakeBookshelf/bookshelf32:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -183,6 +202,9 @@ _data = {
 &"RESET": SubResource("Animation_dajjl"),
 &"remove_bookcase": SubResource("Animation_8rldl")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mwsm"]
+size = Vector3(3.165, 4.5, 1.765625)
 
 [node name="Library" type="Node3D" unique_id=1762646339 groups=["nav"]]
 script = ExtResource("1_mdvoh")
@@ -319,6 +341,7 @@ size = Vector3(2.5, 4, 3.5)
 
 [node name="Level" type="MeshInstance3D" parent="." unique_id=1757852120 groups=["nav"]]
 mesh = SubResource("ArrayMesh_h1du6")
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1359136434]
 navigation_mesh = SubResource("NavigationMesh_klvwg")
@@ -338,6 +361,8 @@ affect_navigation_mesh = true
 avoidance_enabled = false
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1598373177 groups=["floor"]]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1539398826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 9.5)
@@ -349,9 +374,22 @@ use_denoiser = false
 light_data = ExtResource("2_klvwg")
 
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("2_tpqg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5026467, -5.5)
 
-[node name="Props" type="Node3D" parent="." unique_id=1319238180 groups=["nav"]]
+[node name="FakeBookshelf" type="StaticBody3D" parent="." unique_id=1260123440]
+
+[node name="bookshelf32" parent="FakeBookshelf" unique_id=445486308 instance=ExtResource("3_tkoed")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 27, 2.6976726, 14)
+metadata/_edit_group_ = true
+
+[node name="Cube_041" parent="FakeBookshelf/bookshelf32" index="0" unique_id=294679415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FakeBookshelf" unique_id=1544275949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.538963, 2.6911473, 14.159546)
+shape = SubResource("BoxShape3D_8u1lp")
+
+[node name="Props" type="Node3D" parent="." unique_id=1319238180]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -359,28 +397,28 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 5.5, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf3" parent="Props" unique_id=2091342258 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 10, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf3" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf3" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf4" parent="Props" unique_id=508836815 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf4" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf4" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf13" parent="Props" unique_id=689340151 instance=ExtResource("3_tkoed")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 2.6015003, 17, 2.6976726, -8.076972)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf13" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf13" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_klvwg")
 
@@ -388,7 +426,7 @@ mesh = SubResource("ArrayMesh_klvwg")
 transform = Transform3D(-0.5, 0, 2.2743038e-07, 0, 0.5, 0, -4.371139e-08, 0, -2.6015003, -16.5, 2.6976726, 8.148304)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf14" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf14" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gwbxc")
 
@@ -396,203 +434,196 @@ mesh = SubResource("ArrayMesh_gwbxc")
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf7" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf7" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf8" parent="Props" unique_id=1971453629 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 10, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf8" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf8" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf9" parent="Props" unique_id=1541077997 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 5.5, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf9" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf9" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf10" parent="Props" unique_id=314575612 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2.5, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf10" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf10" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf11" parent="Props" unique_id=62270873 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -7, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf11" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf11" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf12" parent="Props" unique_id=1206410548 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -11.5, 2.6976726, 1.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf12" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf12" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf2" parent="Props" unique_id=1160092766 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2.5, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf2" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf2" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf5" parent="Props" unique_id=1726441288 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -7, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf5" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf5" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf6" parent="Props" unique_id=719695433 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -11.5, 2.6976726, -3)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf6" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf6" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf15" parent="Props" unique_id=1995774302 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 5.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf15" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf15" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf16" parent="Props" unique_id=1845089295 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 10, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf16" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf16" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf17" parent="Props" unique_id=599340529 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf17" index="0" unique_id=294679415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="bookshelf32" parent="Props" unique_id=445486308 instance=ExtResource("3_tkoed")]
-transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 27, 2.6976726, 14)
-metadata/_edit_group_ = true
-
-[node name="Cube_041" parent="Props/bookshelf32" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf17" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf33" parent="Props" unique_id=172397891 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 30.5, 2.6976726, 14)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf33" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf33" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf34" parent="Props" unique_id=1890281593 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 34, 2.6976726, 14)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf34" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf34" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf30" parent="Props" unique_id=1007397344 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf30" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf30" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf31" parent="Props" unique_id=946658216 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf31" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf31" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf18" parent="Props" unique_id=665043576 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 14.5, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf18" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf18" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf19" parent="Props" unique_id=593041615 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 10, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf19" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf19" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf20" parent="Props" unique_id=2014453364 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 5.5, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf20" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf20" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf21" parent="Props" unique_id=1674904090 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2.5, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf21" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf21" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf22" parent="Props" unique_id=1465895350 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -7, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf22" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf22" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf23" parent="Props" unique_id=1529591386 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -11.5, 2.6976726, 19.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf23" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf23" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf24" parent="Props" unique_id=420854575 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf24" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf24" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf25" parent="Props" unique_id=2048738843 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -7, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf25" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf25" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf26" parent="Props" unique_id=100318591 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -11.5, 2.6976726, 15)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf26" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf26" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf27" parent="Props" unique_id=217653253 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -43, 2.6976726, 9.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf27" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf27" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf28" parent="Props" unique_id=855522223 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -39.5, 2.6976726, 9.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf28" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf28" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="bookshelf29" parent="Props" unique_id=1389766896 instance=ExtResource("3_tkoed")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -36, 2.6976726, 9.5)
 metadata/_edit_group_ = true
 
-[node name="Cube_041" parent="Props/bookshelf29" index="0" unique_id=294679415]
+[node name="Cube_041" parent="Props/bookshelf29" index="0" unique_id=294679415 groups=["nav"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="chandelier" parent="Props" unique_id=243433708 instance=ExtResource("4_niafs")]
@@ -716,7 +747,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 3.5, -6)
 shape = SubResource("BoxShape3D_wf3is")
 
 [node name="buttonred" parent="." unique_id=655615532 instance=ExtResource("8_w3rgq")]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 22.5, 3.5, 15)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 22.5, 2.5, 15)
 metadata/_edit_group_ = true
 
 [node name="button" parent="buttonred" index="0" unique_id=1105140403]
@@ -731,7 +762,7 @@ interact_event = ExtResource("10_wf3is")
 shape = SubResource("SphereShape3D_wf3is")
 
 [node name="buttonblue" parent="." unique_id=1988369325 instance=ExtResource("8_w3rgq")]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 21, 3.5, 15)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 21, 2.5, 15)
 metadata/_edit_group_ = true
 
 [node name="button" parent="buttonblue" index="0" unique_id=1105140403]
@@ -746,7 +777,7 @@ interact_event = ExtResource("10_wf3is")
 shape = SubResource("SphereShape3D_dajjl")
 
 [node name="buttongreen" parent="." unique_id=1525082566 instance=ExtResource("8_w3rgq")]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 19.5, 3.5, 15)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 19.5, 2.5, 15)
 metadata/_edit_group_ = true
 
 [node name="button" parent="buttongreen" index="0" unique_id=1105140403]
@@ -761,7 +792,7 @@ interact_event = ExtResource("10_wf3is")
 shape = SubResource("SphereShape3D_8rldl")
 
 [node name="buttonyellow" parent="." unique_id=864042223 instance=ExtResource("8_w3rgq")]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 18, 3.5, 15)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 18, 2.5, 15)
 metadata/_edit_group_ = true
 
 [node name="button" parent="buttonyellow" index="0" unique_id=1105140403]
@@ -775,19 +806,21 @@ interact_event = ExtResource("10_wf3is")
 [node name="CollisionShape3D" parent="buttonyellow/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1006789425, 268703641) index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_6vgi2")
 
-[node name="PuzzleHandler" type="Node" parent="." unique_id=434667454]
+[node name="PuzzleHandler" type="Node" parent="." unique_id=434667454 node_paths=PackedStringArray("anim_player", "bookshelf_collision")]
 script = ExtResource("11_dajjl")
+anim_player = NodePath("../AnimationPlayer")
+bookshelf_collision = NodePath("../FakeBookshelf/CollisionShape3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015998539]
 libraries/ = SubResource("AnimationLibrary_6vgi2")
-
-[node name="SoundBookshelf" type="AudioStreamPlayer3D" parent="." unique_id=217763130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3.5, 13)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=908150510]
 stream = ExtResource("13_6vgi2")
 volume_db = -4.0
 autoplay = true
+
+[node name="SoundBookshelf" type="AudioStreamPlayer3D" parent="." unique_id=217763130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3.5, 13)
 
 [node name="book" parent="." unique_id=1395409286 instance=ExtResource("14_42jos")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 3.6822755, 1)
@@ -797,6 +830,22 @@ set_variables = Dictionary[StringName, Variant]({
 &"book_number": 4
 })
 
+[node name="RoomTransition" parent="." unique_id=935631823 instance=ExtResource("15_3mwsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0.5, 16.5)
+target_scene = "uid://cvq8fqc2xhxs6"
+target_marker = "Entrance"
+
+[node name="CollisionShape3D" parent="RoomTransition" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -0.1328125)
+shape = SubResource("BoxShape3D_3mwsm")
+
+[node name="FromLab" type="Marker3D" parent="." unique_id=1160825978 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.365107, 2.3142478, 14)
+script = ExtResource("16_15qx3")
+camera_zone = NodePath("../CameraZoneLeft")
+metadata/_custom_type_script = "uid://cdxujor4bqtd7"
+
+[editable path="FakeBookshelf/bookshelf32"]
 [editable path="Props/bookshelf"]
 [editable path="Props/bookshelf3"]
 [editable path="Props/bookshelf4"]
@@ -814,7 +863,6 @@ set_variables = Dictionary[StringName, Variant]({
 [editable path="Props/bookshelf15"]
 [editable path="Props/bookshelf16"]
 [editable path="Props/bookshelf17"]
-[editable path="Props/bookshelf32"]
 [editable path="Props/bookshelf33"]
 [editable path="Props/bookshelf34"]
 [editable path="Props/bookshelf30"]
@@ -846,3 +894,4 @@ set_variables = Dictionary[StringName, Variant]({
 [editable path="buttonyellow/InteractionComponent"]
 [editable path="book"]
 [editable path="book/InteractionComponent"]
+[editable path="RoomTransition"]
