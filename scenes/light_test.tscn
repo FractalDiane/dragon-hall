@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dc3sanoqrfnnj"]
+
+[ext_resource type="Texture2D" uid="uid://dncw05pfnt5lk" path="res://textures/light.png" id="1_8wewl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8u1lp"]
+size = Vector3(16, 1, 14.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fmh6q"]
+size = Vector3(16, 9, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1040018898]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1877716783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.25)
+mesh = SubResource("BoxMesh_8u1lp")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1021154116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 9, -1.25)
+mesh = SubResource("BoxMesh_8u1lp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=437925989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 6.5)
+mesh = SubResource("BoxMesh_fmh6q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=345297998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -9)
+mesh = SubResource("BoxMesh_fmh6q")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1663581343]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.75, 4, -1.2500004)
+mesh = SubResource("BoxMesh_fmh6q")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1619814149]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.75, 4, -1.2499996)
+mesh = SubResource("BoxMesh_fmh6q")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1000919822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+visible = false
+omni_range = 15.092
+
+[node name="Decal" type="Decal" parent="." unique_id=2100988572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+size = Vector3(10, 5, 10)
+texture_emission = ExtResource("1_8wewl")
+modulate = Color(1, 0, 0, 1)

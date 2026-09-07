@@ -1,0 +1,11 @@
+@switch INTERACT_VERB:
+@case "look"
+	A journal.
+	It looks slightly mangled.
+@case "take"
+	Doesn't seem important enough to take.
+@case "read"
+	"not safe, not safe, not safe, not safe, not safe, not safe, not safe"
+	The rest of the journal is blank.
+@case else
+	Cannot do.

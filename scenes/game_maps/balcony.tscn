@@ -22,6 +22,8 @@ sky_top_color = Color(0.39453125, 0.64523315, 1, 1)
 sky_horizon_color = Color(0.9411765, 0.8666667, 0.72156864, 1)
 sky_cover = SubResource("NoiseTexture2D_0knp3")
 sky_cover_modulate = Color(1, 1, 1, 0.54901963)
+ground_bottom_color = Color(0.72156864, 0.8536765, 0.94117653, 1)
+ground_horizon_color = Color(1.166103, 1.0776601, 0.900774, 1)
 use_debanding = false
 
 [sub_resource type="Sky" id="Sky_0knp3"]
@@ -56,6 +58,35 @@ size = Vector3(19.5, 4, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gnvqt"]
 radius = 6.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gnvqt"]
+size = Vector2(10000, 10000)
+
+[sub_resource type="Shader" id="Shader_qm0aj"]
+code = "shader_type spatial;
+
+uniform sampler2D noise_texture;
+uniform vec2 uv_scale = vec2(1.0);
+
+void fragment() {
+	vec4 tex = texture(noise_texture, UV * uv_scale + TIME * 0.05);
+	//ALBEDO = vec3(1.0);
+	ALPHA = tex.r;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qm0aj"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gnvqt"]
+noise = SubResource("FastNoiseLite_qm0aj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnvqt"]
+render_priority = 0
+shader = SubResource("Shader_qm0aj")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_gnvqt")
+shader_parameter/uv_scale = Vector2(100, 100)
 
 [node name="Balcony" type="Node3D" unique_id=1757946971]
 script = ExtResource("1_met41")
@@ -136,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2, 0.25)
 shape = SubResource("BoxShape3D_5emel")
 
 [node name="FromStairway" type="Marker3D" parent="." unique_id=1863750082 node_paths=PackedStringArray("camera_zone")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63259506, 5.5)
 script = ExtResource("8_5emel")
 camera_zone = NodePath("../CameraZone")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"
@@ -150,6 +181,11 @@ interact_event = ExtResource("10_gnvqt")
 
 [node name="CollisionShape3D" parent="Balcony/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1309288216, 268703641) index="0" unique_id=780690474]
 shape = SubResource("SphereShape3D_gnvqt")
+
+[node name="Clouds" type="MeshInstance3D" parent="." unique_id=784919227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -12.5)
+mesh = SubResource("PlaneMesh_gnvqt")
+surface_material_override/0 = SubResource("ShaderMaterial_gnvqt")
 
 [editable path="balcony_base"]
 [editable path="balcony_rail"]

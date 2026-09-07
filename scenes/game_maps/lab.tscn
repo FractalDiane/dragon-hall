@@ -715,8 +715,8 @@ light_bake_mode = 1
 omni_range = 0.35
 omni_attenuation = -0.045
 
-[node name="Entrance" type="Marker3D" parent="." unique_id=2072189279 node_paths=PackedStringArray("camera_zone")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 1)
+[node name="FromLibrary" type="Marker3D" parent="." unique_id=2072189279 node_paths=PackedStringArray("camera_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.50363874, 1)
 script = ExtResource("10_lh2by")
 camera_zone = NodePath("../CameraZoneStart")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"

@@ -2,7 +2,7 @@
 @case "look"
 	It's a long way down.
 	And a long way across to the crag in the distance.
-@case "fly across"
+@case "fly" | "fly across" | "fly over"
 	Well, you don't exactly have wings, do you?
 @case else
 	Cannot do.

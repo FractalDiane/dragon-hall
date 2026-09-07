@@ -9,6 +9,7 @@ signal interaction_finished()
 @export var can_pick_up := false
 @export var interact_event: QuillaStoryCompiled = null
 @export var proximity_levels_required: Dictionary[String, int] = {"look": 3}
+@export var camera_zone_required: CameraZone = null
 @export var text_box_position := Rect2i()
 @export var set_variables: Dictionary[StringName, Variant] = {}
 
@@ -18,6 +19,11 @@ func _ready() -> void:
 		
 	if can_pick_up and PlayerStateSubsystem.is_item_picked_up(get_parent().get_path()):
 		get_parent().queue_free()
+		
+
+func is_in_required_camera_zone(current_zone: CameraZone) -> bool:
+	return camera_zone_required == null or camera_zone_required == current_zone
+		
 
 func interact_with(action: String, proximity_level: int, box_position_: Rect2i, item := "") -> void:
 	var event_player: EventPlayer

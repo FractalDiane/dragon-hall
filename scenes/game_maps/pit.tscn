@@ -392,12 +392,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 5.75, -0.25)
 shape = SubResource("BoxShape3D_12sfg")
 
 [node name="FromHall" type="Marker3D" parent="." unique_id=1998604578 node_paths=PackedStringArray("camera_zone")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1573985, 6.912428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5001541, 6.912428)
 script = ExtResource("7_iuluq")
 camera_zone = NodePath("../CameraZone")
 
 [node name="FromLake" type="Marker3D" parent="." unique_id=1572159442 node_paths=PackedStringArray("camera_zone")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.1573985, -2.587572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5057594, -2.587572)
 script = ExtResource("7_iuluq")
 camera_zone = NodePath("../CameraZone")
 

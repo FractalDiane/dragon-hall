@@ -1,0 +1,9 @@
+@switch INTERACT_VERB
+@case "look"
+	A large, heavy door.
+@case "open"
+	It's locked.
+@case "unlock"
+	You don't have the key.
+@case else
+	Cannot do.

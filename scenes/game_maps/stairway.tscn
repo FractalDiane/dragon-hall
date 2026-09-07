@@ -6,6 +6,7 @@
 [ext_resource type="LightmapGIData" uid="uid://1x60h6njsqgo" path="res://scenes/game_maps/stairway.lmbake" id="4_c58kl"]
 [ext_resource type="PackedScene" uid="uid://dec1cfv443v87" path="res://prefabs/props/torch.tscn" id="5_6u4f5"]
 [ext_resource type="PackedScene" uid="uid://cyh8cuf0k4m2m" path="res://prefabs/props/brazier.tscn" id="6_dp3w0"]
+[ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="7_m3218"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="7_nhiip"]
 
 [sub_resource type="Environment" id="Environment_c58kl"]
@@ -27,7 +28,7 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kmejf"]
-size = Vector3(8, 1, 10.5)
+size = Vector3(8, 1, 9.129822)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0btcv"]
 size = Vector3(25, 1, 10)
@@ -54,10 +55,22 @@ geometry_source_group_name = &"nav"
 size = Vector3(13, 14, 21)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3218"]
-size = Vector3(13, 23, 16)
+size = Vector3(7, 29, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpldc"]
+size = Vector3(11, 37.5, 19.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ychn"]
+size = Vector3(11, 53.5, 28.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmxga"]
+size = Vector3(8, 8.5, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h4rd"]
+size = Vector3(24.5, 8.5, 9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhiip"]
-size = Vector3(20, 11, 11.5)
+size = Vector3(20, 13, 12)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jas3p"]
 shading_mode = 0
@@ -65,6 +78,9 @@ albedo_color = Color(0.9137255, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jas3p"]
 size = Vector3(10, 15, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yr303"]
+size = Vector3(9.5, 11, 2.5)
 
 [node name="Stairway" type="Node3D" unique_id=27552164]
 script = ExtResource("1_jas3p")
@@ -648,6 +664,8 @@ size = Vector3(16, 5.5, 11)
 mesh = SubResource("ArrayMesh_jas3p")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1007031229 groups=["floor"]]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=637203532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
@@ -655,12 +673,12 @@ shape = SubResource("BoxShape3D_kmejf")
 debug_color = Color(18.892002, 16.085869, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor" unique_id=348757369]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5.5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5.5, -10.065399)
 shape = SubResource("BoxShape3D_kmejf")
 debug_color = Color(18.892002, 16.085869, 0, 1)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor" unique_id=1712306179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 11, -21.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 11, -22.36969)
 shape = SubResource("BoxShape3D_kmejf")
 debug_color = Color(18.892002, 16.085869, 0, 1)
 
@@ -738,13 +756,31 @@ debug_color = Color(18.892002, 16.085869, 0, 1)
 navigation_mesh = SubResource("NavigationMesh_dp3w0")
 
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_xqnkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2563322, 7.5)
+transform = Transform3D(-0.9659258, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, -0.9659258, 0.5, 0.4974451, 7.5)
 
 [node name="CameraStart" type="Camera3D" parent="." unique_id=1468973008]
 transform = Transform3D(0.92379856, 0.048318103, 0.3798179, 0, 0.9920052, -0.1261968, -0.38287896, 0.11658043, 0.91641295, 3.4134407, 1.8991861, 9.752277)
 
 [node name="Camera2" type="Camera3D" parent="." unique_id=40741429]
-transform = Transform3D(-0.99998933, 0.0024693788, -0.003913582, 0, 0.8457188, 0.5336288, 0.0046275216, 0.5336231, -0.84570974, 0.8563392, 19.899714, -30.15609)
+transform = Transform3D(-0.9999105, 0.008007761, -0.01072305, 0, 0.8012366, 0.5983476, 0.013383125, 0.598294, -0.80116487, 0.8834912, 28.602318, -46.10211)
+
+[node name="CameraAlcoveL1" type="Camera3D" parent="." unique_id=322876172]
+transform = Transform3D(-0.46982244, -0.33783898, 0.8155561, 0, 0.9238697, 0.3827072, -0.88276094, 0.17980444, -0.4340547, 1.0553436, 22.481163, -37.400024)
+
+[node name="CameraAlcoveR1" type="Camera3D" parent="." unique_id=2101237627]
+transform = Transform3D(-0.3580081, 0.42028642, -0.8337803, 0, 0.8929675, 0.4501211, 0.9337185, 0.161147, -0.3196896, 0.63705826, 22.637077, -37.233162)
+
+[node name="CameraAlcoveL2" type="Camera3D" parent="." unique_id=1070431659]
+transform = Transform3D(-0.04462955, -0.042785484, 0.998087, 0, 0.9990825, 0.042828158, -0.9990036, 0.0019114015, -0.044588603, -0.5836296, 30.709742, -59.327194)
+
+[node name="CameraAlcoveR2" type="Camera3D" parent="." unique_id=1027398852]
+transform = Transform3D(0.0010894425, 0.025385218, -0.99967724, -1.1641532e-10, 0.9996778, 0.025385233, 0.99999946, -2.7655633e-05, 0.0010890915, 1.1799622, 30.815048, -59.509285)
+
+[node name="Camera3" type="Camera3D" parent="." unique_id=1850148467]
+transform = Transform3D(-0.9999587, 0.008528625, -0.0031540869, 0, 0.34686336, 0.9379157, 0.009093168, 0.9378769, -0.34684902, 1.050221, 38.217434, -61.02401)
+
+[node name="Camera4" type="Camera3D" parent="." unique_id=1808946182]
+transform = Transform3D(0.99995387, -0.00032763463, 0.009600005, 0, 0.99941814, 0.034108732, -0.009605594, -0.03410716, 0.999372, 0.29284576, 33.038254, -54.988976)
 
 [node name="CameraTop" type="Camera3D" parent="." unique_id=1399885653]
 transform = Transform3D(0.5729208, 0.27360386, -0.77259475, 0, 0.94263625, 0.3338217, 0.8196107, -0.19125341, 0.54005593, -8.056416, 51.0216, -94.01094)
@@ -762,15 +798,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
 camera = NodePath("../Camera2")
 
 [node name="CollisionShape3D" parent="CameraZone2" index="0" unique_id=85292385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 10.5, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 13.5, 4)
 shape = SubResource("BoxShape3D_m3218")
+
+[node name="CameraZone3" parent="." unique_id=578686850 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -61.5)
+camera = NodePath("../Camera3")
+
+[node name="CollisionShape3D" parent="CameraZone3" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 17.75, 9.25)
+shape = SubResource("BoxShape3D_jpldc")
+
+[node name="CameraZone4" parent="." unique_id=830166890 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -93.5)
+camera = NodePath("../Camera4")
+
+[node name="CollisionShape3D" parent="CameraZone4" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 25.75, 16.25)
+shape = SubResource("BoxShape3D_7ychn")
+
+[node name="CameraZoneAlcoveL1" parent="." unique_id=1163154718 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 15.5, -34)
+camera = NodePath("../CameraAlcoveL1")
+
+[node name="CollisionShape3D" parent="CameraZoneAlcoveL1" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.25, 0)
+shape = SubResource("BoxShape3D_tmxga")
+
+[node name="CameraZoneAlcoveL2" parent="." unique_id=432956803 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 25.5, -59.5)
+camera = NodePath("../CameraAlcoveL2")
+
+[node name="CollisionShape3D" parent="CameraZoneAlcoveL2" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 5.25, 0)
+shape = SubResource("BoxShape3D_8h4rd")
+
+[node name="CameraZoneAlcoveR1" parent="." unique_id=483171984 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 15.5, -34)
+camera = NodePath("../CameraAlcoveR1")
+
+[node name="CollisionShape3D" parent="CameraZoneAlcoveR1" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.25, 0)
+shape = SubResource("BoxShape3D_tmxga")
+
+[node name="CameraZoneAlcoveR2" parent="." unique_id=328095202 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 25.5, -59.5)
+camera = NodePath("../CameraAlcoveR2")
+
+[node name="CollisionShape3D" parent="CameraZoneAlcoveR2" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 5.25, 0)
+shape = SubResource("BoxShape3D_8h4rd")
 
 [node name="CameraZoneTop" parent="." unique_id=98694604 node_paths=PackedStringArray("camera") instance=ExtResource("2_4pah1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.5, -101)
 camera = NodePath("../CameraTop")
 
 [node name="CollisionShape3D" parent="CameraZoneTop" index="0" unique_id=85292385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11, 2.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 2.5)
 shape = SubResource("BoxShape3D_nhiip")
 
 [node name="SkyLight" type="SpotLight3D" parent="." unique_id=177403518]
@@ -873,12 +957,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 17.228199, -34.5)
 [node name="brazier6" parent="." unique_id=129745200 groups=["nav"] instance=ExtResource("6_dp3w0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 17.228199, -34.5)
 
+[node name="ToBalcony" parent="." unique_id=935631823 instance=ExtResource("7_m3218")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43, -104)
+target_scene = "uid://besycpmrllwud"
+target_marker = "FromStairway"
+
+[node name="CollisionShape3D" parent="ToBalcony" index="0" unique_id=1856075525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 5.5, 1)
+shape = SubResource("BoxShape3D_yr303")
+
 [node name="FromBalcony" type="Marker3D" parent="." unique_id=1461295553 node_paths=PackedStringArray("camera_zone")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 47, -98)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 44.500916, -98)
 script = ExtResource("7_nhiip")
 camera_zone = NodePath("../CameraZoneTop")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"
 
 [editable path="CameraZoneStart"]
 [editable path="CameraZone2"]
+[editable path="CameraZone3"]
+[editable path="CameraZone4"]
+[editable path="CameraZoneAlcoveL1"]
+[editable path="CameraZoneAlcoveL2"]
+[editable path="CameraZoneAlcoveR1"]
+[editable path="CameraZoneAlcoveR2"]
 [editable path="CameraZoneTop"]
+[editable path="ToBalcony"]

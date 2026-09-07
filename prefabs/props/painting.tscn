@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ng5b3qoql1ca"]
+
+[ext_resource type="PackedScene" uid="uid://cdln6bj4qiojx" path="res://models/props/painting.glb" id="1_yxlpf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yemyn"]
+albedo_color = Color(1, 0.8433533, 0.30859375, 1)
+metallic = 0.85
+roughness = 0.15
+
+[node name="painting2" unique_id=280442057 instance=ExtResource("1_yxlpf")]
+
+[node name="painting" parent="." index="0" unique_id=234324503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_yemyn")
