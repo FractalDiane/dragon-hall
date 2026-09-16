@@ -22,3 +22,4 @@ static func bind_quilla_externals(story: QuillaStory, bind_impure_funcs: bool) -
 		story.bind_impure_function(&"pick_up_item", PlayerStateSubsystem.pick_up_item)
 		
 		story.bind_impure_function(&"push_library_button", EventBridgeSubsystem.push_library_button)
+		story.bind_impure_function(&"flip_lavaworks_lever", EventBridgeSubsystem.flip_lavaworks_lever)

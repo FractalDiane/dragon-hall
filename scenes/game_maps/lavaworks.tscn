@@ -13,6 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://bcdqcqpunbjp4" path="res://models/props/lever.glb" id="11_0f21i"]
 [ext_resource type="PackedScene" uid="uid://x8dm7p3wvuxx" path="res://prefabs/components/interaction_component.tscn" id="12_ks0ot"]
 [ext_resource type="Resource" uid="uid://cmpebi3j6o7nq" path="res://dialogue/interactibles/lever.res" id="13_is7uh"]
+[ext_resource type="Script" uid="uid://b1aeiodx2fqgx" path="res://scripts/rooms/lavaworks_bridges_controller.gd" id="14_hi6ik"]
+[ext_resource type="AudioStream" uid="uid://ct1jix07wnh2d" path="res://audio/623712__mediatheksuche__switching_a_rattling_lever_with_room_ambience.wav" id="14_wdinn"]
+
+[sub_resource type="Environment" id="Environment_8u1lp"]
+background_mode = 4
+ambient_light_source = 2
+ambient_light_color = Color(0.50390625, 0.2748971, 0.0728302, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_is7uh"]
 data = PackedVector3Array(-0.5, -5.5, -6.5, -0.5, -5.5, 6, 6.5, -5.5, -6.5, 6.5, -5.5, -6.5, -0.5, -5.5, 6, 6.5, -5.5, 6, -0.5, -5.5, -6.5, 6.5, -5.5, -6.5, -0.5, 0.5, -6.5, -0.5, -5.5, -6.5, -0.5, 0.5, -6.5, -0.5, -5.5, 6, 6.5, -5.5, -6.5, 6.5, -5.5, 6, 6.5, 0.5, 6, 6.5, -5.5, -6.5, 6.5, 0.5, -6.5, -0.5, 0.5, -6.5, 6.5, -5.5, -6.5, 6.5, 0.5, 6, 6.5, 0.5, -6.5, -0.5, -5.5, 6, -0.5, 0.5, -6.5, -0.5, 0.5, 6, -0.5, 0.5, -6.5, 6.5, 0.5, -6.5, 6.5, 0.5, 6, -0.5, 0.5, -6.5, 6.5, 0.5, 6, -0.5, 0.5, 6, 26, -5.5, -6.5, 26, -5.5, 6, 33, -5.5, -6.5, 33, -5.5, -6.5, 26, -5.5, 6, 33, -5.5, 6, 26, -5.5, -6.5, 33, -5.5, -6.5, 26, 0.5, -6.5, 26, -5.5, -6.5, 26, 0.5, -6.5, 26, -5.5, 6, 33, -5.5, -6.5, 33, -5.5, 6, 33, 0.5, 6, 26, -5.5, 6, 33, 0.5, 6, 33, -5.5, 6, 33, -5.5, -6.5, 33, 0.5, -6.5, 26, 0.5, -6.5, 33, -5.5, -6.5, 33, 0.5, 6, 33, 0.5, -6.5, 26, -5.5, 6, 26, 0.5, -6.5, 26, 0.5, 6, 26, -5.5, 6, 26, 0.5, 6, 33, 0.5, 6, 26, 0.5, -6.5, 33, 0.5, -6.5, 33, 0.5, 6, 26, 0.5, -6.5, 33, 0.5, 6, 26, 0.5, 6, 42, -5.5, -4.5, 42, -5.5, 4, 49, -5.5, -4.5, 49, -5.5, -4.5, 42, -5.5, 4, 49, -5.5, 4, 42, -5.5, -4.5, 42, 0.5, -4.5, 42, -5.5, 4, 42, -5.5, -4.5, 49, -5.5, -4.5, 42, 0.5, -4.5, 49, -5.5, -4.5, 49, -5.5, 4, 49, 0.5, 4, 42, -5.5, 4, 49, 0.5, 4, 49, -5.5, 4, 49, -5.5, -4.5, 49, 0.5, -4.5, 42, 0.5, -4.5, 49, -5.5, -4.5, 49, 0.5, 4, 49, 0.5, -4.5, 42, -5.5, 4, 42, 0.5, -4.5, 42, 0.5, 4, 42, -5.5, 4, 42, 0.5, 4, 49, 0.5, 4, 42, 0.5, -4.5, 49, 0.5, -4.5, 49, 0.5, 4, 42, 0.5, -4.5, 49, 0.5, 4, 42, 0.5, 4, -0.5, -5.5, 11.5, 6.5, -5.5, 6, -0.5, -5.5, 6, -0.5, -5.5, 11.5, 10.5, -5.5, 6, 6.5, -5.5, 6, -0.5, -5.5, 11.5, -0.5, -5.5, 6, -0.5, 0.5, 6, 10.5, -5.5, 6, 10.5, 0.5, 6, 6.5, -5.5, 6, -0.5, -5.5, 11.5, 10.5, -5.5, 11.5, 10.5, -5.5, 6, -0.5, -5.5, 11.5, 10.5, 0.5, 11.5, 10.5, -5.5, 11.5, 10.5, -5.5, 6, 10.5, -5.5, 11.5, 10.5, 0.5, 11.5, 10.5, 0.5, 6, 6.5, 0.5, 6, 6.5, -5.5, 6, 10.5, -5.5, 6, 10.5, 0.5, 11.5, 10.5, 0.5, 6, 10.5, 0.5, 11.5, -0.5, 0.5, 6, 6.5, 0.5, 6, 10.5, 0.5, 6, 10.5, 0.5, 11.5, 6.5, 0.5, 6, -0.5, -5.5, 11.5, -0.5, 0.5, 6, -0.5, 0.5, 11.5, -0.5, -5.5, 11.5, -0.5, 0.5, 11.5, 10.5, 0.5, 11.5, -0.5, 0.5, 11.5, -0.5, 0.5, 6, 10.5, 0.5, 11.5, 21, -5.5, 15.5, 21, 0.5, 15.5, 21, -5.5, 24, 21, -5.5, 24, 21, 0.5, 15.5, 21, 0.5, 24, 21, -5.5, 15.5, 21, -5.5, 24, 44, -5.5, 15.5, 21, -5.5, 24, 44, -5.5, 24, 44, -5.5, 15.5, 21, -5.5, 15.5, 44, -5.5, 15.5, 21, 0.5, 15.5, 21, -5.5, 24, 44, 0.5, 24, 44, -5.5, 24, 44, -5.5, 15.5, 44, -5.5, 24, 44, 0.5, 24, 21, 0.5, 15.5, 44, -5.5, 15.5, 44, 0.5, 15.5, 21, -5.5, 24, 21, 0.5, 24, 44, 0.5, 24, 21, 0.5, 15.5, 44, 0.5, 24, 21, 0.5, 24, 21, 0.5, 15.5, 44, 0.5, 15.5, 44, 0.5, 24, 44, -5.5, 15.5, 44, 0.5, 24, 44, 0.5, 15.5)
@@ -45,11 +52,64 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAvwAAsMAAANDAAADQQAAAsMAAANDAAAAAvwAAoMAAANDAAAAAvwAAsMAAANDAAAAAvwAAoMAAANDAAAAAvwAAsMAAAMBAAAAAvwAAsMAAANDAAAAAvwAAsMAAAMBAAADQQAAAsMAAANDAAAAAvwAAoMAAAMBAAADQQAAAsMAAAMBAAADQQAAAsMAAANDAAADQQAAAsMAAAMBAAADQQAAAAD8AAMBAAAAAvwAAAD8AANDAAADQQAAAAD8AANDAAADQQAAAAD8AANDAAADQQAAAAD8AAMBAAAAAvwAAAD8AAMBAAAAAvwAAAD8AANDAAADQQAAAAD8AANDAAADQQQAAsMAAANDAAAAEQgAAsMAAANDAAADQQQAAAD8AANDAAADQQQAAsMAAANDAAADQQQAAsMAAAMBAAAAEQgAAsMAAANDAAADQQQAAsMAAANDAAADQQQAAAD8AANDAAADQQQAAsMAAAMBAAAAEQgAAsMAAAMBAAAAEQgAAsMAAANDAAAAEQgAAsMAAAMBAAAAEQgAAAD8AAMBAAAAEQgAAAD8AANDAAADQQQAAAD8AAMBAAAAEQgAAAD8AANDAAADQQQAAAD8AANDAAAAEQgAAAD8AAMBAAADQQQAAAD8AAMBAAAAEQgAAAD8AANDAAADQQQAAsMAAAMBAAAAEQgAAAD8AAMBAAAAEQgAAsMAAAMBAAADQQQAAAD8AAMBAAABIQgAAsMAAAJDAAABIQgAAAD8AAJDAAABIQgAAsMAAAIBAAABIQgAAAD8AAIBAAABIQgAAsMAAAJDAAABkQgAAsMAAAJDAAABIQgAAAD8AAJDAAABIQgAAsMAAAJDAAABIQgAAsMAAAIBAAABkQgAAsMAAAJDAAABkQgAAsMAAAIBAAABkQgAAsMAAAJDAAABkQgAAsMAAAIBAAABkQgAAAD8AAIBAAABkQgAAAD8AAJDAAABkQgAAAD8AAJDAAABIQgAAAD8AAJDAAABkQgAAAD8AAJDAAABkQgAAAD8AAIBAAABIQgAAAD8AAIBAAABIQgAAsMAAAIBAAABkQgAAAD8AAIBAAABkQgAAsMAAAIBAAABIQgAAAD8AAIBAAAAAvwAAsMAAAMBAAAAAvwAAoMAAAMBAAAAAvwAAsMAAADhBAAAAvwAAsMAAAMBAAAAAvwAAsMAAADhBAADQQAAAsMAAAMBAAAAoQQAAsMAAAMBAAAAAvwAAoMAAADhBAAAoQQAAsMAAADhBAAAAvwAAsMAAADhBAAAoQQAAAD8AADhBAAAoQQAAsMAAADhBAAAAvwAAoMAAADhBAADQQAAAsMAAAMBAAAAoQQAAsMAAAMBAAAAoQQAAAD8AAMBAAAAoQQAAsMAAAMBAAAAoQQAAsMAAADhBAAAoQQAAAD8AADhBAADQQAAAAD8AAMBAAAAoQQAAAD8AAMBAAADQQAAAAD8AAMBAAAAoQQAAAD8AADhBAAAAvwAAAD8AAMBAAAAAvwAAAD8AADhBAAAAvwAAAD8AADhBAAAoQQAAAD8AAMBAAAAAvwAAoMAAANDAAAAAvwAAAD8AANDAAAAAvwAAoMAAAJjBAAAAvwAAoMAAAJjBAADAvwAAoMAAAJjBAADAvwAAoMAAAMBBAAAAvwAAoMAAANDAAAAAvwAAIEEAAJjBAADAvwAAoMAAAJjBAADAvwAAIEEAAJjBAADAvwAAoMAAAMBBAAAAvwAAoMAAAMBAAAAAvwAAoMAAADhBAAAAvwAAoMAAAMBBAAAAvwAAIEEAAMBBAAAAvwAAoMAAADhBAAAAvwAAoMAAAMBBAAAAvwAAAD8AADhBAAAAvwAAAD8AAMBAAADAvwAAIEEAAMBBAACHQgAAoMAAAJjBAACHQgAAoMAAAMBBAACJQgAAoMAAAJjBAACHQgAAoMAAAJjBAACHQgAAIEEAAJjBAACHQgAAoMAAAMBBAACJQgAAoMAAAMBBAACJQgAAoMAAAJjBAACJQgAAoMAAAMBBAACJQgAAIEEAAMBBAACJQgAAIEEAAJjBAACHQgAAIEEAAMBBAADAvwAAoMAAAKDBAADAvwAAIEEAAKDBAADAvwAAoMAAAJjBAADAvwAAoMAAAKDBAADAvwAAoMAAAJjBAACJQgAAoMAAAKDBAAAAvwAAoMAAAJjBAADAvwAAoMAAAKDBAACJQgAAoMAAAKDBAADAvwAAIEEAAKDBAACHQgAAoMAAAJjBAAAAvwAAoMAAAJjBAAAAvwAAIEEAAJjBAADAvwAAIEEAAJjBAACHQgAAoMAAAJjBAACJQgAAoMAAAJjBAACJQgAAoMAAAKDBAACJQgAAoMAAAJjBAACJQgAAIEEAAJjBAACJQgAAIEEAAKDBAACHQgAAIEEAAJjBAACJQgAAIEEAAKDBAADAvwAAoMAAAMhBAAAAvwAAoMAAAMBBAADAvwAAoMAAAMBBAADAvwAAoMAAAMBBAADAvwAAIEEAAMBBAADAvwAAoMAAAMhBAACHQgAAoMAAAMBBAACHQgAAoMAAAMBBAAAAvwAAIEEAAMBBAAAAvwAAoMAAAMBBAADAvwAAIEEAAMhBAADAvwAAoMAAAMhBAADAvwAAIEEAAMhBAACJQgAAIEEAAMhBAACJQgAAoMAAAMBBAACJQgAAoMAAAMhBAACJQgAAoMAAAMhBAACJQgAAoMAAAMBBAACJQgAAoMAAAMhBAACJQgAAIEEAAMhBAACHQgAAIEEAAMBBAACJQgAAIEEAAMBBAADAvwAAMEEAAKDBAADAvwAAIEEAAJjBAADAvwAAIEEAAKDBAADAvwAAIEEAAMBBAADAvwAAMEEAAKDBAADAvwAAIEEAAKDBAACJQgAAIEEAAKDBAADAvwAAIEEAAMhBAADAvwAAMEEAAMhBAAAAvwAAIEEAAMBBAACHQgAAIEEAAMBBAAAAvwAAIEEAAJjBAADAvwAAMEEAAKDBAACJQgAAMEEAAMhBAADAvwAAMEEAAMhBAADAvwAAMEEAAMhBAACJQgAAMEEAAMhBAADAvwAAIEEAAMhBAACJQgAAMEEAAKDBAACHQgAAIEEAAJjBAACJQgAAMEEAAKDBAACJQgAAMEEAAMhBAACJQgAAIEEAAKDBAACJQgAAIEEAAJjBAACJQgAAMEEAAKDBAACJQgAAIEEAAMhBAACJQgAAIEEAAMBBAACJQgAAIEEAAMhB/////wAA/z//////AAD/P/////8AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAAAAgP9//n8AgAAA//8AAP//AID/f/5///8AgP9//n///wCA/3/+f/////8AAP8//////wAA/z///wCA/3/+fwCA/////wAAAID/////AAAAgP////8AAACA/////wAA/////wAA/z//////AAD/P/////8AAP8/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAD//wCA/3/+f///AID/f/5///8AgP9//n//////AAD/PwAAAID/f/5///8AgP9//n8AgP////8AAACA/////wAAAID/////AAAAgP////8AAP9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AAAAgP9//n//////AAD/P/////8AAP8//////wAA/z8AgAAA//8AAACAAAD//wAAAIAAAP//AAAAgAAA//8AAP//AID/f/5///8AgP9//n///wCA/3/+f/////8AAP8///8AgP9//n8AgP////8AAACA/////wAAAID/////AAAAgP////8AAP9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAIAAAP//AAAAAACA/3/+fwCAAAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//////AAD/P/////8AAP8//////wAA/z///wCA/3/+f///AID/f/5///8AgP9//n//////AAD/P///AID/f/5/AID/////AAAAgP////8AAACA/////wAA/3//fwAA/z8AgP////8AAACA/////wAA//8AgP9//n///wCA/3/+f///AID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAIAAAP//AAD//wCA/3/+fwAAAID/f/5/AAAAgP9//n8AAACA/3/+fwCAAAD//wAAAIAAAP//AAAAgAAA//8AAP//AID/f/5///8AgP9//n///wCA/3/+f///AID/f/5///8AgP9//n8AAACA/3/+fwCAAAD//wAAAIAAAP//AAAAgAAA//8AAAAAAID/f/5/AAAAgP9//n8AAACA/3/+fwCAAAD//wAA//8AgP9//n///wCA/3/+f///AID/f/5///8AgP9//n8AAACA/3/+fwAAAID/f/5/AAAAgP9//n8AAACA/3/+fwCAAAD//wAAAIAAAP//AAAAgAAA//8AAACAAAD//wAA/////wAA/z//////AAD/P/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8/AAAAgP9//n8AgAAA//8AAACAAAD//wAA//8AgP9//n///wCA/3/+f///AID/f/5//////wAA/z//f/9/AAD/P///AID/f/5/AIAAAP//AAAAgAAA//8AAACAAAD//wAAAAAAgP9//n8AAACA/3/+fwAAAID/f/5/AIAAAP//AAD/////AAD/P/////8AAP8//////wAA/z8AAACA/3/+f/9//38AAP8//3//fwAA/z//f/9/AAD/PwCAAAD//wAAAIAAAP//AAD/f/9/AAD/P///AID/f/5///8AgP9//n///wCA/3/+f/////8AAP8///8AgP9//n8AAACA/3/+fwAAAID/f/5/AAAAgP9//n8AAACA/3/+f/////8AAP8//////wAA/z//////AAD/PwAAAID/f/5/AAAAgP9//n8AgAAA//8AAACAAAD//wAAAIAAAP//AAAAgP////8AAACA/////wAAAID/////AAD/f/9/AAD/P/9//38AAP8//3//fwAA/z//////AAD/PwCAAAD//wAAAID/////AAD//wCA/3/+f///AID/f/5///8AgP9//n///wCA/3/+f/9//38AAP8///8AgP9//n///wCA/3/+fw==")
 }]
 
+[sub_resource type="BoxMesh" id="BoxMesh_is7uh"]
+lightmap_size_hint = Vector2i(31, 41)
+add_uv2 = true
+size = Vector3(0.5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdinn"]
+size = Vector3(0.001, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wdinn"]
+lightmap_size_hint = Vector2i(31, 41)
+add_uv2 = true
+size = Vector3(0.5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hi6ik"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_86iof"]
+lightmap_size_hint = Vector2i(41, 41)
+add_uv2 = true
+size = Vector3(2.5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsf1l"]
+size = Vector3(2, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hi6ik"]
+lightmap_size_hint = Vector2i(104, 91)
+add_uv2 = true
+size = Vector3(15, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86iof"]
+size = Vector3(14.5, 1, 5)
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_8u1lp"]
-vertices = PackedVector3Array(-1, 11.5, -19.5, -1, 11.5, 24.5, 68, 11.5, 24.5, 68, 11.5, -19.5, 10, 1, 11, 10, 1, 6.5, 6, 1, 6.25, 0.25, 1, 11, 0.25, 1, -6, 6, 1, -6, 26.5, 1, -6, 26.5, 1, 5.5, 32.5, 1, 5.5, 32.5, 1, -6, 42.5, 1, -4, 42.5, 1, 3.5, 48.5, 1, 3.5, 48.5, 1, -4, 21.5, 1, 16, 21.5, 1, 23.5, 43.5, 1, 23.5, 43.5, 1, 16)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 6, 8), PackedInt32Array(8, 6, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19)]
+vertices = PackedVector3Array(-1, 11.5, -19.5, -1, 11.5, 24.5, 68, 11.5, 24.5, 68, 11.5, -19.5, 27.25, 0.5, -18.25, 27.25, 0.5, -7, 31.25, 0.5, -7, 31.25, 0.5, -18.25, 10, 1, 11, 10, 1, 6.5, 6, 1, 6.25, 0.25, 1, 11, 0.25, 1, -6, 6, 1, -6, 26.5, 1, -6, 26.5, 1, 5.5, 32.5, 1, 5.5, 32.5, 1, -6, 42.5, 1, -4, 42.5, 1, 3.5, 48.5, 1, 3.5, 48.5, 1, -4, 21.5, 1, 16, 21.5, 1, 23.5, 43.5, 1, 23.5, 43.5, 1, 16)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 10, 12), PackedInt32Array(12, 10, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23)]
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"nav"
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_is7uh"]
+vertices = PackedVector3Array(-1, 11.5, -19.5, -1, 11.5, 24.5, 68, 11.5, 24.5, 68, 11.5, -19.5, 6.5, 1, 2, 8.25, 0.5, 2, 8.25, 0.5, -2, 6, 1, -2.25, 0.25, 1, 1.75, 0.25, 1, -6, 6, 1, -6, 24.25, 0.5, -2, 24.25, 0.5, 2, 26.5, 1, 2.25, 26.5, 1, -2.25, 32.5, 1, 5.5, 32.5, 1, -6, 26.5, 1, 5.5, 26.5, 1, -6, 42.5, 1, -4, 42.5, 1, 3.5, 48.5, 1, 3.5, 48.5, 1, -4, 6, 1, 2.25, 10, 1, 11, 10, 1, 6.5, 6, 1, 6.25, 0.25, 1, 11, 21.5, 1, 16, 21.5, 1, 23.5, 43.5, 1, 23.5, 43.5, 1, 16)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(4, 8, 7), PackedInt32Array(7, 8, 9), PackedInt32Array(9, 10, 7), PackedInt32Array(11, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 14, 16), PackedInt32Array(15, 17, 13), PackedInt32Array(14, 18, 16), PackedInt32Array(22, 21, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(6, 11, 5), PackedInt32Array(5, 11, 12), PackedInt32Array(8, 4, 23), PackedInt32Array(26, 25, 24), PackedInt32Array(8, 23, 26), PackedInt32Array(24, 27, 26), PackedInt32Array(26, 27, 8), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_bridge1"
+agent_max_climb = 0.5
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wdinn"]
+vertices = PackedVector3Array(33.25, 0.5, -2, 33.25, 0.5, 2, 41.75, 0.5, 2, 41.75, 0.5, -2)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_bridge2"
+agent_max_climb = 0.5
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hi6ik"]
+vertices = PackedVector3Array(27.25, 0.5, 6.25, 27.25, 0.5, 15.25, 31.25, 0.5, 15.25, 31.25, 0.5, 6.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_bridge3"
+agent_max_climb = 0.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0o03q"]
 lightmap_size_hint = Vector2i(502, 302)
@@ -75,7 +135,10 @@ cap_top = false
 cap_bottom = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbkxt"]
-size = Vector3(15.5, 13, 25.5)
+size = Vector3(19.5, 13, 25.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2a3cm"]
+size = Vector3(14, 13, 23.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spq1w"]
 
@@ -132,9 +195,506 @@ radius = 4.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7uh"]
 size = Vector3(8.5, 17, 11)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_hi6ik"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_hi6ik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge1/Bridge1Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge1/CollisionShape3D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 1, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge1/Bridge1Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.5, -0.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge1/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.2495, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_is7uh"]
+resource_name = "extend"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge1/Bridge1Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1, 5), Vector3(20.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge1/CollisionShape3D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.001, 1, 5), Vector3(21, 1, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge1/Bridge1Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-10.5, -0.5, 0), Vector3(-0.5, -0.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge1/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-10.2495, -0.5, 0), Vector3(0.25, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wdinn"]
+resource_name = "retract"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge1/Bridge1Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(20.5, 1, 5), Vector3(0.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge1/CollisionShape3D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(21, 1, 5), Vector3(0.001, 1, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge1/Bridge1Mesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.5, -0.5, 0), Vector3(-10.5, -0.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge1/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 0), Vector3(-10.2495, -0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hi6ik"]
+_data = {
+&"RESET": SubResource("Animation_hi6ik"),
+&"extend": SubResource("Animation_is7uh"),
+&"retract": SubResource("Animation_wdinn")
+}
+
+[sub_resource type="Animation" id="Animation_86iof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge2/Bridge2Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge2/Bridge2Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.25, -0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge2/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge2/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.25, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2a3cm"]
+resource_name = "extend"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge2/Bridge2Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1, 5), Vector3(11, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge2/Bridge2Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.25, -0.5, 0), Vector3(0, -0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge2/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 5), Vector3(11.5, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge2/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.25, -0.5, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nsf1l"]
+resource_name = "retract"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge2/Bridge2Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(11, 1, 5), Vector3(0.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge2/Bridge2Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(-5.25, -0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge2/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(11.5, 1, 5), Vector3(1, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge2/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(-5.25, -0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a3cm"]
+_data = {
+&"RESET": SubResource("Animation_86iof"),
+&"extend": SubResource("Animation_2a3cm"),
+&"retract": SubResource("Animation_nsf1l")
+}
+
+[sub_resource type="Animation" id="Animation_jl0wp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge3/Bridge3Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge3/Bridge3Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 4.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge3/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge3/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_oa3gu"]
+resource_name = "extend"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge3/Bridge3Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.5, 1, 5), Vector3(15, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge3/Bridge3Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 4.5), Vector3(0.25, -0.5, 10.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge3/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 1, 5), Vector3(14.5, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge3/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 4.5), Vector3(0.25, -0.5, 10.75)]
+}
+
+[sub_resource type="Animation" id="Animation_6pj2q"]
+resource_name = "retract"
+length = 3.0000000000000004
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bridge3/Bridge3Mesh:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(15, 1, 5), Vector3(2.5, 1, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bridge3/Bridge3Mesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 10.75), Vector3(0.25, -0.5, 4.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bridge3/CollisionShape3D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(14.5, 1, 5), Vector3(2, 1, 5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bridge3/CollisionShape3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.25, -0.5, 10.75), Vector3(0.25, -0.5, 4.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl0wp"]
+_data = {
+&"RESET": SubResource("Animation_jl0wp"),
+&"extend": SubResource("Animation_oa3gu"),
+&"retract": SubResource("Animation_6pj2q")
+}
+
 [node name="Lavaworks" type="Node3D" unique_id=313511328]
 script = ExtResource("1_urkd0")
 room_name = "Lavaworks"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1576799141]
+environment = SubResource("Environment_8u1lp")
 
 [node name="LevelCsg" type="CSGCombiner3D" parent="." unique_id=908639961]
 visible = false
@@ -183,36 +743,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, -2.5, 19.75)
 size = Vector3(23, 6, 8.5)
 
 [node name="FloorCollision" type="StaticBody3D" parent="." unique_id=436947164 groups=["floor"]]
+collision_layer = 32769
+collision_mask = 32769
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="FloorCollision" unique_id=1405235886]
 shape = SubResource("ConcavePolygonShape3D_is7uh")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=762934917 groups=["nav"]]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=762934917 groups=["nav", "nav_bridge1"]]
 mesh = SubResource("ArrayMesh_is7uh")
 
 [node name="Level" type="MeshInstance3D" parent="." unique_id=1659985612]
 visible = false
 mesh = SubResource("ArrayMesh_urkd0")
 
-[node name="Bridge1" type="CSGBox3D" parent="." unique_id=714469400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.5, 0)
-size = Vector3(22, 1, 5)
+[node name="Bridge1" type="StaticBody3D" parent="." unique_id=2144113300 groups=["nav_bridge1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 0)
+collision_layer = 32769
+collision_mask = 32769
+metadata/_edit_group_ = true
 
-[node name="Bridge2" type="CSGBox3D" parent="." unique_id=127970985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, -0.5, 0)
-size = Vector3(11, 1, 5)
+[node name="Bridge1Mesh" type="MeshInstance3D" parent="Bridge1" unique_id=1757427608 groups=["floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, 0)
+mesh = SubResource("BoxMesh_is7uh")
 
-[node name="Bridge3" type="CSGBox3D" parent="." unique_id=1024881849]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, -0.5, 0)
-size = Vector3(13, 1, 5)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge1" unique_id=1147842323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2495, -0.5, 0)
+shape = SubResource("BoxShape3D_wdinn")
 
-[node name="Bridge4" type="CSGBox3D" parent="." unique_id=1306615814]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.5, -0.5, 10)
-size = Vector3(13, 1, 5)
+[node name="Bridge2" type="StaticBody3D" parent="." unique_id=1431540743 groups=["nav_bridge2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 0)
+collision_layer = 32769
+collision_mask = 32769
+metadata/_edit_group_ = true
 
-[node name="Bridge5" type="CSGBox3D" parent="." unique_id=254989783]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.5, -0.5, -12.5)
-size = Vector3(14, 1, 5)
+[node name="Bridge2Mesh" type="MeshInstance3D" parent="Bridge2" unique_id=907341662 groups=["floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, -0.5, 0)
+mesh = SubResource("BoxMesh_wdinn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge2" unique_id=1946980074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, -0.5, 0)
+shape = SubResource("BoxShape3D_hi6ik")
+
+[node name="Bridge3" type="StaticBody3D" parent="." unique_id=928431083 groups=["nav_bridge3"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 0)
+collision_layer = 32769
+collision_mask = 32769
+metadata/_edit_group_ = true
+
+[node name="Bridge3Mesh" type="MeshInstance3D" parent="Bridge3" unique_id=92887180 groups=["floor"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25, -0.5, 4.5)
+mesh = SubResource("BoxMesh_86iof")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge3" unique_id=328447176]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.25, -0.5, 4.5)
+shape = SubResource("BoxShape3D_nsf1l")
+
+[node name="Bridge4" type="StaticBody3D" parent="." unique_id=114363675 groups=["nav"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -20)
+collision_layer = 32769
+collision_mask = 32769
+metadata/_edit_group_ = true
+
+[node name="Bridge4Mesh" type="MeshInstance3D" parent="Bridge4" unique_id=1962051579 groups=["floor"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.25, -0.5, 8.25)
+mesh = SubResource("BoxMesh_hi6ik")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge4" unique_id=1387282703]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.25, -0.5, 8.25)
+shape = SubResource("BoxShape3D_86iof")
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1789871323]
 quality = 0
@@ -221,11 +819,49 @@ interior = true
 use_denoiser = false
 light_data = ExtResource("2_6gmc8")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1111339118]
+[node name="LavaLight" type="AreaLight3D" parent="." unique_id=1254247705]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 29.5, -6.5, 2.5)
+light_color = Color(1, 0.4453125, 0, 1)
+light_energy = 5.0
+area_attenuation = -3.444
+area_size = Vector2(74.67552, 45.637535)
+
+[node name="NavigationBase" type="NavigationRegion3D" parent="." unique_id=1111339118]
 navigation_mesh = SubResource("NavigationMesh_8u1lp")
 
+[node name="NavigationBridge1" type="NavigationRegion3D" parent="." unique_id=1592861134]
+navigation_mesh = SubResource("NavigationMesh_is7uh")
+enabled = false
+
+[node name="NavigationBridge2" type="NavigationRegion3D" parent="." unique_id=1575762886]
+navigation_mesh = SubResource("NavigationMesh_wdinn")
+enabled = false
+
+[node name="NavigationBridge3" type="NavigationRegion3D" parent="." unique_id=162680622]
+navigation_mesh = SubResource("NavigationMesh_hi6ik")
+enabled = false
+
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_0o03q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0.50380677, 0)
+
+[node name="Skeleton3D" parent="Player/player2/playerm" parent_id_path=PackedInt32Array(378074253, 1992337903, 1327768068) index="0" unique_id=1937748793]
+bones/0/position = Vector3(-0.3441011, 0.012369446, 0)
+bones/0/rotation = Quaternion(-0.0007945191, 0.0044646533, -0.02238803, 0.9997391)
+bones/1/rotation = Quaternion(-0.0018759737, 0.0019223656, -0.059622545, 0.9982174)
+bones/2/rotation = Quaternion(0.021416677, 0.005555059, 0.049224608, 0.9985427)
+bones/3/rotation = Quaternion(-0.007974789, -0.0020031598, -0.09791587, 0.99516076)
+bones/4/position = Vector3(-0.27652612, 0.9736328, -0.26733863)
+bones/5/rotation = Quaternion(-0.28264743, -0.021257205, 0.012447613, 0.9589076)
+bones/9/position = Vector3(-0.41946158, -0.9112938, -0.30279312)
+bones/9/rotation = Quaternion(0.7007879, 0.09432104, -0.7007877, 0.094321065)
+bones/10/rotation = Quaternion(0.2225195, -5.227065e-08, 7.8365545e-08, 0.97492826)
+bones/11/rotation = Quaternion(-0.61617845, 8.700113e-08, -3.5076976e-08, 0.78760654)
+bones/12/position = Vector3(-0.27229682, 0.97364295, 0.30592313)
+bones/13/rotation = Quaternion(0.21091136, 0.71450216, 0.18990566, 0.63948333)
+bones/17/position = Vector3(-0.40126228, -0.9060424, 0.29998514)
+bones/17/rotation = Quaternion(-0.7010884, -0.092059165, 0.7010886, -0.09205914)
+bones/18/rotation = Quaternion(0.22706857, 1.5733349e-07, -1.04313756e-07, 0.97387886)
+bones/19/rotation = Quaternion(-0.62272155, -3.5012473e-08, 2.3251038e-08, 0.7824435)
 
 [node name="Lava" type="MeshInstance3D" parent="." unique_id=2003585745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -3, 0)
@@ -257,12 +893,23 @@ mesh = SubResource("CylinderMesh_w88bp")
 [node name="CameraStart" type="Camera3D" parent="." unique_id=903806539]
 transform = Transform3D(-0.61706686, 0.18901683, -0.76387244, 0, 0.97072315, 0.24020113, 0.7869107, 0.14822015, -0.5990011, 0.1797421, 3.8419173, -7.301694)
 
+[node name="CameraMiddle" type="Camera3D" parent="." unique_id=1271420747]
+transform = Transform3D(0.25626653, -0.37699294, 0.89005834, 0, 0.9208076, 0.39001712, -0.9666062, -0.099948324, 0.23597217, 43.112743, 7.332665, 5.1706166)
+
 [node name="CameraZoneStart" parent="." unique_id=1032360299 node_paths=PackedStringArray("camera") instance=ExtResource("5_bbkxt")]
 camera = NodePath("../CameraStart")
 
 [node name="CollisionShape3D" parent="CameraZoneStart" index="0" unique_id=85292385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.5, 2.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0.5, 2.75)
 shape = SubResource("BoxShape3D_bbkxt")
+
+[node name="CameraZoneMiddle" parent="." unique_id=935894758 node_paths=PackedStringArray("camera") instance=ExtResource("5_bbkxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+camera = NodePath("../CameraMiddle")
+
+[node name="CollisionShape3D" parent="CameraZoneMiddle" index="0" unique_id=85292385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 1.75)
+shape = SubResource("BoxShape3D_2a3cm")
 
 [node name="FromHall" type="Marker3D" parent="." unique_id=1478375340 node_paths=PackedStringArray("camera_zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
@@ -354,7 +1001,40 @@ shape = SubResource("SphereShape3D_ks0ot")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.178574, -0.49999988, 5.8571434)
 shape = SubResource("BoxShape3D_is7uh")
 
+[node name="LeverThrowTemp" type="Node3D" parent="." unique_id=1546579797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 0, 5.5)
+
+[node name="InteractionComponent" parent="LeverThrowTemp" unique_id=1038249368 instance=ExtResource("12_ks0ot")]
+aliases = Array[String](["lever"])
+interact_event = ExtResource("13_is7uh")
+
+[node name="CollisionShape3D" parent="LeverThrowTemp/InteractionComponent/InteractArea" parent_id_path=PackedInt32Array(1038249368, 268703641) index="0" unique_id=780690474]
+shape = SubResource("SphereShape3D_hi6ik")
+disabled = true
+
+[node name="AnimationPlayerBridge1" type="AnimationPlayer" parent="." unique_id=1600399864]
+libraries/ = SubResource("AnimationLibrary_hi6ik")
+
+[node name="AnimationPlayerBridge2" type="AnimationPlayer" parent="." unique_id=1665714362]
+libraries/ = SubResource("AnimationLibrary_2a3cm")
+
+[node name="AnimationPlayerBridge3" type="AnimationPlayer" parent="." unique_id=2058016147]
+libraries/ = SubResource("AnimationLibrary_jl0wp")
+
+[node name="BridgesHandler" type="Node" parent="." unique_id=889522301 node_paths=PackedStringArray("sound_lever", "anim_players", "navmeshes")]
+script = ExtResource("14_hi6ik")
+sound_lever = NodePath("../SoundLever")
+anim_players = [NodePath("../AnimationPlayerBridge1"), NodePath("../AnimationPlayerBridge2"), NodePath("../AnimationPlayerBridge3")]
+navmeshes = [NodePath("../NavigationBridge1"), NodePath("../NavigationBridge2"), NodePath("../NavigationBridge3")]
+
+[node name="SoundLever" type="AudioStreamPlayer3D" parent="." unique_id=1341828879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 8.707035)
+stream = ExtResource("14_wdinn")
+
+[editable path="Player"]
+[editable path="Player/player2"]
 [editable path="CameraZoneStart"]
+[editable path="CameraZoneMiddle"]
 [editable path="lava_pipe"]
 [editable path="lava_pipe2"]
 [editable path="lava_pipe3"]
@@ -362,3 +1042,4 @@ shape = SubResource("BoxShape3D_is7uh")
 [editable path="lava_flow"]
 [editable path="lever"]
 [editable path="lever/InteractionComponent"]
+[editable path="LeverThrowTemp/InteractionComponent"]

@@ -1,10 +1,11 @@
 @switch INTERACT_VERB
 @case "look"
-	The lever is currently set to OFF.
+	The lever is currently set to {has_flag("lavaworks_lever_flipped"):ON|OFF}.
 @case "pull" | "push" | "flip" | "activate"
-	You pushed the lever.
+	@do flip_lavaworks_lever
 @case "throw rock at"
 	DIRECT HIT!
+	@do flip_lavaworks_lever
 @case "throw tissue at"
 	It blew back at your face.
 @case "throw fishpole at" | "throw idol at" | "throw potion at" | "throw fish at" | "throw sword at" | "throw coin at"
