@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://v8h12rxe570e" path="res://prefabs/volumes/camera_zone.tscn" id="7_eo1a2"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="8_qud5f"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="9_adw53"]
+[ext_resource type="Script" uid="uid://dyrrteu8chw33" path="res://scripts/rooms/dungeon_controller.gd" id="12_t0vpt"]
+[ext_resource type="AudioStream" uid="uid://cms7ndyvr45si" path="res://audio/music/horror.ogg" id="13_cyn2u"]
+[ext_resource type="Script" uid="uid://c2o76igd8xpth" path="res://scripts/music_manual_loop.gd" id="14_cmfhh"]
 
 [sub_resource type="Environment" id="Environment_uaq1w"]
 background_mode = 4
@@ -451,10 +454,21 @@ target_marker = "FromDungeon"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.25)
 shape = SubResource("BoxShape3D_ho7no")
 
-[node name="FromGallery" type="Marker3D" parent="." unique_id=1140386648]
+[node name="FromGallery" type="Marker3D" parent="." unique_id=1140386648 node_paths=PackedStringArray("camera_zone")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -14.5)
 script = ExtResource("9_adw53")
+camera_zone = NodePath("../CameraZoneStart")
 metadata/_custom_type_script = "uid://cdxujor4bqtd7"
+
+[node name="DungeonController" type="Node" parent="." unique_id=14169322]
+script = ExtResource("12_t0vpt")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=498370632]
+stream = ExtResource("13_cyn2u")
+volume_db = 4.0
+autoplay = true
+script = ExtResource("14_cmfhh")
+loop_time = 85.0
 
 [editable path="dungeon_door2"]
 [editable path="CameraZoneStart"]

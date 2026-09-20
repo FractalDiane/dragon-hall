@@ -1,6 +1,8 @@
 @switch INTERACT_VERB
 @case "look"
-	@if look_string != ""
+	@if has_flag("dungeon_dark")
+		It's too dark to see anything.
+	@elif look_string != ""
 		Nearby is {look_string}.
 	@else
 		There is nothing of interest nearby.

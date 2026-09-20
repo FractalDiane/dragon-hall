@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://due00y8i8t0l8" path="res://models/props/dungeon_door.glb" id="16_a1wxb"]
 [ext_resource type="Resource" uid="uid://cvwehfetqgsc0" path="res://dialogue/interactibles/dungeon_door.res" id="16_ggqfi"]
 [ext_resource type="Script" uid="uid://cdxujor4bqtd7" path="res://scripts/transition_marker.gd" id="17_ggqfi"]
-[ext_resource type="Resource" uid="uid://b82ayxwi2bsjk" path="res://resources/flags/gallery_dungeon_door_unlocked.tres" id="18_8c2gv"]
 [ext_resource type="PackedScene" uid="uid://dmhyg5hkfp8mw" path="res://prefabs/volumes/room_transition.tscn" id="18_q5w6r"]
 
 [sub_resource type="Environment" id="Environment_07tpo"]
@@ -1308,7 +1307,6 @@ shape = SubResource("SphereShape3D_rwo65")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -42.5, -14.5)
 target_scene = "uid://jwwrvldoowdw"
 target_marker = "FromGallery"
-flag_required = ExtResource("18_8c2gv")
 
 [node name="CollisionShape3D" parent="ToDungeon" index="0" unique_id=1856075525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0)
