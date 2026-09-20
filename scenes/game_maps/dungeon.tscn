@@ -221,9 +221,34 @@ omni_range = 194.271
 [node name="Player" parent="." unique_id=378074253 instance=ExtResource("1_peaf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -14.5)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Player" unique_id=288825563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3626974, 0.5295944)
-light_color = Color(1, 0.68359375, 0.68359375, 1)
+[node name="Skeleton3D" parent="Player/player2/playerm" parent_id_path=PackedInt32Array(378074253, 1992337903, 1190555468) index="0" unique_id=470967003]
+bones/0/position = Vector3(-0.3441012, -0.008347727, 1.4430953e-08)
+bones/0/rotation = Quaternion(-0.0036708363, 0.0076950756, -0.03608285, 0.99931246)
+bones/1/rotation = Quaternion(-0.008350792, 0.0033548388, -0.068061985, 0.99764055)
+bones/2/rotation = Quaternion(0.036463905, 0.009458154, 0.078901894, 0.99617046)
+bones/3/rotation = Quaternion(-0.028229041, -0.0070909774, -0.09770871, 0.9947894)
+bones/5/position = Vector3(-0.27652612, 0.94172883, -0.26733866)
+bones/6/rotation = Quaternion(-0.28617105, -0.042058807, -0.03688316, 0.9565443)
+bones/10/position = Vector3(-0.42768583, -0.9200996, -0.30279312)
+bones/10/rotation = Quaternion(0.7000817, 0.09942707, -0.7000815, 0.099427044)
+bones/11/rotation = Quaternion(0.23361276, -1.2767237e-07, 1.1108754e-07, 0.97232974)
+bones/12/rotation = Quaternion(-0.62091535, 1.0578016e-07, -3.1110904e-08, 0.78387755)
+bones/13/position = Vector3(-0.27229682, 0.94173896, 0.3059231)
+bones/14/rotation = Quaternion(0.23251492, 0.71945393, 0.17226523, 0.63138556)
+bones/18/position = Vector3(-0.40316704, -0.9156452, 0.29998514)
+bones/18/rotation = Quaternion(-0.7004174, -0.09703294, 0.7004176, -0.09703304)
+bones/19/rotation = Quaternion(0.23841968, 1.5953616e-07, -1.387937e-07, 0.9711623)
+bones/20/rotation = Quaternion(-0.62666357, -3.2612288e-08, 3.0312364e-08, 0.7792899)
+
+[node name="LightCrystal" parent="Player/player2/playerm/Skeleton3D" index="1" unique_id=1928203470]
+transform = Transform3D(0.9972776, 0.07205959, 0.015644478, -0.07217258, 0.9973691, 0.0067813043, -0.015114661, -0.007891946, 0.9998546, -0.01406765, -0.30404297, 0.20495974)
+
+[node name="CrystalLight" parent="Player" index="15" unique_id=2064009379]
+visible = false
+
+[node name="CrystalLightDungeon" type="OmniLight3D" parent="Player" unique_id=288825563]
+transform = Transform3D(0.99999946, 0.0008442792, -0.00062740565, -0.0008443967, 0.99999964, -0.00018715014, 0.0006272474, 0.0001876798, 0.9999998, -0.29965326, 1.4025409, 0.5594654)
+light_color = Color(1, 0.68235296, 0.68235296, 1)
 light_energy = 0.08
 shadow_enabled = true
 omni_range = 5.672
@@ -470,6 +495,9 @@ autoplay = true
 script = ExtResource("14_cmfhh")
 loop_time = 85.0
 
+[editable path="Player"]
+[editable path="Player/player2"]
+[editable path="Player/player2/playerm/Skeleton3D/LightCrystal/light_crystal2"]
 [editable path="dungeon_door2"]
 [editable path="CameraZoneStart"]
 [editable path="CameraZone2"]
