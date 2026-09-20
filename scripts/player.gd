@@ -85,8 +85,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"click") and PlayerStateSubsystem.can_player_move():
 		var ray := mouse_screen_to_world(current_camera, 32768)
 		if ray:
-			nav_target_pos = ray["position"]
-			has_nav_target = true
+			if OS.is_debug_build() and Input.is_action_pressed(&"debug_teleport"):
+				global_position = ray["position"]
+			else:
+				nav_target_pos = ray["position"]
+				has_nav_target = true
 
 func mouse_screen_to_world(cam: Camera3D, mask: int) -> Dictionary:
 	var mouse_position := cam.get_viewport().get_mouse_position()

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d2hfqqjfpka0w"]
+
+[ext_resource type="PackedScene" uid="uid://cf2irqitpptbq" path="res://models/props/cell_m.glb" id="1_oenfo"]
+
+[node name="cell_m" unique_id=2001253295 instance=ExtResource("1_oenfo")]
+
+[node name="cell-med" parent="." index="0" unique_id=123606285]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, -0.5)

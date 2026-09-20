@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b7sqwp0r366wq"]
+
+[ext_resource type="PackedScene" uid="uid://ce81t8lcs5fok" path="res://models/props/cell_door.glb" id="1_5gkxr"]
+
+[node name="cell_door" unique_id=2050693649 instance=ExtResource("1_5gkxr")]
+
+[node name="cell-short" parent="." index="0" unique_id=931566961]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 1.5)
